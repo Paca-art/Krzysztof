@@ -282,44 +282,42 @@
     <div class="snap-container">
 
         <!-- SEKCJA 1: HERO -->
-        <section id="home" class="snap-section bg-white">
-            <!-- Skorygowany margines górny: mt-16 na mobile, mt-10 na desktop, by wyeliminować nadmiar przestrzeni -->
-            <div class="rigid-container h-full flex flex-col justify-center mt-16 lg:mt-10">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-4 items-center">
+        <!-- Poprawione dopełnienia by uniknąć overflowu (rozjechania na mobile). -->
+        <section id="home" class="snap-section bg-white !pt-20 lg:!pt-24 !pb-4">
+            <div class="rigid-container h-full w-full flex flex-col justify-between">
+                
+                <!-- Główny układ Hero (Napis + Zdjęcie) -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-center flex-grow">
                     
-                    <!-- LEWA STRONA: TYPOGRAFIA ZGODNA Z PROJEKTEM PRO2.WEBP -->
-                    <div class="anim-left z-10 order-1 text-center lg:text-left">
-                        <span class="inline-block px-4 py-1 rounded-full border border-brandBlue/30 text-brandBlue font-medium text-[10px] lg:text-xs mb-6 uppercase tracking-widest bg-white">
+                    <!-- LEWA STRONA: TYPOGRAFIA -->
+                    <div class="anim-left z-10 order-1 text-center lg:text-left mt-2 lg:mt-0">
+                        <!-- Pill Portfolio - Ukryty całkowicie na widoku mobilnym -->
+                        <span class="hidden md:inline-block px-4 py-1 rounded-full border border-brandBlue/30 text-brandBlue font-medium text-[10px] lg:text-xs mb-6 uppercase tracking-widest bg-white">
                             Portfolio
                         </span>
                         
-                        <!-- Nowa struktura nagłówka -->
-                        <h1 class="mb-5 lg:mb-8 text-brandNavy">
-                            <!-- Tekst cienki (normal) w pierwszej linii -->
-                            <span class="block text-3xl md:text-4xl lg:text-[2.5rem] font-medium lg:font-normal text-brandNavy mb-2">Cześć, jestem Krzysztof!</span>
-                            <!-- Ogromne słowa na osobnych liniach (bold) -->
-                            <span class="block text-6xl md:text-7xl lg:text-[6.5rem] font-bold text-brandBlue leading-[0.9] tracking-tight">Graphic</span>
-                            <span class="block text-6xl md:text-7xl lg:text-[6.5rem] font-bold text-brandBlue leading-[0.9] tracking-tight">Designer</span>
+                        <h1 class="mb-4 lg:mb-8 text-brandNavy">
+                            <span class="block text-2xl md:text-4xl lg:text-[2.5rem] font-medium lg:font-normal text-brandNavy mb-1 lg:mb-2">Cześć, jestem Krzysztof!</span>
+                            <span class="block text-[3.5rem] md:text-7xl lg:text-[6.5rem] font-bold text-brandBlue leading-[0.9] tracking-tight">Graphic</span>
+                            <span class="block text-[3.5rem] md:text-7xl lg:text-[6.5rem] font-bold text-brandBlue leading-[0.9] tracking-tight">Designer</span>
                         </h1>
                         
-                        <p class="text-gray-500 max-w-sm mx-auto lg:mx-0 mb-8 lg:mb-10 text-sm md:text-base leading-relaxed">
+                        <p class="text-gray-500 max-w-sm mx-auto lg:mx-0 mb-6 lg:mb-10 text-[13px] md:text-base leading-relaxed">
                             Zajmuję się kompleksowym projektowaniem – od identyfikacji wizualnej i DTP, przez obróbkę foto/wideo, aż po kampanie e-commerce i interfejsy UI/UX.
                         </p>
                         
-                        <a href="https://www.behance.net/krzysztofped07" target="_blank" class="inline-flex items-center justify-center px-8 py-3.5 text-sm lg:text-base font-bold rounded-full text-white bg-brandBlue hover:bg-blue-700 active:scale-95 transition-all shadow-xl shadow-brandBlue/30 min-h-[44px]">
+                        <a href="https://www.behance.net/krzysztofped07" target="_blank" class="inline-flex items-center justify-center px-6 lg:px-8 py-3 lg:py-3.5 text-xs lg:text-base font-bold rounded-full text-white bg-brandBlue hover:bg-blue-700 active:scale-95 transition-all shadow-xl shadow-brandBlue/30 min-h-[44px]">
                             Zobacz Behance &rarr;
                         </a>
                     </div>
                     
-                    <!-- PRAWA STRONA: ZDJĘCIE AUTORA -->
-                    <div class="anim-right relative z-10 flex justify-center items-end lg:items-center order-2 h-[280px] md:h-[360px] lg:h-[460px] w-full">
+                    <!-- PRAWA STRONA: ZDJĘCIE -->
+                    <div class="anim-right relative z-10 flex justify-center items-end lg:items-center order-2 h-[220px] md:h-[360px] lg:h-[460px] w-full">
                         <div class="relative w-full h-full flex items-center justify-center overflow-visible">
                             
-                            <!-- Kontener chroniący filtry (gooey) -->
                             <div class="absolute inset-0 w-full h-full flex items-center justify-center" id="blob-container">
-                                <!-- Kółko główne -->
-                                <div class="main-circle rounded-full animate-jelly absolute bg-brandBlue z-10 shadow-xl w-[220px] h-[220px] md:w-[300px] md:h-[300px] lg:w-[380px] lg:h-[380px]"></div>
-                                <!-- Canvas z plamkami -->
+                                <!-- Zmniejszone kółko tła dla lepszego wpasowania -->
+                                <div class="main-circle rounded-full animate-jelly absolute bg-brandBlue z-10 shadow-xl w-[180px] h-[180px] md:w-[300px] md:h-[300px] lg:w-[380px] lg:h-[380px]"></div>
                                 <canvas id="blob-canvas" class="absolute inset-0 z-20 w-full h-full pointer-events-none lg:pointer-events-auto"></canvas>
                             </div>
 
@@ -333,36 +331,35 @@
                                 </defs>
                             </svg>
 
-                            <!-- ZDJĘCIE AUTORA NA WIERZCHU -->
-                            <img src="img/kk2.webp" alt="Krzysztof Paczkowski" class="absolute z-30 w-auto h-[88%] lg:h-[95%] bottom-0 object-contain pointer-events-none">
+                            <img src="img/kk2.webp" alt="Krzysztof Paczkowski" class="absolute z-30 w-auto h-[90%] lg:h-[95%] bottom-0 object-contain pointer-events-none">
 
-                            <!-- Etykieta Adobe -->
-                            <div class="absolute top-2 lg:top-10 right-2 lg:right-2 bg-white p-2.5 lg:p-4 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.05)] z-40 flex flex-col justify-center gap-0 scale-90 lg:scale-100 transform origin-top-right border border-gray-50">
-                                <p class="text-[9px] lg:text-[10px] text-gray-400 font-medium mb-0.5">Pakiet Adobe</p>
-                                <p class="text-xs lg:text-sm font-bold text-brandNavy leading-tight">Ekspert</p>
+                            <div class="absolute top-0 lg:top-10 right-0 lg:right-2 bg-white p-2 lg:p-4 rounded-xl shadow-md z-40 flex flex-col justify-center gap-0 scale-75 lg:scale-100 transform origin-top-right border border-gray-50">
+                                <p class="text-[8px] lg:text-[10px] text-gray-400 font-medium mb-0.5">Pakiet Adobe</p>
+                                <p class="text-[10px] lg:text-sm font-bold text-brandNavy leading-tight">Ekspert</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- STATYSTYKI -->
-                <div class="anim-bottom pt-6 w-full mt-8 border-t border-gray-100">
-                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 text-center lg:divide-x divide-gray-100">
-                        <div>
-                            <h3 class="text-2xl lg:text-3xl font-extrabold text-brandNavy mb-1">11+</h3>
-                            <p class="text-[9px] lg:text-[11px] text-gray-500 uppercase tracking-wider font-semibold">Lat<br>Doświadczenia</p>
+                <!-- Rozbite na 4 kolumny WSZĘDZIE. Ekstremalnie małe czcionki na mobile. -->
+                <div class="anim-bottom pt-4 lg:pt-6 w-full mt-4 lg:mt-8 border-t border-gray-100 shrink-0">
+                    <div class="grid grid-cols-4 gap-1 lg:gap-6 text-center divide-x divide-gray-100 w-full">
+                        <div class="px-1 lg:px-4">
+                            <h3 class="text-[1.1rem] md:text-2xl lg:text-3xl font-extrabold text-brandNavy mb-0.5">11+</h3>
+                            <p class="text-[6.5px] md:text-[9px] lg:text-[11px] text-gray-500 uppercase tracking-wider font-semibold leading-tight">Lat<br>Dośw.</p>
                         </div>
-                        <div>
-                            <h3 class="text-lg lg:text-3xl font-extrabold text-brandNavy mb-1 flex items-center justify-center h-8 lg:h-auto">DTP/WWW</h3>
-                            <p class="text-[9px] lg:text-[11px] text-gray-500 uppercase tracking-wider font-semibold">Wszechstronne<br>Kompetencje</p>
+                        <div class="px-1 lg:px-4 flex flex-col justify-center items-center">
+                            <h3 class="text-[12px] md:text-xl lg:text-3xl font-extrabold text-brandNavy mb-0.5 w-full flex items-center justify-center">DTP/WWW</h3>
+                            <p class="text-[6.5px] md:text-[9px] lg:text-[11px] text-gray-500 uppercase tracking-wider font-semibold leading-tight">Szerokie<br>Komp.</p>
                         </div>
-                        <div class="hidden lg:block">
-                            <h3 class="text-2xl lg:text-3xl font-extrabold text-brandNavy mb-1">UX/UI</h3>
-                            <p class="text-[9px] lg:text-[11px] text-gray-500 uppercase tracking-wider font-semibold">Ukończone<br>Szkolenia</p>
+                        <div class="px-1 lg:px-4">
+                            <h3 class="text-[1.1rem] md:text-2xl lg:text-3xl font-extrabold text-brandNavy mb-0.5">UX/UI</h3>
+                            <p class="text-[6.5px] md:text-[9px] lg:text-[11px] text-gray-500 uppercase tracking-wider font-semibold leading-tight">Ukończone<br>Szkolenia</p>
                         </div>
-                        <div class="hidden lg:block">
-                            <h3 class="text-2xl lg:text-3xl font-extrabold text-brandNavy mb-1">Mgr</h3>
-                            <p class="text-[9px] lg:text-[11px] text-gray-500 uppercase tracking-wider font-semibold">Sztuk<br>Wizualnych</p>
+                        <div class="px-1 lg:px-4">
+                            <h3 class="text-[1.1rem] md:text-2xl lg:text-3xl font-extrabold text-brandNavy mb-0.5">Mgr</h3>
+                            <p class="text-[6.5px] md:text-[9px] lg:text-[11px] text-gray-500 uppercase tracking-wider font-semibold leading-tight">Sztuk<br>Wizualnych</p>
                         </div>
                     </div>
                 </div>
@@ -463,7 +460,6 @@
         <!-- SEKCJA 4: KARUZELA PROJEKTÓW -->
         <section id="portfolio" class="snap-section bg-brandLight relative">
             
-            <!-- TŁO DLA KAFELKA BRANDING (Zza zawartości) -->
             <div class="branding-section-bg">
                 <div class="branding-section-tray">
                     <div class="branding-section-thumb">
@@ -472,7 +468,6 @@
                 </div>
             </div>
 
-            <!-- TŁO DLA KAFELKA WWW (Zza zawartości) -->
             <div class="www-section-bg">
                 <div class="www-section-tray">
                     <div class="www-section-thumb">
@@ -487,8 +482,7 @@
                 </div>
             </div>
 
-            <!-- Kontener z relative i z-10, by znajdował się nad tłem animacji -->
-            <div class="rigid-container flex flex-col justify-center w-full relative z-10">
+            <div class="rigid-container flex flex-col justify-center w-full relative z-10 px-2 lg:px-6">
                 <div class="text-center mb-8 lg:mb-10 anim-bottom">
                     <h4 class="text-brandBlue font-bold tracking-wider text-[10px] lg:text-sm mb-2 uppercase justify-center flex items-center gap-2">
                         <i class="fa-solid fa-palette"></i> Portfolio
@@ -498,74 +492,90 @@
                     </h2>
                 </div>
 
-                <!-- Karuzela projektów -->
-                <div class="portfolio-carousel flex overflow-x-auto snap-x snap-mandatory gap-4 pb-8 hide-scrollbar anim-bottom delay-1">
+                <!-- NOWOŚĆ: Kontener ze strzałkami nawigacyjnymi i kropkami -->
+                <div class="relative w-full anim-bottom delay-1">
+                    
+                    <!-- Strzałka w lewo -->
+                    <button id="prev-btn" aria-label="Poprzedni projekt" class="absolute left-1 md:-left-4 lg:-left-6 top-1/2 -translate-y-1/2 z-20 w-8 h-8 lg:w-12 lg:h-12 bg-white shadow-lg rounded-full text-brandBlue flex items-center justify-center opacity-90 hover:opacity-100 hover:scale-105 transition-all">
+                        <i class="fa-solid fa-chevron-left text-sm lg:text-lg"></i>
+                    </button>
+                    
+                    <!-- Strzałka w prawo -->
+                    <button id="next-btn" aria-label="Następny projekt" class="absolute right-1 md:-right-4 lg:-right-6 top-1/2 -translate-y-1/2 z-20 w-8 h-8 lg:w-12 lg:h-12 bg-white shadow-lg rounded-full text-brandBlue flex items-center justify-center opacity-90 hover:opacity-100 hover:scale-105 transition-all">
+                        <i class="fa-solid fa-chevron-right text-sm lg:text-lg"></i>
+                    </button>
 
-                    <!-- 1. Branding -->
-                    <a href="https://www.behance.net/krzysztofped07" target="_blank"
-                       class="portfolio-card branding-card snap-center bg-white rounded-3xl p-3 shadow-soft transition-all duration-300 block group shrink-0 relative"
-                       tabindex="0" aria-label="Branding">
-                        <div class="branding-img-wrap overflow-hidden rounded-2xl mb-4 h-52 relative">
-                            <!-- tło -->
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                                 alt="Branding" class="branding-bg-img w-full h-full object-cover">
-                            <!-- ściemniacz -->
-                            <div class="branding-overlay absolute inset-0 bg-brandNavy/0 transition-all duration-500"></div>
-                        </div>
-                        <div class="px-2 pb-1 relative z-10">
-                            <p class="text-brandBlue text-xs font-bold uppercase tracking-wider mb-1">Identyfikacja Wizualna</p>
-                            <h3 class="text-lg font-bold text-brandNavy">Branding i Key Visual <span class="branding-arrow text-brandBlue opacity-0 transition-opacity duration-300">→</span></h3>
-                        </div>
-                    </a>
+                    <!-- Karuzela projektów -->
+                    <div id="portfolio-scroll" class="portfolio-carousel flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 lg:pb-8 hide-scrollbar scroll-smooth relative z-10 px-10 md:px-0">
 
-                    <!-- 2. E-commerce -->
-                    <a href="https://www.behance.net/krzysztofped07" target="_blank"
-                       class="portfolio-card snap-center bg-white rounded-3xl p-3 shadow-soft transition-all duration-300 block group shrink-0">
-                        <div class="overflow-hidden rounded-2xl mb-4 h-52 portfolio-img-wrap">
-                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                                 alt="E-commerce" class="w-full h-full object-cover portfolio-img">
-                        </div>
-                        <div class="px-2 pb-1">
-                            <p class="text-brandBlue text-xs font-bold uppercase tracking-wider mb-1">E-commerce i www</p>
-                            <h3 class="text-lg font-bold text-brandNavy">Grafiki i Kampanie Social Media</h3>
-                        </div>
-                    </a>
+                        <!-- 1. Branding -->
+                        <a href="https://www.behance.net/krzysztofped07" target="_blank"
+                           class="portfolio-card branding-card snap-center bg-white rounded-3xl p-3 shadow-soft transition-all duration-300 block group shrink-0 relative"
+                           tabindex="0" aria-label="Branding">
+                            <div class="branding-img-wrap overflow-hidden rounded-2xl mb-4 h-52 relative">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                     alt="Branding" class="branding-bg-img w-full h-full object-cover">
+                                <div class="branding-overlay absolute inset-0 bg-brandNavy/0 transition-all duration-500"></div>
+                            </div>
+                            <div class="px-2 pb-1 relative z-10">
+                                <p class="text-brandBlue text-xs font-bold uppercase tracking-wider mb-1">Identyfikacja Wizualna</p>
+                                <h3 class="text-lg font-bold text-brandNavy">Branding i Key Visual <span class="branding-arrow text-brandBlue opacity-0 transition-opacity duration-300">→</span></h3>
+                            </div>
+                        </a>
 
-                    <!-- 3. DTP -->
-                    <a href="https://www.behance.net/krzysztofped07" target="_blank"
-                       class="portfolio-card snap-center bg-white rounded-3xl p-3 shadow-soft transition-all duration-300 block group shrink-0">
-                        <div class="overflow-hidden rounded-2xl mb-4 h-52 portfolio-img-wrap">
-                            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                                 alt="DTP" class="w-full h-full object-cover portfolio-img">
-                        </div>
-                        <div class="px-2 pb-1">
-                            <p class="text-brandBlue text-xs font-bold uppercase tracking-wider mb-1">Materiały do druku</p>
-                            <h3 class="text-lg font-bold text-brandNavy">Projekty Druk DTP</h3>
-                        </div>
-                    </a>
+                        <!-- 2. E-commerce -->
+                        <a href="https://www.behance.net/krzysztofped07" target="_blank"
+                           class="portfolio-card snap-center bg-white rounded-3xl p-3 shadow-soft transition-all duration-300 block group shrink-0">
+                            <div class="overflow-hidden rounded-2xl mb-4 h-52 portfolio-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                     alt="E-commerce" class="w-full h-full object-cover portfolio-img">
+                            </div>
+                            <div class="px-2 pb-1">
+                                <p class="text-brandBlue text-xs font-bold uppercase tracking-wider mb-1">E-commerce i www</p>
+                                <h3 class="text-lg font-bold text-brandNavy">Grafiki i Kampanie Social Media</h3>
+                            </div>
+                        </a>
 
-                    <!-- 4. STRONY WWW -->
-                    <div class="portfolio-card www-card snap-center bg-brandNavy rounded-3xl p-3 shadow-soft transition-all duration-300 block shrink-0 relative cursor-pointer"
-                         tabindex="0" aria-label="Strony WWW">
+                        <!-- 3. DTP -->
+                        <a href="https://www.behance.net/krzysztofped07" target="_blank"
+                           class="portfolio-card snap-center bg-white rounded-3xl p-3 shadow-soft transition-all duration-300 block group shrink-0">
+                            <div class="overflow-hidden rounded-2xl mb-4 h-52 portfolio-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                     alt="DTP" class="w-full h-full object-cover portfolio-img">
+                            </div>
+                            <div class="px-2 pb-1">
+                                <p class="text-brandBlue text-xs font-bold uppercase tracking-wider mb-1">Materiały do druku</p>
+                                <h3 class="text-lg font-bold text-brandNavy">Projekty Druk DTP</h3>
+                            </div>
+                        </a>
 
-                        <div class="www-img-wrap overflow-hidden rounded-2xl mb-4 h-52 relative">
-                            <!-- tło -->
-                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                                 alt="Strony WWW" class="www-bg-img w-full h-full object-cover">
-                            <!-- ściemniacz -->
-                            <div class="www-overlay absolute inset-0 bg-brandNavy/0 transition-all duration-500"></div>
+                        <!-- 4. STRONY WWW -->
+                        <div class="portfolio-card www-card snap-center bg-brandNavy rounded-3xl p-3 shadow-soft transition-all duration-300 block shrink-0 relative cursor-pointer"
+                             tabindex="0" aria-label="Strony WWW">
+                            <div class="www-img-wrap overflow-hidden rounded-2xl mb-4 h-52 relative">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                     alt="Strony WWW" class="www-bg-img w-full h-full object-cover">
+                                <div class="www-overlay absolute inset-0 bg-brandNavy/0 transition-all duration-500"></div>
+                            </div>
+                            <div class="px-2 pb-1">
+                                <p class="text-brandBlue text-xs font-bold uppercase tracking-wider mb-1">Projektowanie stron</p>
+                                <h3 class="text-lg font-bold text-white">Strony www <span class="www-arrow text-brandBlue opacity-0 transition-opacity duration-300">→</span></h3>
+                            </div>
                         </div>
 
-                        <div class="px-2 pb-1">
-                            <p class="text-brandBlue text-xs font-bold uppercase tracking-wider mb-1">Projektowanie stron</p>
-                            <h3 class="text-lg font-bold text-white">Strony www <span class="www-arrow text-brandBlue opacity-0 transition-opacity duration-300">→</span></h3>
-                        </div>
                     </div>
+                </div>
 
+                <!-- NOWOŚĆ: Kropki nawigacyjne połączone z JS -->
+                <div class="flex justify-center items-center gap-2 mt-2 lg:mt-0 anim-bottom delay-2" id="portfolio-dots">
+                    <button class="portfolio-dot w-2.5 h-2.5 rounded-full bg-brandBlue transition-all" data-index="0" aria-label="Slide 1"></button>
+                    <button class="portfolio-dot w-2 h-2 rounded-full bg-gray-300 hover:bg-brandBlue/50 transition-all" data-index="1" aria-label="Slide 2"></button>
+                    <button class="portfolio-dot w-2 h-2 rounded-full bg-gray-300 hover:bg-brandBlue/50 transition-all" data-index="2" aria-label="Slide 3"></button>
+                    <button class="portfolio-dot w-2 h-2 rounded-full bg-gray-300 hover:bg-brandBlue/50 transition-all" data-index="3" aria-label="Slide 4"></button>
                 </div>
 
                 <style>
-                    .portfolio-card { width: 85vw; }
+                    .portfolio-card { width: 78vw; }
                     @media (min-width: 768px)  { .portfolio-card { width: 45vw; } }
                     @media (min-width: 1024px) { .portfolio-card { width: calc(25% - 12px); } }
                     @media (min-width: 1024px) { .portfolio-carousel { gap: 16px; } }
@@ -638,14 +648,11 @@
                     </h2>
                 </div>
                 <div class="flex-grow lg:overflow-y-auto lg:max-h-[65vh] timeline-scroll lg:pr-6 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 pb-10 anim-bottom delay-1">
-
-                    <!-- LEWA KOLUMNA: PRACA -->
                     <div>
                         <h3 class="text-lg lg:text-xl font-bold text-brandNavy mb-5 lg:mb-6 lg:sticky top-0 bg-light py-2 z-10 border-b border-gray-200 flex items-center gap-3">
                             <i class="fa-solid fa-briefcase text-brandBlue"></i> Historia zatrudnienia
                         </h3>
                         <div class="space-y-4 lg:space-y-5 border-l-2 border-brandBlue/20 ml-2 lg:ml-3 pl-4 lg:pl-6 relative">
-
                             <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
                                 <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
                                 <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
@@ -655,8 +662,6 @@
                                 <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik, fotograf, e-commerce</p>
                                 <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Branża: Pojazdy elektryczne.</p>
                             </div>
-
-                            <!-- Pozostałe elementy CV ukryte dla zwięzłości... (Zostawiłem kod HTML z poprzedniej wersji bez zmian) -->
                             <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
                                 <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
                                 <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
@@ -666,7 +671,6 @@
                                 <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik kreatywny, e-commerce</p>
                                 <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Projekty graficzne.</p>
                             </div>
-                            <!-- ... -->
                             <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
                                 <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
                                 <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
@@ -676,7 +680,6 @@
                                 <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik kreatywny, social media</p>
                                 <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Artykuły spawalnicze.</p>
                             </div>
-                            <!-- ... -->
                             <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
                                 <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
                                 <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
@@ -686,7 +689,6 @@
                                 <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik kreatywny, e-commerce</p>
                                 <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Branża kosmetyczna.</p>
                             </div>
-                            <!-- ... -->
                             <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
                                 <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
                                 <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
@@ -698,8 +700,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- PRAWA KOLUMNA: EDUKACJA -->
                     <div class="mt-4 lg:mt-0">
                         <h3 class="text-lg lg:text-xl font-bold text-brandNavy mb-5 lg:mb-6 lg:sticky top-0 bg-light py-2 z-10 border-b border-gray-200 flex items-center gap-3">
                             <i class="fa-solid fa-book-open text-brandBlue"></i> Edukacja
@@ -724,24 +724,6 @@
                                 <p class="text-[10px] lg:text-xs text-gray-500">Państwowe Liceum w Gorzowie Wlkp.</p>
                             </div>
                         </div>
-
-                        <h3 class="text-lg lg:text-xl font-bold text-brandNavy mt-10 mb-5 lg:mb-6 lg:sticky top-0 bg-light py-2 z-10 border-b border-gray-200 flex items-center gap-3">
-                            <i class="fa-solid fa-list-check text-brandBlue"></i> Kursy i Dodatkowe Skille
-                        </h3>
-                        <ul class="space-y-4 text-xs lg:text-sm text-gray-600 bg-white p-5 lg:p-6 rounded-[24px] lg:rounded-3xl border border-gray-100 shadow-sm">
-                            <li class="flex items-start gap-3">
-                                <div class="w-6 h-6 lg:w-7 lg:h-7 rounded-full bg-brandBlue/10 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-laptop-code text-brandBlue text-[10px]"></i></div>
-                                <span class="leading-relaxed"><strong>Kurs UX & UI</strong> - sztuka użytecznego projektowania.</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div class="w-6 h-6 lg:w-7 lg:h-7 rounded-full bg-brandBlue/10 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-pen-nib text-brandBlue text-[10px]"></i></div>
-                                <span class="leading-relaxed">Obsługa tabletu graficznego oraz biegły <strong>rysunek odręczny</strong>.</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div class="w-6 h-6 lg:w-7 lg:h-7 rounded-full bg-brandBlue/10 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-chart-line text-brandBlue text-[10px]"></i></div>
-                                <span class="leading-relaxed">Podstawowa wiedza z zakresu marketingu i działań reklamowych w Internecie.</span>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -759,37 +741,6 @@
                         <p class="text-gray-400 text-xs mb-4 leading-relaxed max-w-sm">
                             Profesjonalne projekty graficzne dla Twojego biznesu. Zapraszam do współpracy.
                         </p>
-                        <div class="flex gap-4">
-                            <a href="https://www.behance.net/krzysztofped07" target="_blank" class="w-10 h-10 lg:w-8 lg:h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brandBlue hover:text-white active:bg-brandBlue transition-all"><i class="fa-brands fa-behance"></i></a>
-                            <a href="#" aria-label="Dribbble" class="w-10 h-10 lg:w-8 lg:h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brandBlue hover:text-white active:bg-brandBlue transition-all"><i class="fa-brands fa-dribbble"></i></a>
-                            <a href="#" aria-label="LinkedIn" class="w-10 h-10 lg:w-8 lg:h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brandBlue hover:text-white active:bg-brandBlue transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    <div>
-                        <h4 class="text-brandBlue font-bold text-sm mb-4">Nawigacja</h4>
-                        <ul class="space-y-1 text-sm lg:text-xs text-gray-400">
-                            <li><a href="#about" class="block py-1.5 hover:text-white transition-colors">O mnie</a></li>
-                            <li><a href="#portfolio" class="block py-1.5 hover:text-white transition-colors">Projekty na Behance</a></li>
-                            <li><a href="#services" class="block py-1.5 hover:text-white transition-colors">Moje Usługi</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-brandBlue font-bold text-sm mb-4">Kontakt</h4>
-                        <ul class="space-y-3 text-sm lg:text-xs text-gray-400">
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-phone text-brandBlue w-4"></i> <a href="tel:+48698330612" class="p-1 -m-1">698 330 612</a></li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-envelope text-brandBlue w-4"></i> <a href="mailto:KrzysztofPaczkowski89@gmail.com" class="p-1 -m-1 break-all">KrzysztofPaczkowski89@gmail.com</a></li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-brandBlue w-4"></i> Gorzów Wielkopolski / Zdalnie</li>
-                        </ul>
-                    </div>
-                    <div class="sm:col-span-2 lg:col-span-1">
-                        <h4 class="text-brandBlue font-bold text-sm mb-4">Zacznijmy projekt</h4>
-                        <p class="text-gray-400 text-xs mb-3">Zostaw maila, odezwę się z wyceną.</p>
-                        <form class="flex" aria-label="Zostaw email">
-                            <input type="email" required placeholder="Twój email..." class="w-full bg-gray-800 text-white px-4 py-3 lg:py-2 rounded-l-full focus:outline-none focus:ring-1 focus:ring-brandBlue text-sm lg:text-xs border-none placeholder-gray-500">
-                            <button type="submit" aria-label="Wyślij" class="bg-brandBlue text-white px-5 lg:px-4 py-3 lg:py-2 rounded-r-full hover:bg-blue-700 active:bg-blue-800 transition-colors">
-                                <i class="fa-solid fa-paper-plane text-sm lg:text-xs"></i>
-                            </button>
-                        </form>
                     </div>
                 </div>
                 <div class="flex flex-col justify-center text-center text-[10px] text-gray-500">
@@ -897,22 +848,6 @@
                         this.radialTime += this.radialSpeed;
                         let tA = this.baseAngle + Math.sin(this.arcTime) * this.arcAmplitude;
                         let tR = this.baseOrbitRadius + Math.sin(this.radialTime) * this.radialAmplitude;
-                        if (mouse.x !== undefined) {
-                            let tx = cx + Math.cos(this.currentAngle) * this.currentOrbitRadius;
-                            let ty = cy + Math.sin(this.currentAngle) * this.currentOrbitRadius;
-                            let dx = mouse.x - tx, dy = mouse.y - ty;
-                            let dist = Math.sqrt(dx*dx + dy*dy);
-                            let ir = window.innerWidth < 1024 ? 80 : 130;
-                            if (dist < ir) {
-                                let f = (ir - dist) / ir;
-                                tR += f * (window.innerWidth < 1024 ? 30 : 60);
-                                let ma = Math.atan2(mouse.y - cy, mouse.x - cx);
-                                let ad = tA - ma;
-                                while (ad > Math.PI) ad -= Math.PI * 2;
-                                while (ad < -Math.PI) ad += Math.PI * 2;
-                                tA += Math.sign(ad) * f * 0.4;
-                            }
-                        }
                         this.currentAngle += (tA - this.currentAngle) * 0.04;
                         this.currentOrbitRadius += (tR - this.currentOrbitRadius) * 0.04;
                         this.x = cx + Math.cos(this.currentAngle) * this.currentOrbitRadius;
@@ -948,62 +883,75 @@
 
                 let rt;
                 window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(init, 200); });
-                canvas.addEventListener('mousemove', e => { const r = canvas.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; });
-                canvas.addEventListener('mouseleave', () => { mouse.x = mouse.y = undefined; });
-                canvas.addEventListener('touchstart', e => { const r = canvas.getBoundingClientRect(); mouse.x = e.touches[0].clientX - r.left; mouse.y = e.touches[0].clientY - r.top; }, {passive:true});
-                canvas.addEventListener('touchend', () => { mouse.x = mouse.y = undefined; });
-
                 init();
                 animate();
-                
                 canvas.parentElement.style.filter = "url('#gooey-filter')";
             }
 
-            // --- KAFELEK STRONY WWW ---
+            // --- PORTFOLIO NAWIGACJA (STRZAŁKI I KROPKI) ---
+            const scrollContainer = document.getElementById('portfolio-scroll');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const dots = document.querySelectorAll('.portfolio-dot');
+
+            if (scrollContainer && prevBtn && nextBtn) {
+                // Scroll po kliknięciu w strzałki
+                const scrollAmount = window.innerWidth * 0.7; 
+
+                prevBtn.addEventListener('click', () => {
+                    scrollContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    scrollContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                });
+
+                // Aktualizacja kropek na podstawie przewijania
+                scrollContainer.addEventListener('scroll', () => {
+                    const scrollLeft = scrollContainer.scrollLeft;
+                    const cardWidth = scrollContainer.scrollWidth / scrollContainer.children.length;
+                    
+                    // Obliczanie aktywnego indexu (zabezpieczenie by nie wyszło poza ramy)
+                    let index = Math.round(scrollLeft / cardWidth);
+                    if(index > dots.length - 1) index = dots.length - 1;
+
+                    dots.forEach((dot, i) => {
+                        if (i === index) {
+                            dot.classList.remove('bg-gray-300', 'w-2', 'h-2');
+                            dot.classList.add('bg-brandBlue', 'w-2.5', 'h-2.5');
+                        } else {
+                            dot.classList.remove('bg-brandBlue', 'w-2.5', 'h-2.5');
+                            dot.classList.add('bg-gray-300', 'w-2', 'h-2');
+                        }
+                    });
+                });
+
+                // Kliknięcie w kropki by przeskoczyć
+                dots.forEach((dot) => {
+                    dot.addEventListener('click', (e) => {
+                        const i = parseInt(e.target.getAttribute('data-index'));
+                        const cardWidth = scrollContainer.scrollWidth / scrollContainer.children.length;
+                        scrollContainer.scrollTo({ left: cardWidth * i, behavior: 'smooth' });
+                    });
+                });
+            }
+
+            // --- HOVERY KAFELKÓW WWW I BRANDING ---
             const wwwCard = document.querySelector('.www-card');
+            const brandingCard = document.querySelector('.branding-card');
             const portfolioSection = document.getElementById('portfolio');
             
             if (wwwCard && portfolioSection) {
-                function wwwActivate() { 
-                    wwwCard.classList.add('www-active'); 
-                    portfolioSection.classList.add('www-bg-active'); 
-                }
-                function wwwDeactivate() { 
-                    wwwCard.classList.remove('www-active'); 
-                    portfolioSection.classList.remove('www-bg-active'); 
-                }
-                
+                function wwwActivate() { wwwCard.classList.add('www-active'); portfolioSection.classList.add('www-bg-active'); }
+                function wwwDeactivate() { wwwCard.classList.remove('www-active'); portfolioSection.classList.remove('www-bg-active'); }
                 wwwCard.addEventListener('mouseenter', wwwActivate);
                 wwwCard.addEventListener('mouseleave', wwwDeactivate);
-                wwwCard.addEventListener('focus', wwwActivate);
-                wwwCard.addEventListener('blur', wwwDeactivate);
-                wwwCard.addEventListener('touchstart', () => {
-                    const isActive = wwwCard.classList.contains('www-active');
-                    if (isActive) { wwwDeactivate(); } else { wwwActivate(); }
-                }, { passive: true });
             }
-
-            // --- KAFELEK BRANDING ---
-            const brandingCard = document.querySelector('.branding-card');
-            
             if (brandingCard && portfolioSection) {
-                function brandingActivate() { 
-                    brandingCard.classList.add('branding-active'); 
-                    portfolioSection.classList.add('branding-bg-active'); 
-                }
-                function brandingDeactivate() { 
-                    brandingCard.classList.remove('branding-active'); 
-                    portfolioSection.classList.remove('branding-bg-active'); 
-                }
-                
+                function brandingActivate() { brandingCard.classList.add('branding-active'); portfolioSection.classList.add('branding-bg-active'); }
+                function brandingDeactivate() { brandingCard.classList.remove('branding-active'); portfolioSection.classList.remove('branding-bg-active'); }
                 brandingCard.addEventListener('mouseenter', brandingActivate);
                 brandingCard.addEventListener('mouseleave', brandingDeactivate);
-                brandingCard.addEventListener('focus', brandingActivate);
-                brandingCard.addEventListener('blur', brandingDeactivate);
-                brandingCard.addEventListener('touchstart', () => {
-                    const isActive = brandingCard.classList.contains('branding-active');
-                    if (isActive) { brandingDeactivate(); } else { brandingActivate(); }
-                }, { passive: true });
             }
         });
     </script>
