@@ -252,6 +252,65 @@
         #portfolio.www-bg-active .www-section-thumb {
             height: 85%; /* Wjeżdża od dołu na 85% wysokości sekcji */
         }
+
+        /* ===== KAFELEK BRANDING - STYLE PODSTAWOWE ===== */
+        .branding-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .branding-card .branding-img-wrap img {
+            transition: transform 0.7s ease, filter 0.5s ease;
+        }
+        .branding-card:hover .branding-img-wrap img {
+            transform: scale(1.08);
+            filter: brightness(0.45);
+        }
+
+        /* ===== TŁO SEKCJI DLA PROJEKTÓW BRANDING ===== */
+        .branding-section-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 0 1rem;
+            overflow: hidden;
+        }
+        @media (min-width: 1024px) {
+            .branding-section-bg { padding: 0 3rem; }
+        }
+        .branding-section-tray {
+            width: 100%;
+            max-width: 1280px;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            gap: 1rem;
+            padding-bottom: 2rem;
+        }
+        .branding-section-thumb {
+            flex: 1;
+            height: 0%;
+            border-radius: 16px 16px 0 0;
+            overflow: hidden;
+            transition: height 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.15);
+            /* mask-image dla płynnego rozmycia od góry - super efekt w tle */
+            -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+            mask-image: linear-gradient(to top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+        }
+        .branding-section-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            opacity: 0.6;
+        }
+        #portfolio.branding-bg-active .branding-section-thumb {
+            height: 85%;
+        }
     </style>
 </head>
 <body class="font-sans text-gray-700 antialiased bg-white">
@@ -453,11 +512,20 @@
         <!-- Zmieniono na relative by tło mogło być pozycjonowane absolutnie -->
         <section id="portfolio" class="snap-section bg-brandLight relative">
             
+            <!-- TŁO DLA KAFELKA BRANDING (Zza zawartości) -->
+            <div class="branding-section-bg">
+                <div class="branding-section-tray">
+                    <div class="branding-section-thumb">
+                        <img src="img/KZ.jpg" alt="Projekt Branding">
+                    </div>
+                </div>
+            </div>
+
             <!-- TŁO DLA KAFELKA WWW (Zza zawartości) -->
             <div class="www-section-bg">
                 <div class="www-section-tray">
                     <div class="www-section-thumb">
-                        <img src="img/MG.jpg" alt="Projekt 1">
+                        <img src="img/WWW.jpg" alt="Projekt 1">
                     </div>
                     <div class="www-section-thumb">
                         <img src="img/grizzlies.jpg" alt="Projekt 2">
@@ -484,14 +552,18 @@
 
                     <!-- 1. Branding -->
                     <a href="https://www.behance.net/krzysztofped07" target="_blank"
-                       class="portfolio-card snap-center bg-white rounded-3xl p-3 shadow-soft transition-all duration-300 block group shrink-0">
-                        <div class="overflow-hidden rounded-2xl mb-4 h-52 portfolio-img-wrap">
+                       class="portfolio-card branding-card snap-center bg-white rounded-3xl p-3 shadow-soft transition-all duration-300 block group shrink-0 relative"
+                       tabindex="0" aria-label="Branding">
+                        <div class="branding-img-wrap overflow-hidden rounded-2xl mb-4 h-52 relative">
+                            <!-- tło -->
                             <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                                 alt="Branding" class="w-full h-full object-cover portfolio-img">
+                                 alt="Branding" class="branding-bg-img w-full h-full object-cover">
+                            <!-- ściemniacz -->
+                            <div class="branding-overlay absolute inset-0 bg-brandNavy/0 transition-all duration-500"></div>
                         </div>
-                        <div class="px-2 pb-1">
+                        <div class="px-2 pb-1 relative z-10">
                             <p class="text-brandBlue text-xs font-bold uppercase tracking-wider mb-1">Identyfikacja Wizualna</p>
-                            <h3 class="text-lg font-bold text-brandNavy">Branding i Key Visual</h3>
+                            <h3 class="text-lg font-bold text-brandNavy">Branding i Key Visual <span class="branding-arrow text-brandBlue opacity-0 transition-opacity duration-300">→</span></h3>
                         </div>
                     </a>
 
@@ -551,10 +623,16 @@
 
                     /* Hover na zwykłych kafelkach */
                     @media (min-width: 1024px) {
-                        .portfolio-card:not(.www-card):hover { transform: translateY(-8px); }
-                        .portfolio-card:not(.www-card):hover .portfolio-img { transform: scale(1.1); }
+                        .portfolio-card:not(.www-card):not(.branding-card):hover { transform: translateY(-8px); }
+                        .portfolio-card:not(.www-card):not(.branding-card):hover .portfolio-img { transform: scale(1.1); }
                     }
                     .portfolio-img { transition: transform 0.7s ease; }
+
+                    /* Branding hover wewnątrz samego kafelka — dodano klasę .branding-active */
+                    .branding-card.branding-active .branding-bg-img { filter: brightness(0.4); }
+                    .branding-card.branding-active .branding-overlay { background-color: rgba(10,25,47,0.55); }
+                    .branding-card.branding-active .branding-arrow { opacity: 1; }
+                    .branding-bg-img { transition: filter 0.5s ease; }
 
                     /* WWW hover wewnątrz samego kafelka — dodano klasę .www-active */
                     .www-card.www-active .www-bg-img { filter: brightness(0.4); }
@@ -1045,6 +1123,38 @@
                         wwwDeactivate();
                     } else {
                         wwwActivate();
+                    }
+                }, { passive: true });
+            }
+
+            // --- KAFELEK BRANDING — HOVER WYWOŁUJĄCY TŁO SEKCJI ---
+            const brandingCard = document.querySelector('.branding-card');
+            
+            if (brandingCard && portfolioSection) {
+                function brandingActivate() { 
+                    brandingCard.classList.add('branding-active'); 
+                    portfolioSection.classList.add('branding-bg-active'); 
+                }
+                function brandingDeactivate() { 
+                    brandingCard.classList.remove('branding-active'); 
+                    portfolioSection.classList.remove('branding-bg-active'); 
+                }
+                
+                // Myszka
+                brandingCard.addEventListener('mouseenter', brandingActivate);
+                brandingCard.addEventListener('mouseleave', brandingDeactivate);
+                
+                // Nawigacja klawiaturą
+                brandingCard.addEventListener('focus', brandingActivate);
+                brandingCard.addEventListener('blur', brandingDeactivate);
+                
+                // Dotyk (urządzenia mobilne)
+                brandingCard.addEventListener('touchstart', () => {
+                    const isActive = brandingCard.classList.contains('branding-active');
+                    if (isActive) {
+                        brandingDeactivate();
+                    } else {
+                        brandingActivate();
                     }
                 }, { passive: true });
             }
