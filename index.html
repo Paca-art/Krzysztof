@@ -191,11 +191,58 @@
         }
         body.menu-open { overflow: hidden; }
 
-        /* Mniej potrzebnego CSS dla starych kafelków, ponieważ w oparciu o tailwind klasy wymuszają spójność */
+        /* ===== KAFELEK WWW - ANIMACJA PROJEKTÓW ===== */
+        .www-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .www-projects-tray {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            gap: 6px;
+            padding: 0 12px 12px;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .www-project-thumb {
+            flex: 1;
+            height: 0%;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: height 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 -6px 24px rgba(0,0,0,0.28);
+            border: 2px solid rgba(255,255,255,0.18);
+        }
+        .www-project-thumb:nth-child(2) { transition-delay: 0.07s; }
+        .www-project-thumb:nth-child(3) { transition-delay: 0.14s; }
+        .www-project-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+        .www-card:hover .www-project-thumb,
+        .www-card:focus-within .www-project-thumb {
+            height: 88%;
+        }
+        /* Overlay ściemniający tło kafelka przy hover */
+        .www-card .card-img-wrap img {
+            transition: transform 0.7s ease, filter 0.5s ease;
+        }
+        .www-card:hover .card-img-wrap img {
+            transform: scale(1.08);
+            filter: brightness(0.45);
+        }
     </style>
 </head>
 <body class="font-sans text-gray-700 antialiased bg-white">
 
+    <!-- NAWIGACJA -->
     <header class="w-full bg-white/95 backdrop-blur-md fixed top-0 z-50 border-b border-gray-100 shadow-sm">
         <div class="rigid-container py-3 lg:py-4 flex justify-between items-center">
             <a href="#" class="flex items-center gap-2 text-xl lg:text-2xl font-bold text-brandNavy min-w-[44px] min-h-[44px]">
@@ -218,6 +265,7 @@
         </div>
     </header>
 
+    <!-- MENU MOBILNE OVERLAY -->
     <div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-40 opacity-0 invisible flex flex-col justify-center items-center">
         <nav class="flex flex-col gap-6 text-center w-full px-6">
             <a href="#home" class="mobile-link text-2xl font-bold text-brandNavy active:text-brandBlue py-3 border-b border-gray-100">Start</a>
@@ -231,6 +279,7 @@
 
     <div class="snap-container">
 
+        <!-- SEKCJA 1: HERO -->
         <section id="home" class="snap-section bg-white">
             <div class="rigid-container h-full flex flex-col justify-center mt-4 lg:mt-0">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -295,6 +344,7 @@
             </div>
         </section>
 
+        <!-- SEKCJA 2: O MNIE -->
         <section id="about" class="snap-section bg-light">
             <div class="rigid-container grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
                 <div class="anim-left relative flex justify-center order-2 lg:order-1 px-4 lg:px-0">
@@ -324,6 +374,7 @@
             </div>
         </section>
 
+        <!-- SEKCJA 3: UMIEJĘTNOŚCI -->
         <section id="skills" class="snap-section bg-white relative">
             <div id="easter-egg" class="easter-egg-container">
                 <img src="https://ui-avatars.com/api/?name=Krzysztof&background=0052FF&color=fff&size=150" alt="Krzysztof" class="easter-egg-image">
@@ -384,6 +435,7 @@
             </div>
         </section>
 
+        <!-- SEKCJA 4: KARUZELA PROJEKTÓW -->
         <section id="portfolio" class="snap-section bg-brandLight">
             <div class="rigid-container flex flex-col justify-center w-full">
                 <div class="text-center mb-8 lg:mb-10 anim-bottom">
@@ -395,94 +447,106 @@
                     </h2>
                 </div>
 
+                <!-- Karuzela projektów — 4 kafelki, inline style dla szerokości desktop -->
                 <div class="portfolio-carousel flex overflow-x-auto snap-x snap-mandatory gap-4 pb-8 hide-scrollbar anim-bottom delay-1">
 
+                    <!-- 1. Branding -->
                     <a href="https://www.behance.net/krzysztofped07" target="_blank"
-                       class="portfolio-card aspect-square snap-center rounded-3xl overflow-hidden shadow-soft transition-all duration-300 block group shrink-0 relative">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                             alt="Branding" class="absolute inset-0 w-full h-full object-cover portfolio-img z-0">
-                        <div class="absolute inset-0 bg-gradient-to-t from-brandNavy/90 via-brandNavy/20 to-transparent z-10 opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="absolute bottom-0 left-0 w-full p-5 lg:p-6 z-20 flex flex-col justify-end">
-                            <p class="text-brandBlue text-xs font-bold uppercase tracking-wider mb-1 drop-shadow-md">Identyfikacja Wizualna</p>
-                            <h3 class="text-lg lg:text-xl font-bold text-white drop-shadow-md">Branding i Key Visual</h3>
+                       class="portfolio-card snap-center bg-white rounded-3xl p-3 shadow-soft transition-all duration-300 block group shrink-0">
+                        <div class="overflow-hidden rounded-2xl mb-4 h-52 portfolio-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                 alt="Branding" class="w-full h-full object-cover portfolio-img">
+                        </div>
+                        <div class="px-2 pb-1">
+                            <p class="text-brandBlue text-xs font-bold uppercase tracking-wider mb-1">Identyfikacja Wizualna</p>
+                            <h3 class="text-lg font-bold text-brandNavy">Branding i Key Visual</h3>
                         </div>
                     </a>
 
+                    <!-- 2. E-commerce -->
                     <a href="https://www.behance.net/krzysztofped07" target="_blank"
-                       class="portfolio-card aspect-square snap-center rounded-3xl overflow-hidden shadow-soft transition-all duration-300 block group shrink-0 relative">
-                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                             alt="E-commerce" class="absolute inset-0 w-full h-full object-cover portfolio-img z-0">
-                        <div class="absolute inset-0 bg-gradient-to-t from-brandNavy/90 via-brandNavy/20 to-transparent z-10 opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="absolute bottom-0 left-0 w-full p-5 lg:p-6 z-20 flex flex-col justify-end">
-                            <p class="text-brandBlue text-xs font-bold uppercase tracking-wider mb-1 drop-shadow-md">E-commerce i www</p>
-                            <h3 class="text-lg lg:text-xl font-bold text-white drop-shadow-md">Grafiki i Kampanie Social Media</h3>
+                       class="portfolio-card snap-center bg-white rounded-3xl p-3 shadow-soft transition-all duration-300 block group shrink-0">
+                        <div class="overflow-hidden rounded-2xl mb-4 h-52 portfolio-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                 alt="E-commerce" class="w-full h-full object-cover portfolio-img">
+                        </div>
+                        <div class="px-2 pb-1">
+                            <p class="text-brandBlue text-xs font-bold uppercase tracking-wider mb-1">E-commerce i www</p>
+                            <h3 class="text-lg font-bold text-brandNavy">Grafiki i Kampanie Social Media</h3>
                         </div>
                     </a>
 
+                    <!-- 3. DTP -->
                     <a href="https://www.behance.net/krzysztofped07" target="_blank"
-                       class="portfolio-card aspect-square snap-center rounded-3xl overflow-hidden shadow-soft transition-all duration-300 block group shrink-0 relative">
-                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                             alt="DTP" class="absolute inset-0 w-full h-full object-cover portfolio-img z-0">
-                        <div class="absolute inset-0 bg-gradient-to-t from-brandNavy/90 via-brandNavy/20 to-transparent z-10 opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="absolute bottom-0 left-0 w-full p-5 lg:p-6 z-20 flex flex-col justify-end">
-                            <p class="text-brandBlue text-xs font-bold uppercase tracking-wider mb-1 drop-shadow-md">Materiały do druku</p>
-                            <h3 class="text-lg lg:text-xl font-bold text-white drop-shadow-md">Projekty Druk DTP</h3>
+                       class="portfolio-card snap-center bg-white rounded-3xl p-3 shadow-soft transition-all duration-300 block group shrink-0">
+                        <div class="overflow-hidden rounded-2xl mb-4 h-52 portfolio-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                 alt="DTP" class="w-full h-full object-cover portfolio-img">
+                        </div>
+                        <div class="px-2 pb-1">
+                            <p class="text-brandBlue text-xs font-bold uppercase tracking-wider mb-1">Materiały do druku</p>
+                            <h3 class="text-lg font-bold text-brandNavy">Projekty Druk DTP</h3>
                         </div>
                     </a>
 
-                    <div class="portfolio-card www-card aspect-square snap-center rounded-3xl overflow-hidden shadow-soft transition-all duration-300 block shrink-0 relative cursor-pointer"
+                    <!-- 4. STRONY WWW — kafelek z animacją miniatur -->
+                    <div class="portfolio-card www-card snap-center bg-brandNavy rounded-3xl p-3 shadow-soft transition-all duration-300 block shrink-0 relative cursor-pointer"
                          tabindex="0" aria-label="Strony WWW">
 
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                             alt="Strony WWW" class="www-bg-img absolute inset-0 w-full h-full object-cover z-0">
-                        
-                        <div class="www-overlay absolute inset-0 bg-gradient-to-t from-brandNavy/90 via-brandNavy/40 to-transparent opacity-90 z-10 transition-all duration-500"></div>
-
-                        <div class="absolute inset-0 z-20 flex items-end gap-1.5 px-4 pb-[85px] lg:pb-[90px] pt-8 pointer-events-none">
-                            <div class="www-thumb rounded-lg overflow-hidden border border-white/20 shadow-lg" style="flex:1; height:0; transition: height 0.5s cubic-bezier(0.16,1,0.3,1) 0s;">
-                                <img src="img/MG WWW.jpg" alt="Projekt 1" class="w-full h-full object-cover object-top">
-                            </div>
-                            <div class="www-thumb rounded-lg overflow-hidden border border-white/20 shadow-lg" style="flex:1; height:0; transition: height 0.5s cubic-bezier(0.16,1,0.3,1) 0.07s;">
-                                <img src="img/grizzlies.jpg" alt="Projekt 2" class="w-full h-full object-cover object-top">
-                            </div>
-                            <div class="www-thumb rounded-lg overflow-hidden border border-white/20 shadow-lg" style="flex:1; height:0; transition: height 0.5s cubic-bezier(0.16,1,0.3,1) 0.14s;">
-                                <img src="img/ms1.webp" alt="Projekt 3" class="w-full h-full object-cover object-top">
+                        <!-- Zdjęcie tła + overlay + wjeżdżające miniatury -->
+                        <div class="www-img-wrap overflow-hidden rounded-2xl mb-4 h-52 relative">
+                            <!-- tło -->
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                 alt="Strony WWW" class="www-bg-img w-full h-full object-cover">
+                            <!-- ściemniacz -->
+                            <div class="www-overlay absolute inset-0 bg-brandNavy/0 transition-all duration-500"></div>
+                            <!-- 3 miniatury wjeżdżające od dołu -->
+                            <div class="www-tray absolute bottom-0 left-0 w-full flex items-end gap-1.5 px-2 pb-2 pointer-events-none">
+                                <div class="www-thumb rounded-lg overflow-hidden border border-white/20 shadow-lg" style="flex:1; height:0; transition: height 0.5s cubic-bezier(0.16,1,0.3,1) 0s;">
+                                    <img src="img/WWW.jpg" alt="Projekt 1" class="w-full h-full object-cover object-top">
+                                </div>
+                                <div class="www-thumb rounded-lg overflow-hidden border border-white/20 shadow-lg" style="flex:1; height:0; transition: height 0.5s cubic-bezier(0.16,1,0.3,1) 0.07s;">
+                                    <img src="img/grizzlies.jpg" alt="Projekt 2" class="w-full h-full object-cover object-top">
+                                </div>
+                                <div class="www-thumb rounded-lg overflow-hidden border border-white/20 shadow-lg" style="flex:1; height:0; transition: height 0.5s cubic-bezier(0.16,1,0.3,1) 0.14s;">
+                                    <img src="img/ms1.webp" alt="Projekt 3" class="w-full h-full object-cover object-top">
+                                </div>
                             </div>
                         </div>
 
-                        <div class="absolute bottom-0 left-0 w-full p-5 lg:p-6 z-30 flex flex-col justify-end pointer-events-none">
-                            <p class="text-brandBlue text-xs font-bold uppercase tracking-wider mb-1 drop-shadow-md">Projektowanie stron</p>
-                            <h3 class="text-lg lg:text-xl font-bold text-white drop-shadow-md">Strony www <span class="www-arrow inline-block opacity-0 transition-all duration-300">→</span></h3>
+                        <div class="px-2 pb-1">
+                            <p class="text-brandBlue text-xs font-bold uppercase tracking-wider mb-1">Projektowanie stron</p>
+                            <h3 class="text-lg font-bold text-white">Strony www <span class="www-arrow text-brandBlue opacity-0 transition-opacity duration-300">→</span></h3>
                         </div>
                     </div>
 
                 </div>
 
                 <style>
-                    /* Szerokości kafelków */
+                    /* Szerokości kafelków — mobile/tablet/desktop przez JS i media query w CSS */
                     .portfolio-card { width: 85vw; }
                     @media (min-width: 768px)  { .portfolio-card { width: 45vw; } }
                     @media (min-width: 1024px) { .portfolio-card { width: calc(25% - 12px); } }
                     @media (min-width: 1024px) { .portfolio-carousel { gap: 16px; } }
 
-                    /* Hover na standardowych kafelkach */
+                    /* Hover na zwykłych kafelkach */
                     @media (min-width: 1024px) {
                         .portfolio-card:not(.www-card):hover { transform: translateY(-8px); }
                         .portfolio-card:not(.www-card):hover .portfolio-img { transform: scale(1.1); }
                     }
                     .portfolio-img { transition: transform 0.7s ease; }
 
-                    /* Hover/Aktywacja specjalnego kafelka WWW przez klasę nadawaną w JS */
-                    .www-card.www-active .www-bg-img { filter: brightness(0.4); transform: scale(1.05); }
-                    .www-card.www-active .www-overlay { opacity: 1; background-color: rgba(10,25,47,0.4); }
-                    .www-card.www-active .www-thumb { height: 100% !important; }
-                    .www-card.www-active .www-arrow { opacity: 1; transform: translateX(6px); }
-                    .www-bg-img { transition: all 0.7s ease; }
-                    .www-overlay { transition: all 0.5s ease; }
+                    /* WWW hover — JS steruje przez klasę .www-active */
+                    .www-card.www-active .www-bg-img { filter: brightness(0.4); }
+                    .www-card.www-active .www-overlay { background-color: rgba(10,25,47,0.55); }
+                    .www-card.www-active .www-thumb { height: 86% !important; }
+                    .www-card.www-active .www-arrow { opacity: 1; }
+                    .www-bg-img { transition: filter 0.5s ease; }
                 </style>
             </div>
         </section>
 
+        <!-- SEKCJA 5: USŁUGI -->
         <section id="services" class="snap-section bg-white">
             <div class="rigid-container flex flex-col justify-center">
                 <div class="text-center mb-8 lg:mb-12 anim-bottom">
@@ -519,6 +583,7 @@
             </div>
         </section>
 
+        <!-- SEKCJA 6: DOŚWIADCZENIE (CV) -->
         <section id="experience" class="snap-section bg-light pt-20 pb-10 !h-auto !min-h-0 lg:!min-h-[100dvh]">
             <div class="rigid-container h-full flex flex-col">
                 <div class="text-center mb-8 shrink-0 anim-bottom">
@@ -531,6 +596,7 @@
                 </div>
                 <div class="flex-grow lg:overflow-y-auto lg:max-h-[65vh] timeline-scroll lg:pr-6 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 pb-10 anim-bottom delay-1">
 
+                    <!-- LEWA KOLUMNA: PRACA -->
                     <div>
                         <h3 class="text-lg lg:text-xl font-bold text-brandNavy mb-5 lg:mb-6 lg:sticky top-0 bg-light py-2 z-10 border-b border-gray-200 flex items-center gap-3">
                             <i class="fa-solid fa-briefcase text-brandBlue"></i> Historia zatrudnienia
@@ -660,6 +726,7 @@
                         </div>
                     </div>
 
+                    <!-- PRAWA KOLUMNA: EDUKACJA -->
                     <div class="mt-4 lg:mt-0">
                         <h3 class="text-lg lg:text-xl font-bold text-brandNavy mb-5 lg:mb-6 lg:sticky top-0 bg-light py-2 z-10 border-b border-gray-200 flex items-center gap-3">
                             <i class="fa-solid fa-book-open text-brandBlue"></i> Edukacja
@@ -719,6 +786,7 @@
             </div>
         </section>
 
+        <!-- SEKCJA 7: FOOTER -->
         <footer class="snap-section snap-footer bg-brandDark text-white pt-10 pb-6 flex flex-col justify-end">
             <div class="rigid-container w-full">
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8 border-b border-gray-800 pb-8 mb-6">
