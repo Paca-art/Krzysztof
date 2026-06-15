@@ -220,4 +220,863 @@
         /* ===== KAFELEK BRANDING - STYLE PODSTAWOWE ===== */
         .branding-card { position: relative; overflow: hidden; }
         .branding-card .branding-img-wrap img { transition: transform 0.7s ease, filter 0.5s ease; }
-        .branding-card:hover .branding-img-wrap img { transform: scale(
+        .branding-card:hover .branding-img-wrap img { transform: scale(1.08); filter: brightness(0.45); }
+
+        /* ===== TŁO SEKCJI DLA PROJEKTÓW BRANDING ===== */
+        .branding-section-bg {
+            position: absolute; inset: 0; z-index: 0; pointer-events: none;
+            display: flex; align-items: flex-end; justify-content: center;
+            padding: 0 1rem; overflow: hidden;
+        }
+        @media (min-width: 1024px) { .branding-section-bg { padding: 0 3rem; } }
+        .branding-section-tray {
+            width: 100%; max-width: 1280px; height: 100%; display: flex; align-items: flex-end; gap: 1rem; padding-bottom: 2rem;
+        }
+        .branding-section-thumb {
+            flex: 1; height: 0%; border-radius: 16px 16px 0 0; overflow: hidden;
+            transition: height 0.65s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 -10px 40px rgba(0,0,0,0.15);
+            -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+            mask-image: linear-gradient(to top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+        }
+        .branding-section-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0.6; }
+        #portfolio.branding-bg-active .branding-section-thumb { height: 85%; }
+    </style>
+</head>
+<body class="font-sans text-gray-700 antialiased bg-white">
+
+    <header class="w-full bg-white/95 backdrop-blur-md fixed top-0 z-50 border-b border-gray-100 shadow-sm">
+        <div class="rigid-container py-3 lg:py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2 text-xl lg:text-2xl font-bold text-brandNavy min-w-[44px] min-h-[44px]">
+                <span class="text-brandBlue"><i class="fa-solid fa-pen-nib"></i></span>
+                Krzysztof.
+            </a>
+            <nav class="hidden lg:flex gap-8">
+                <a href="#home" class="text-brandBlue font-medium transition-colors p-2 -m-2">Start</a>
+                <a href="#about" class="text-brandNavy font-medium hover:text-brandBlue transition-colors p-2 -m-2">O mnie</a>
+                <a href="#skills" class="text-brandNavy font-medium hover:text-brandBlue transition-colors p-2 -m-2">Umiejętności</a>
+                <a href="#portfolio" class="text-brandNavy font-medium hover:text-brandBlue transition-colors p-2 -m-2">Projekty</a>
+                <a href="#services" class="text-brandNavy font-medium hover:text-brandBlue transition-colors p-2 -m-2">Usługi</a>
+            </nav>
+            <a href="#experience" class="hidden lg:inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-medium rounded-full text-white bg-brandBlue hover:bg-blue-700 transition-colors shadow-lg shadow-brandBlue/30 active:scale-95">
+                Moje CV &rarr;
+            </a>
+            <button id="hamburger-btn" aria-label="Otwórz menu" aria-expanded="false" class="lg:hidden text-brandNavy p-2 -mr-2 focus:outline-none flex items-center justify-center min-w-[44px] min-h-[44px] active:text-brandBlue transition-colors">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-40 opacity-0 invisible flex flex-col justify-center items-center">
+        <nav class="flex flex-col gap-6 text-center w-full px-6">
+            <a href="#home" class="mobile-link text-2xl font-bold text-brandNavy active:text-brandBlue py-3 border-b border-gray-100">Start</a>
+            <a href="#about" class="mobile-link text-2xl font-bold text-brandNavy active:text-brandBlue py-3 border-b border-gray-100">O mnie</a>
+            <a href="#skills" class="mobile-link text-2xl font-bold text-brandNavy active:text-brandBlue py-3 border-b border-gray-100">Umiejętności</a>
+            <a href="#portfolio" class="mobile-link text-2xl font-bold text-brandNavy active:text-brandBlue py-3 border-b border-gray-100">Projekty</a>
+            <a href="#services" class="mobile-link text-2xl font-bold text-brandNavy active:text-brandBlue py-3 border-b border-gray-100">Usługi</a>
+            <a href="#experience" class="mobile-link text-2xl font-bold text-brandBlue py-3 mt-4">Zobacz moje CV &rarr;</a>
+        </nav>
+    </div>
+
+    <div class="snap-container">
+
+        <section id="home" class="snap-section bg-white">
+            <div class="rigid-container h-full flex flex-col justify-center mt-4 lg:mt-0">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                    
+                    <div class="anim-left z-10 order-1 text-center lg:text-left mt-10 lg:mt-0">
+                        <span class="inline-block px-5 py-1.5 rounded-full border border-brandBlue/50 text-brandBlue font-medium text-xs mb-6 uppercase tracking-wider bg-white">
+                            Portfolio
+                        </span>
+                        <h1 class="text-5xl md:text-6xl lg:text-[5.5rem] font-extrabold text-brandNavy leading-[1.05] tracking-tight mb-6 lg:mb-8">
+                            Cześć, jestem<br>
+                            Krzysztof<br>
+                            <span class="text-brandBlue">Graphic Designer</span>
+                        </h1>
+                        <p class="text-gray-500 max-w-md mx-auto lg:mx-0 mb-8 lg:mb-10 text-sm md:text-base lg:text-lg leading-relaxed">
+                            Zajmuję się kompleksowym projektowaniem – od identyfikacji wizualnej i DTP, przez obróbkę foto/wideo, aż po kampanie e-commerce i interfejsy UI/UX.
+                        </p>
+                        <a href="https://www.behance.net/krzysztofped07" target="_blank" class="inline-flex items-center justify-center px-8 py-4 text-sm lg:text-base font-bold rounded-full text-white bg-brandBlue hover:bg-blue-700 active:scale-95 transition-all shadow-xl shadow-brandBlue/30 min-h-[44px]">
+                            Zobacz Behance &rarr;
+                        </a>
+                    </div>
+                    
+                    <div class="anim-right relative z-10 flex justify-center items-end lg:items-center order-2 h-[350px] md:h-[450px] lg:h-[550px] w-full">
+                        <div class="relative w-full h-full flex items-center justify-center overflow-visible">
+                            
+                            <div class="absolute inset-0 w-full h-full flex items-center justify-center" id="blob-container">
+                                <div class="main-circle rounded-full animate-jelly absolute bg-brandBlue z-10 shadow-2xl w-[280px] h-[280px] md:w-[380px] md:h-[380px] lg:w-[480px] lg:h-[480px]"></div>
+                                <canvas id="blob-canvas" class="absolute inset-0 z-20 w-full h-full pointer-events-none lg:pointer-events-auto"></canvas>
+                            </div>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="hidden">
+                                <defs>
+                                    <filter id="gooey-filter">
+                                        <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur" />
+                                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9" result="gooey" />
+                                        <feComposite in="SourceGraphic" in2="gooey" operator="atop"/>
+                                    </filter>
+                                </defs>
+                            </svg>
+
+                            <img src="img/kk2.webp" alt="Krzysztof Paczkowski" class="absolute z-30 w-auto h-[90%] lg:h-[105%] bottom-0 lg:-bottom-4 object-contain drop-shadow-2xl pointer-events-none">
+
+                            <div class="absolute top-4 lg:top-16 right-0 lg:-right-4 bg-white p-3 lg:p-4 rounded-xl lg:rounded-2xl shadow-xl z-40 flex items-center gap-2 lg:gap-3 scale-90 lg:scale-100 transform origin-top-right border border-gray-50">
+                                <i class="fa-brands fa-adobe text-2xl lg:text-3xl text-brandBlue"></i>
+                                <div>
+                                    <p class="text-[10px] lg:text-xs text-gray-500 font-medium">Pakiet Adobe</p>
+                                    <p class="text-sm lg:text-base font-extrabold text-brandNavy leading-tight">Ekspert</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="anim-bottom pt-6 lg:pt-10 w-full mt-6 lg:mt-8">
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 text-center lg:divide-x divide-gray-100">
+                        <div>
+                            <h3 class="text-3xl lg:text-4xl font-extrabold text-brandNavy mb-2">11+</h3>
+                            <p class="text-[10px] lg:text-xs text-gray-500 uppercase tracking-wider font-semibold">Lat<br>Doświadczenia</p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl lg:text-4xl font-extrabold text-brandNavy mb-2 flex items-center justify-center h-9 lg:h-auto">DTP/WWW</h3>
+                            <p class="text-[10px] lg:text-xs text-gray-500 uppercase tracking-wider font-semibold">Wszechstronne<br>Kompetencje</p>
+                        </div>
+                        <div class="hidden lg:block">
+                            <h3 class="text-3xl lg:text-4xl font-extrabold text-brandNavy mb-2">UX/UI</h3>
+                            <p class="text-[10px] lg:text-xs text-gray-500 uppercase tracking-wider font-semibold">Ukończone<br>Szkolenia</p>
+                        </div>
+                        <div class="hidden lg:block">
+                            <h3 class="text-3xl lg:text-4xl font-extrabold text-brandNavy mb-2">Mgr</h3>
+                            <p class="text-[10px] lg:text-xs text-gray-500 uppercase tracking-wider font-semibold">Sztuk<br>Wizualnych</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="snap-section bg-light">
+            <div class="rigid-container grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+                <div class="anim-left relative flex justify-center order-2 lg:order-1 px-4 lg:px-0">
+                    <div class="absolute inset-0 bg-brandBlue rounded-[32px] lg:rounded-[40px] transform -translate-x-3 translate-y-3 lg:-translate-x-4 lg:translate-y-4 -z-10 opacity-20"></div>
+                    <img src="https://images.unsplash.com/photo-1542744094-24638eff58bb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Krzysztof Paczkowski - O mnie" class="w-full max-w-sm lg:max-w-md rounded-[32px] lg:rounded-[40px] object-cover h-[350px] lg:h-[500px] shadow-lg">
+                </div>
+                <div class="anim-right order-1 lg:order-2">
+                    <h4 class="text-brandBlue font-bold tracking-wider text-[10px] lg:text-sm mb-2 lg:mb-3 uppercase flex items-center gap-2">
+                        <i class="fa-solid fa-user-astronaut"></i> Kim jestem?
+                    </h4>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-brandNavy mb-4 lg:mb-6 leading-tight">
+                        Grafika projektowa to<br>moja <span class="text-brandBlue">Pasja i Zawód</span>
+                    </h2>
+                    <p class="text-gray-500 mb-4 lg:mb-6 text-sm leading-relaxed">
+                        Jestem absolwentem Akademii Sztuki w Szczecinie (kierunek Grafika Projektowa, tytuł magistra) oraz Państwowego Liceum Sztuk Plastycznych. Od 2014 roku zdobywam doświadczenie na stanowiskach grafika kreatywnego i specjalisty e-commerce w licznych agencjach i firmach.
+                    </p>
+                    <p class="text-gray-500 mb-6 lg:mb-8 text-sm leading-relaxed hidden md:block">
+                        Z powodzeniem łączę rysunek odręczny z zaawansowaną obsługą oprogramowania. Projektuję z myślą o spójnym wizerunku marki we wszystkich kanałach – od wielkoformatowego druku, przez kampanie e-commerce, po interfejsy zoptymalizowane pod kątem UX/UI.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 lg:gap-y-6 gap-x-4 border-t border-gray-200 pt-6">
+                        <div class="flex md:block justify-between items-center"><p class="text-brandNavy font-semibold md:mb-1 text-sm">Imię i Nazwisko:</p><p class="text-gray-500 text-xs text-right md:text-left">Krzysztof Paczkowski</p></div>
+                        <div class="flex md:block justify-between items-center"><p class="text-brandNavy font-semibold md:mb-1 text-sm">Telefon:</p><a href="tel:+48698330612" class="text-gray-500 text-xs text-right md:text-left p-2 -m-2">698 330 612</a></div>
+                        <div class="flex md:block justify-between items-center"><p class="text-brandNavy font-semibold md:mb-1 text-sm">Email:</p><a href="mailto:KrzysztofPaczkowski89@gmail.com" class="text-gray-500 text-xs text-right md:text-left break-all p-2 -m-2">KrzysztofPaczkowski89...</a></div>
+                        <div class="flex md:block justify-between items-center"><p class="text-brandNavy font-semibold md:mb-1 text-sm">Behance:</p><a href="https://www.behance.net/krzysztofped07" target="_blank" class="text-brandBlue hover:underline text-xs text-right md:text-left font-medium p-2 -m-2">krzysztofped07</a></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="snap-section bg-white relative">
+            <div id="easter-egg" class="easter-egg-container">
+                <img src="https://ui-avatars.com/api/?name=Krzysztof&background=0052FF&color=fff&size=150" alt="Krzysztof" class="easter-egg-image">
+            </div>
+            <div class="rigid-container relative grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center z-10">
+                <div class="absolute left-6 right-6 -top-16 md:-top-20 lg:-top-28 h-8 overflow-hidden" aria-hidden="true">
+                    <div class="pacman-dots absolute w-full left-0 opacity-40"></div>
+                    <div class="pacman-mask absolute left-0 h-full bg-white z-10"></div>
+                    <div class="pacman-mover absolute z-20 flex items-center justify-center w-8 h-8">
+                        <svg width="24" height="24" viewBox="-60 -60 120 120" class="overflow-visible">
+                            <path class="pacman-body" d="M 0,0 L 35.35,-35.35 A 50,50 0 1,0 35.35,35.35 Z" fill="none" stroke="#0052FF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="anim-left text-center lg:text-left mt-4 lg:mt-0">
+                    <h4 class="text-brandBlue font-bold tracking-wider text-[10px] lg:text-sm mb-2 lg:mb-3 uppercase flex items-center justify-center lg:justify-start gap-2">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Narzędzia i Skille
+                    </h4>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-brandNavy mb-4 lg:mb-6 leading-tight">
+                        W czym czuję się najlepiej?
+                    </h2>
+                    <p class="text-gray-500 mb-8 text-sm leading-relaxed max-w-lg mx-auto lg:mx-0">
+                        Biegle posługuję się branżowym oprogramowaniem do tworzenia grafiki wektorowej, rastrowej oraz obróbki i montażu wideo.
+                    </p>
+                </div>
+                <div class="anim-right flex flex-col gap-5 lg:gap-6 w-full">
+                    <div>
+                        <div class="flex justify-between mb-1.5"><span class="text-xs lg:text-sm font-semibold text-brandNavy">Adobe Photoshop & Illustrator</span><span class="text-xs lg:text-sm font-bold text-brandBlue">95%</span></div>
+                        <div class="w-full bg-gray-100 h-2 lg:h-2.5 rounded-full overflow-hidden">
+                            <div class="skill-bar bg-brandBlue h-full rounded-full transition-all duration-1000 ease-out w-0" data-width="95%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1.5"><span class="text-xs lg:text-sm font-semibold text-brandNavy">InDesign & Corel Draw (DTP)</span><span class="text-xs lg:text-sm font-bold text-brandBlue">90%</span></div>
+                        <div class="w-full bg-gray-100 h-2 lg:h-2.5 rounded-full overflow-hidden">
+                            <div class="skill-bar bg-brandBlue h-full rounded-full transition-all duration-1000 ease-out delay-100 w-0" data-width="90%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1.5"><span class="text-xs lg:text-sm font-semibold text-brandNavy">UX/UI Design</span><span class="text-xs lg:text-sm font-bold text-brandBlue">85%</span></div>
+                        <div class="w-full bg-gray-100 h-2 lg:h-2.5 rounded-full overflow-hidden">
+                            <div class="skill-bar bg-brandBlue h-full rounded-full transition-all duration-1000 ease-out delay-200 w-0" data-width="85%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1.5"><span class="text-xs lg:text-sm font-semibold text-brandNavy">E-commerce & Social Media</span><span class="text-xs lg:text-sm font-bold text-brandBlue">85%</span></div>
+                        <div class="w-full bg-gray-100 h-2 lg:h-2.5 rounded-full overflow-hidden">
+                            <div class="skill-bar bg-brandBlue h-full rounded-full transition-all duration-1000 ease-out delay-300 w-0" data-width="85%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1.5"><span class="text-xs lg:text-sm font-semibold text-brandNavy">Montaż Wideo</span><span class="text-xs lg:text-sm font-bold text-brandBlue">80%</span></div>
+                        <div class="w-full bg-gray-100 h-2 lg:h-2.5 rounded-full overflow-hidden">
+                            <div class="skill-bar bg-brandBlue h-full rounded-full transition-all duration-1000 ease-out delay-400 w-0" data-width="80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="snap-section bg-brandLight relative">
+            
+            <div class="branding-section-bg">
+                <div class="branding-section-tray">
+                    <div class="branding-section-thumb">
+                        <img src="img/KZ.jpg" alt="Projekt Branding">
+                    </div>
+                </div>
+            </div>
+
+            <div class="www-section-bg">
+                <div class="www-section-tray">
+                    <div class="www-section-thumb">
+                        <img src="img/MG.jpg" alt="Projekt 1">
+                    </div>
+                    <div class="www-section-thumb">
+                        <img src="img/grizzlies.jpg" alt="Projekt 2">
+                    </div>
+                    <div class="www-section-thumb">
+                        <img src="img/ms1.webp" alt="Projekt 3">
+                    </div>
+                </div>
+            </div>
+
+            <div class="rigid-container flex flex-col justify-center w-full relative z-10">
+                <div class="text-center mb-8 lg:mb-10 anim-bottom">
+                    <h4 class="text-brandBlue font-bold tracking-wider text-[10px] lg:text-sm mb-2 uppercase justify-center flex items-center gap-2">
+                        <i class="fa-solid fa-palette"></i> Portfolio
+                    </h4>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-brandNavy">
+                        Moje <span class="text-brandBlue">Realizacje</span>
+                    </h2>
+                </div>
+
+                <div class="portfolio-carousel flex overflow-x-auto snap-x snap-mandatory gap-4 pb-8 hide-scrollbar anim-bottom delay-1">
+
+                    <a href="https://www.behance.net/krzysztofped07" target="_blank"
+                       class="portfolio-card branding-card snap-center bg-white rounded-3xl p-3 shadow-soft transition-all duration-300 block group shrink-0 relative"
+                       tabindex="0" aria-label="Branding">
+                        <div class="branding-img-wrap overflow-hidden rounded-2xl mb-4 h-52 relative">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                 alt="Branding" class="branding-bg-img w-full h-full object-cover">
+                            <div class="branding-overlay absolute inset-0 bg-brandNavy/0 transition-all duration-500"></div>
+                        </div>
+                        <div class="px-2 pb-1 relative z-10">
+                            <p class="text-brandBlue text-xs font-bold uppercase tracking-wider mb-1">Identyfikacja Wizualna</p>
+                            <h3 class="text-lg font-bold text-brandNavy">Branding i Key Visual <span class="branding-arrow text-brandBlue opacity-0 transition-opacity duration-300">→</span></h3>
+                        </div>
+                    </a>
+
+                    <a href="https://www.behance.net/krzysztofped07" target="_blank"
+                       class="portfolio-card snap-center bg-white rounded-3xl p-3 shadow-soft transition-all duration-300 block group shrink-0">
+                        <div class="overflow-hidden rounded-2xl mb-4 h-52 portfolio-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                 alt="E-commerce" class="w-full h-full object-cover portfolio-img">
+                        </div>
+                        <div class="px-2 pb-1">
+                            <p class="text-brandBlue text-xs font-bold uppercase tracking-wider mb-1">E-commerce i www</p>
+                            <h3 class="text-lg font-bold text-brandNavy">Grafiki i Kampanie Social Media</h3>
+                        </div>
+                    </a>
+
+                    <a href="https://www.behance.net/krzysztofped07" target="_blank"
+                       class="portfolio-card snap-center bg-white rounded-3xl p-3 shadow-soft transition-all duration-300 block group shrink-0">
+                        <div class="overflow-hidden rounded-2xl mb-4 h-52 portfolio-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                 alt="DTP" class="w-full h-full object-cover portfolio-img">
+                        </div>
+                        <div class="px-2 pb-1">
+                            <p class="text-brandBlue text-xs font-bold uppercase tracking-wider mb-1">Materiały do druku</p>
+                            <h3 class="text-lg font-bold text-brandNavy">Projekty Druk DTP</h3>
+                        </div>
+                    </a>
+
+                    <div class="portfolio-card www-card snap-center bg-brandNavy rounded-3xl p-3 shadow-soft transition-all duration-300 block shrink-0 relative cursor-pointer"
+                         tabindex="0" aria-label="Strony WWW">
+
+                        <div class="www-img-wrap overflow-hidden rounded-2xl mb-4 h-52 relative">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                 alt="Strony WWW" class="www-bg-img w-full h-full object-cover">
+                            <div class="www-overlay absolute inset-0 bg-brandNavy/0 transition-all duration-500"></div>
+                        </div>
+
+                        <div class="px-2 pb-1">
+                            <p class="text-brandBlue text-xs font-bold uppercase tracking-wider mb-1">Projektowanie stron</p>
+                            <h3 class="text-lg font-bold text-white">Strony www <span class="www-arrow text-brandBlue opacity-0 transition-opacity duration-300">→</span></h3>
+                        </div>
+                    </div>
+
+                </div>
+
+                <style>
+                    /* Szerokości kafelków — mobile/tablet/desktop przez JS i media query w CSS */
+                    .portfolio-card { width: 85vw; }
+                    @media (min-width: 768px)  { .portfolio-card { width: 45vw; } }
+                    @media (min-width: 1024px) { .portfolio-card { width: calc(25% - 12px); } }
+                    @media (min-width: 1024px) { .portfolio-carousel { gap: 16px; } }
+
+                    /* Hover na zwykłych kafelkach */
+                    @media (min-width: 1024px) {
+                        .portfolio-card:not(.www-card):not(.branding-card):hover { transform: translateY(-8px); }
+                        .portfolio-card:not(.www-card):not(.branding-card):hover .portfolio-img { transform: scale(1.1); }
+                    }
+                    .portfolio-img { transition: transform 0.7s ease; }
+
+                    /* Branding hover wewnątrz samego kafelka — dodano klasę .branding-active */
+                    .branding-card.branding-active .branding-bg-img { filter: brightness(0.4); }
+                    .branding-card.branding-active .branding-overlay { background-color: rgba(10,25,47,0.55); }
+                    .branding-card.branding-active .branding-arrow { opacity: 1; }
+                    .branding-bg-img { transition: filter 0.5s ease; }
+
+                    /* WWW hover wewnątrz samego kafelka — dodano klasę .www-active */
+                    .www-card.www-active .www-bg-img { filter: brightness(0.4); }
+                    .www-card.www-active .www-overlay { background-color: rgba(10,25,47,0.55); }
+                    .www-card.www-active .www-arrow { opacity: 1; }
+                    .www-bg-img { transition: filter 0.5s ease; }
+                </style>
+            </div>
+        </section>
+
+        <section id="services" class="snap-section bg-white">
+            <div class="rigid-container flex flex-col justify-center">
+                <div class="text-center mb-8 lg:mb-12 anim-bottom">
+                    <h4 class="text-brandBlue font-bold tracking-wider text-[10px] lg:text-sm mb-2 lg:mb-3 uppercase justify-center flex items-center gap-2">
+                        <i class="fa-solid fa-briefcase"></i> Oferta
+                    </h4>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-brandNavy">
+                        Moje Główne <span class="text-brandBlue">Kompetencje</span>
+                    </h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 w-full">
+                    <div class="anim-bottom bg-brandNavy text-white p-6 lg:p-8 rounded-[24px] lg:rounded-[32px] shadow-lg lg:hover:-translate-y-2 transition-transform duration-300">
+                        <div class="w-12 h-12 lg:w-14 lg:h-14 bg-card rounded-full flex items-center justify-center mb-4 lg:mb-6 border border-gray-700">
+                            <i class="fa-solid fa-print text-brandBlue text-xl lg:text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg lg:text-xl font-bold mb-2 lg:mb-3">DTP i Identyfikacja Wizualna</h3>
+                        <p class="text-gray-400 mb-2 lg:mb-6 text-xs lg:text-sm">Tworzę key visuale, ulotki, plakaty, katalogi, vouchery oraz wielkoformatowe reklamy z pełnym przygotowaniem do druku.</p>
+                    </div>
+                    <div class="anim-bottom delay-1 bg-brandNavy text-white p-6 lg:p-8 rounded-[24px] lg:rounded-[32px] shadow-lg lg:hover:-translate-y-2 transition-transform duration-300">
+                        <div class="w-12 h-12 lg:w-14 lg:h-14 bg-card rounded-full flex items-center justify-center mb-4 lg:mb-6 border border-gray-700">
+                            <i class="fa-solid fa-cart-shopping text-brandBlue text-xl lg:text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg lg:text-xl font-bold mb-2 lg:mb-3">E-commerce i Social Media</h3>
+                        <p class="text-gray-400 mb-2 lg:mb-6 text-xs lg:text-sm">Przygotowuję mailingi, newslettery, banery oraz wsparcie graficzne dla sklepów internetowych i mediów społecznościowych.</p>
+                    </div>
+                    <div class="anim-bottom delay-2 bg-brandBlue text-white p-6 lg:p-8 rounded-[24px] lg:rounded-[32px] shadow-xl shadow-brandBlue/30 lg:hover:-translate-y-2 transition-transform duration-300">
+                        <div class="w-12 h-12 lg:w-14 lg:h-14 bg-white/20 rounded-full flex items-center justify-center mb-4 lg:mb-6 border border-white/30">
+                            <i class="fa-solid fa-mobile-screen text-white text-xl lg:text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg lg:text-xl font-bold mb-2 lg:mb-3">UI/UX i Multimedia</h3>
+                        <p class="text-white/90 mb-2 lg:mb-6 text-xs lg:text-sm">Sztuka użytecznego projektowania (UI/UX) połączona z fotografią produktową oraz montażem materiałów wideo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="snap-section bg-light pt-20 pb-10 !h-auto !min-h-0 lg:!min-h-[100dvh]">
+            <div class="rigid-container h-full flex flex-col">
+                <div class="text-center mb-8 shrink-0 anim-bottom">
+                    <h4 class="text-brandBlue font-bold tracking-wider text-[10px] lg:text-sm mb-2 uppercase justify-center flex items-center gap-2">
+                        <i class="fa-solid fa-graduation-cap"></i> CV
+                    </h4>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-brandNavy">
+                        Doświadczenie i <span class="text-brandBlue">Wykształcenie</span>
+                    </h2>
+                </div>
+                <div class="flex-grow lg:overflow-y-auto lg:max-h-[65vh] timeline-scroll lg:pr-6 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 pb-10 anim-bottom delay-1">
+
+                    <div>
+                        <h3 class="text-lg lg:text-xl font-bold text-brandNavy mb-5 lg:mb-6 lg:sticky top-0 bg-light py-2 z-10 border-b border-gray-200 flex items-center gap-3">
+                            <i class="fa-solid fa-briefcase text-brandBlue"></i> Historia zatrudnienia
+                        </h3>
+                        <div class="space-y-4 lg:space-y-5 border-l-2 border-brandBlue/20 ml-2 lg:ml-3 pl-4 lg:pl-6 relative">
+
+                            <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
+                                <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
+                                    <h4 class="text-sm lg:text-base font-bold text-brandNavy">Bili Bike, Gorzów Wlkp.</h4>
+                                    <span class="text-[9px] lg:text-[10px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">05.2025 - 12.2025</span>
+                                </div>
+                                <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik, fotograf, e-commerce</p>
+                                <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Branża: Pojazdy elektryczne.</p>
+                            </div>
+
+                            <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
+                                <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
+                                    <h4 class="text-sm lg:text-base font-bold text-brandNavy">Sensual, Gorzów Wlkp.</h4>
+                                    <span class="text-[9px] lg:text-[10px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">03.2023 - 08.2023</span>
+                                </div>
+                                <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik kreatywny, e-commerce</p>
+                                <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Projekty graficzne.</p>
+                            </div>
+
+                            <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
+                                <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
+                                    <h4 class="text-sm lg:text-base font-bold text-brandNavy">Allweld, Poznań</h4>
+                                    <span class="text-[9px] lg:text-[10px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">03.2021 - 11.2022</span>
+                                </div>
+                                <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik kreatywny, social media</p>
+                                <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Artykuły spawalnicze.</p>
+                            </div>
+
+                            <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
+                                <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
+                                    <h4 class="text-sm lg:text-base font-bold text-brandNavy">Silcare, Gorzów Wlkp.</h4>
+                                    <span class="text-[9px] lg:text-[10px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">11.2020 - 02.2021</span>
+                                </div>
+                                <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik kreatywny, e-commerce</p>
+                                <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Branża kosmetyczna.</p>
+                            </div>
+
+                            <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
+                                <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
+                                    <h4 class="text-sm lg:text-base font-bold text-brandNavy">Meester Group, Poznań</h4>
+                                    <span class="text-[9px] lg:text-[10px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">08.2020 - 11.2020</span>
+                                </div>
+                                <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik kreatywny, fotograf, e-commerce</p>
+                                <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Branża gamingowa.</p>
+                            </div>
+
+                            <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
+                                <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
+                                    <h4 class="text-sm lg:text-base font-bold text-brandNavy">ECU-Service, Gorzów Wlkp.</h4>
+                                    <span class="text-[9px] lg:text-[10px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">01.2020 - 09.2020</span>
+                                </div>
+                                <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik, fotograf, e-commerce</p>
+                                <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Elektronika samochodowa.</p>
+                            </div>
+
+                            <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
+                                <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
+                                    <h4 class="text-sm lg:text-base font-bold text-brandNavy">Sasz Designe, Gorzów Wlkp.</h4>
+                                    <span class="text-[9px] lg:text-[10px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">03.2019 - 10.2019</span>
+                                </div>
+                                <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik komputerowy</p>
+                                <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Agencja reklamowa.</p>
+                            </div>
+
+                            <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
+                                <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
+                                    <h4 class="text-sm lg:text-base font-bold text-brandNavy">Ei System, Poznań</h4>
+                                    <span class="text-[9px] lg:text-[10px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">02.2018 - 06.2018</span>
+                                </div>
+                                <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik</p>
+                                <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Wydawnictwo, edukacja.</p>
+                            </div>
+
+                            <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
+                                <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
+                                    <h4 class="text-sm lg:text-base font-bold text-brandNavy">Artgraf, Szczecin</h4>
+                                    <span class="text-[9px] lg:text-[10px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">09.2017 - 01.2018</span>
+                                </div>
+                                <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik projektant</p>
+                                <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Agencja reklamowa.</p>
+                            </div>
+
+                            <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
+                                <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
+                                    <h4 class="text-sm lg:text-base font-bold text-brandNavy">Proedu, Szczecin</h4>
+                                    <span class="text-[9px] lg:text-[10px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">09.2015 - 03.2016</span>
+                                </div>
+                                <p class="text-xs font-semibold text-gray-700 leading-tight">Prowadzący kurs grafiki</p>
+                                <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Szkoła policealna.</p>
+                            </div>
+
+                            <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
+                                <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
+                                    <h4 class="text-sm lg:text-base font-bold text-brandNavy">Prosper24, Gorzów Wlkp.</h4>
+                                    <span class="text-[9px] lg:text-[10px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">02.2015 - 08.2015</span>
+                                </div>
+                                <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik komputerowy</p>
+                                <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Dział reklamy w drukarni.</p>
+                            </div>
+
+                            <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
+                                <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
+                                    <h4 class="text-sm lg:text-base font-bold text-brandNavy">Deco Planet, Gorzów Wlkp.</h4>
+                                    <span class="text-[9px] lg:text-[10px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">06.2014 - 07.2014</span>
+                                </div>
+                                <p class="text-xs font-semibold text-gray-700 leading-tight">Praktyki zawodowe</p>
+                                <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Grafik w agencji reklamowej.</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="mt-4 lg:mt-0">
+                        <h3 class="text-lg lg:text-xl font-bold text-brandNavy mb-5 lg:mb-6 lg:sticky top-0 bg-light py-2 z-10 border-b border-gray-200 flex items-center gap-3">
+                            <i class="fa-solid fa-book-open text-brandBlue"></i> Edukacja
+                        </h3>
+                        <div class="space-y-4 lg:space-y-5 border-l-2 border-brandBlue/20 ml-2 lg:ml-3 pl-4 lg:pl-6 relative">
+                            <div class="relative bg-brandNavy p-4 lg:p-5 rounded-2xl shadow-md hover:-translate-y-1 transition-transform group">
+                                <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-brandBlue border-[3px] border-light z-10"></span>
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2 gap-1">
+                                    <h4 class="text-base lg:text-lg font-bold text-white leading-tight">Akademia Sztuki<br>w Szczecinie</h4>
+                                    <span class="text-[9px] lg:text-[10px] font-bold text-white bg-white/20 px-2 py-0.5 rounded w-fit">2011 - 2017</span>
+                                </div>
+                                <p class="text-xs lg:text-sm font-semibold text-brandBlue mb-1">Tytuł Magistra, Grafika Projektowa</p>
+                                <p class="text-[10px] lg:text-xs text-gray-400">Wydział Sztuk Wizualnych</p>
+                            </div>
+                            <div class="relative bg-white p-4 lg:p-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+                                <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2 gap-1">
+                                    <h4 class="text-sm lg:text-base font-bold text-brandNavy leading-tight">Liceum Sztuk<br>Plastycznych</h4>
+                                    <span class="text-[9px] lg:text-[10px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">2006 - 2010</span>
+                                </div>
+                                <p class="text-xs lg:text-sm font-semibold text-gray-700 mb-1">Specjalista od reklamy wizualnej</p>
+                                <p class="text-[10px] lg:text-xs text-gray-500">Państwowe Liceum w Gorzowie Wlkp.</p>
+                            </div>
+                        </div>
+
+                        <h3 class="text-lg lg:text-xl font-bold text-brandNavy mt-10 mb-5 lg:mb-6 lg:sticky top-0 bg-light py-2 z-10 border-b border-gray-200 flex items-center gap-3">
+                            <i class="fa-solid fa-list-check text-brandBlue"></i> Kursy i Dodatkowe Skille
+                        </h3>
+                        <ul class="space-y-4 text-xs lg:text-sm text-gray-600 bg-white p-5 lg:p-6 rounded-[24px] lg:rounded-3xl border border-gray-100 shadow-sm">
+                            <li class="flex items-start gap-3">
+                                <div class="w-6 h-6 lg:w-7 lg:h-7 rounded-full bg-brandBlue/10 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-laptop-code text-brandBlue text-[10px]"></i></div>
+                                <span class="leading-relaxed"><strong>Kurs UX & UI</strong> - sztuka użytecznego projektowania.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-6 h-6 lg:w-7 lg:h-7 rounded-full bg-brandBlue/10 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-pen-nib text-brandBlue text-[10px]"></i></div>
+                                <span class="leading-relaxed">Obsługa tabletu graficznego oraz biegły <strong>rysunek odręczny</strong>.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-6 h-6 lg:w-7 lg:h-7 rounded-full bg-brandBlue/10 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-chart-line text-brandBlue text-[10px]"></i></div>
+                                <span class="leading-relaxed">Podstawowa wiedza z zakresu marketingu i działań reklamowych w Internecie.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-6 h-6 lg:w-7 lg:h-7 rounded-full bg-brandBlue/10 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-car text-brandBlue text-[10px]"></i></div>
+                                <span class="leading-relaxed">Prawo jazdy <strong>Kat. B</strong>.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-6 h-6 lg:w-7 lg:h-7 rounded-full bg-brandBlue/10 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-language text-brandBlue text-[10px]"></i></div>
+                                <span class="leading-relaxed">Język angielski na poziomie <strong>B1</strong>.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-6 h-6 lg:w-7 lg:h-7 rounded-full bg-brandBlue/10 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-users text-brandBlue text-[10px]"></i></div>
+                                <span class="leading-relaxed">Świetna komunikacja, praca w zespole, wysoka kultura osobista oraz pełna samodzielność na stanowisku pracy.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="snap-section snap-footer bg-brandDark text-white pt-10 pb-6 flex flex-col justify-end">
+            <div class="rigid-container w-full">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8 border-b border-gray-800 pb-8 mb-6">
+                    <div class="sm:col-span-2 lg:col-span-1">
+                        <a href="#" class="flex items-center gap-2 text-xl font-bold text-white mb-4 min-h-[44px]">
+                            <span class="text-brandBlue"><i class="fa-solid fa-pen-nib"></i></span>
+                            Krzysztof.
+                        </a>
+                        <p class="text-gray-400 text-xs mb-4 leading-relaxed max-w-sm">
+                            Profesjonalne projekty graficzne dla Twojego biznesu. Zapraszam do współpracy.
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="https://www.behance.net/krzysztofped07" target="_blank" class="w-10 h-10 lg:w-8 lg:h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brandBlue hover:text-white active:bg-brandBlue transition-all"><i class="fa-brands fa-behance"></i></a>
+                            <a href="#" aria-label="Dribbble" class="w-10 h-10 lg:w-8 lg:h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brandBlue hover:text-white active:bg-brandBlue transition-all"><i class="fa-brands fa-dribbble"></i></a>
+                            <a href="#" aria-label="LinkedIn" class="w-10 h-10 lg:w-8 lg:h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brandBlue hover:text-white active:bg-brandBlue transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-brandBlue font-bold text-sm mb-4">Nawigacja</h4>
+                        <ul class="space-y-1 text-sm lg:text-xs text-gray-400">
+                            <li><a href="#about" class="block py-1.5 hover:text-white transition-colors">O mnie</a></li>
+                            <li><a href="#portfolio" class="block py-1.5 hover:text-white transition-colors">Projekty na Behance</a></li>
+                            <li><a href="#services" class="block py-1.5 hover:text-white transition-colors">Moje Usługi</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-brandBlue font-bold text-sm mb-4">Kontakt</h4>
+                        <ul class="space-y-3 text-sm lg:text-xs text-gray-400">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-phone text-brandBlue w-4"></i> <a href="tel:+48698330612" class="p-1 -m-1">698 330 612</a></li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-envelope text-brandBlue w-4"></i> <a href="mailto:KrzysztofPaczkowski89@gmail.com" class="p-1 -m-1 break-all">KrzysztofPaczkowski89@gmail.com</a></li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-brandBlue w-4"></i> Gorzów Wielkopolski / Zdalnie</li>
+                        </ul>
+                    </div>
+                    <div class="sm:col-span-2 lg:col-span-1">
+                        <h4 class="text-brandBlue font-bold text-sm mb-4">Zacznijmy projekt</h4>
+                        <p class="text-gray-400 text-xs mb-3">Zostaw maila, odezwę się z wyceną.</p>
+                        <form class="flex" aria-label="Zostaw email">
+                            <input type="email" required placeholder="Twój email..." class="w-full bg-gray-800 text-white px-4 py-3 lg:py-2 rounded-l-full focus:outline-none focus:ring-1 focus:ring-brandBlue text-sm lg:text-xs border-none placeholder-gray-500">
+                            <button type="submit" aria-label="Wyślij" class="bg-brandBlue text-white px-5 lg:px-4 py-3 lg:py-2 rounded-r-full hover:bg-blue-700 active:bg-blue-800 transition-colors">
+                                <i class="fa-solid fa-paper-plane text-sm lg:text-xs"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center text-center text-[10px] text-gray-500">
+                    <p>&copy; 2026 KRZYSZTOF PACZKOWSKI. WSZELKIE PRAWA ZASTRZEŻONE.</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- MOBILE MENU ---
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            const body = document.body;
+
+            function toggleMenu() {
+                const isOpen = mobileMenu.classList.contains('menu-open');
+                if (isOpen) {
+                    mobileMenu.classList.remove('menu-open');
+                    body.classList.remove('menu-open');
+                    hamburgerBtn.setAttribute('aria-expanded', 'false');
+                    hamburgerBtn.innerHTML = '<i class="fa-solid fa-bars text-2xl"></i>';
+                } else {
+                    mobileMenu.classList.add('menu-open');
+                    body.classList.add('menu-open');
+                    hamburgerBtn.setAttribute('aria-expanded', 'true');
+                    hamburgerBtn.innerHTML = '<i class="fa-solid fa-xmark text-2xl"></i>';
+                }
+            }
+            hamburgerBtn.addEventListener('click', toggleMenu);
+            mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+            // --- INTERSECTION OBSERVER (animacje wejścia) ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        entry.target.querySelectorAll('.skill-bar').forEach(bar => {
+                            const w = bar.getAttribute('data-width');
+                            setTimeout(() => { bar.style.width = w; }, 50);
+                        });
+                        if (entry.target.id === 'skills') {
+                            const ee = document.getElementById('easter-egg');
+                            if (ee && !ee.classList.contains('peeked')) {
+                                ee.classList.add('peeked');
+                                ee.style.transition = 'transform 1.2s cubic-bezier(0.16, 1, 0.3, 1)';
+                                ee.style.transform = 'translate(0, -50%)';
+                                setTimeout(() => {
+                                    ee.style.transition = 'transform 0.3s ease-in';
+                                    ee.style.transform = 'translate(-100%, -50%)';
+                                }, 2200);
+                            }
+                        }
+                    } else {
+                        entry.target.classList.remove('is-visible');
+                        entry.target.querySelectorAll('.skill-bar').forEach(bar => { bar.style.width = '0'; });
+                        if (entry.target.id === 'skills') {
+                            const ee = document.getElementById('easter-egg');
+                            if (ee) {
+                                ee.classList.remove('peeked');
+                                ee.style.transition = 'none';
+                                ee.style.transform = 'translate(-100%, -50%)';
+                            }
+                        }
+                    }
+                });
+            }, { root: null, rootMargin: '0px', threshold: 0.15 });
+
+            document.querySelectorAll('.snap-section').forEach(s => observer.observe(s));
+
+            // --- METABALLS CANVAS ---
+            const canvas = document.getElementById('blob-canvas');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                const mainCircle = document.querySelector('.main-circle');
+                let width, height, particles = [];
+                let mouse = { x: undefined, y: undefined };
+
+                class Particle {
+                    constructor(baseAngle, orbitRadius, radius) {
+                        this.baseAngle = baseAngle;
+                        this.currentAngle = baseAngle;
+                        this.baseOrbitRadius = orbitRadius;
+                        this.currentOrbitRadius = orbitRadius;
+                        this.radius = radius;
+                        this.color = '#0052FF';
+                        this.arcSpeed = (Math.random() * 0.008 + 0.004) * (Math.random() > 0.5 ? 1 : -1);
+                        this.arcTime = Math.random() * Math.PI * 2;
+                        this.arcAmplitude = Math.random() * 0.4 + 0.2;
+                        this.radialSpeed = Math.random() * 0.015 + 0.008;
+                        this.radialTime = Math.random() * Math.PI * 2;
+                        this.radialAmplitude = Math.random() * 20 + 10;
+                    }
+                    draw() {
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                        ctx.fillStyle = this.color;
+                        ctx.fill();
+                    }
+                    update(cx, cy) {
+                        this.arcTime += this.arcSpeed;
+                        this.radialTime += this.radialSpeed;
+                        let tA = this.baseAngle + Math.sin(this.arcTime) * this.arcAmplitude;
+                        let tR = this.baseOrbitRadius + Math.sin(this.radialTime) * this.radialAmplitude;
+                        if (mouse.x !== undefined) {
+                            let tx = cx + Math.cos(this.currentAngle) * this.currentOrbitRadius;
+                            let ty = cy + Math.sin(this.currentAngle) * this.currentOrbitRadius;
+                            let dx = mouse.x - tx, dy = mouse.y - ty;
+                            let dist = Math.sqrt(dx*dx + dy*dy);
+                            let ir = window.innerWidth < 1024 ? 80 : 130;
+                            if (dist < ir) {
+                                let f = (ir - dist) / ir;
+                                tR += f * (window.innerWidth < 1024 ? 30 : 60);
+                                let ma = Math.atan2(mouse.y - cy, mouse.x - cx);
+                                let ad = tA - ma;
+                                while (ad > Math.PI) ad -= Math.PI * 2;
+                                while (ad < -Math.PI) ad += Math.PI * 2;
+                                tA += Math.sign(ad) * f * 0.4;
+                            }
+                        }
+                        this.currentAngle += (tA - this.currentAngle) * 0.04;
+                        this.currentOrbitRadius += (tR - this.currentOrbitRadius) * 0.04;
+                        this.x = cx + Math.cos(this.currentAngle) * this.currentOrbitRadius;
+                        this.y = cy + Math.sin(this.currentAngle) * this.currentOrbitRadius;
+                        this.draw();
+                    }
+                }
+
+                function init() {
+                    // Pobiera wielkość rodzica (w tym wypadku pełny wymiar z absolute inset-0)
+                    width = canvas.width = canvas.parentElement.offsetWidth;
+                    height = canvas.height = canvas.parentElement.offsetHeight;
+                    particles = [];
+                    const mr = mainCircle.getBoundingClientRect();
+                    const cr = canvas.getBoundingClientRect();
+                    const cx = mr.left - cr.left + mr.width / 2;
+                    const cy = mr.top - cr.top + mr.height / 2;
+                    const mainR = mr.width / 2;
+                    const sm = window.innerWidth < 1024 ? 0.6 : 1;
+                    [Math.PI, Math.PI - 0.4, Math.PI + 0.5].forEach((angle, i) => {
+                        let r = i === 0 ? (Math.random()*20+40)*sm : (Math.random()*15+20)*sm;
+                        particles.push(new Particle(angle, mainR + r + 20*sm, r));
+                    });
+                    let rr = (Math.random()*20+25)*sm;
+                    particles.push(new Particle(0.15, mainR + rr + 35*sm, rr));
+                    canvas.cx = cx; canvas.cy = cy;
+                }
+
+                function animate() {
+                    requestAnimationFrame(animate);
+                    ctx.clearRect(0, 0, width, height);
+                    particles.forEach(p => p.update(canvas.cx, canvas.cy));
+                }
+
+                let rt;
+                window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(init, 200); });
+                canvas.addEventListener('mousemove', e => { const r = canvas.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; });
+                canvas.addEventListener('mouseleave', () => { mouse.x = mouse.y = undefined; });
+                canvas.addEventListener('touchstart', e => { const r = canvas.getBoundingClientRect(); mouse.x = e.touches[0].clientX - r.left; mouse.y = e.touches[0].clientY - r.top; }, {passive:true});
+                canvas.addEventListener('touchend', () => { mouse.x = mouse.y = undefined; });
+
+                init();
+                animate();
+                
+                // Przypisuje filter Gooey do kontenera z klasą .blob-container, żeby ominąć warstwę ze zdjęciem
+                canvas.parentElement.style.filter = "url('#gooey-filter')";
+            }
+
+            // --- KAFELEK STRONY WWW — HOVER WYWOŁUJĄCY TŁO SEKCJI ---
+            const wwwCard = document.querySelector('.www-card');
+            const portfolioSection = document.getElementById('portfolio');
+            
+            if (wwwCard && portfolioSection) {
+                function wwwActivate() { 
+                    wwwCard.classList.add('www-active'); 
+                    portfolioSection.classList.add('www-bg-active'); 
+                }
+                function wwwDeactivate() { 
+                    wwwCard.classList.remove('www-active'); 
+                    portfolioSection.classList.remove('www-bg-active'); 
+                }
+                
+                // Myszka
+                wwwCard.addEventListener('mouseenter', wwwActivate);
+                wwwCard.addEventListener('mouseleave', wwwDeactivate);
+                
+                // Nawigacja klawiaturą
+                wwwCard.addEventListener('focus', wwwActivate);
+                wwwCard.addEventListener('blur', wwwDeactivate);
+                
+                // Dotyk (urządzenia mobilne)
+                wwwCard.addEventListener('touchstart', () => {
+                    const isActive = wwwCard.classList.contains('www-active');
+                    if (isActive) {
+                        wwwDeactivate();
+                    } else {
+                        wwwActivate();
+                    }
+                }, { passive: true });
+            }
+
+            // --- KAFELEK BRANDING — HOVER WYWOŁUJĄCY TŁO SEKCJI ---
+            const brandingCard = document.querySelector('.branding-card');
+            
+            if (brandingCard && portfolioSection) {
+                function brandingActivate() { 
+                    brandingCard.classList.add('branding-active'); 
+                    portfolioSection.classList.add('branding-bg-active'); 
+                }
+                function brandingDeactivate() { 
+                    brandingCard.classList.remove('branding-active'); 
+                    portfolioSection.classList.remove('branding-bg-active'); 
+                }
+                
+                // Myszka
+                brandingCard.addEventListener('mouseenter', brandingActivate);
+                brandingCard.addEventListener('mouseleave', brandingDeactivate);
+                
+                // Nawigacja klawiaturą
+                brandingCard.addEventListener('focus', brandingActivate);
+                brandingCard.addEventListener('blur', brandingDeactivate);
+                
+                // Dotyk (urządzenia mobilne)
+                brandingCard.addEventListener('touchstart', () => {
+                    const isActive = brandingCard.classList.contains('branding-active');
+                    if (isActive) {
+                        brandingDeactivate();
+                    } else {
+                        brandingActivate();
+                    }
+                }, { passive: true });
+            }
+        });
+    </script>
+</body>
+</html>
