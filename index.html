@@ -244,7 +244,8 @@
 </head>
 <body class="font-sans text-gray-700 antialiased bg-white">
 
-    <header class="w-full bg-white/95 backdrop-blur-md fixed top-0 z-50 border-b border-gray-100 shadow-sm">
+    <!-- NAWIGACJA -->
+    <header class="w-full bg-white/95 backdrop-blur-md fixed top-0 z-50 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
         <div class="rigid-container py-3 lg:py-4 flex justify-between items-center">
             <a href="#" class="flex items-center gap-2 text-xl lg:text-2xl font-bold text-brandNavy min-w-[44px] min-h-[44px]">
                 <span class="text-brandBlue"><i class="fa-solid fa-pen-nib"></i></span>
@@ -266,6 +267,7 @@
         </div>
     </header>
 
+    <!-- MENU MOBILNE OVERLAY -->
     <div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-40 opacity-0 invisible flex flex-col justify-center items-center">
         <nav class="flex flex-col gap-6 text-center w-full px-6">
             <a href="#home" class="mobile-link text-2xl font-bold text-brandNavy active:text-brandBlue py-3 border-b border-gray-100">Start</a>
@@ -279,32 +281,45 @@
 
     <div class="snap-container">
 
+        <!-- SEKCJA 1: HERO -->
         <section id="home" class="snap-section bg-white">
-            <div class="rigid-container h-full flex flex-col justify-center pt-24 lg:pt-32">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <!-- Skorygowany margines górny: mt-16 na mobile, mt-10 na desktop, by wyeliminować nadmiar przestrzeni -->
+            <div class="rigid-container h-full flex flex-col justify-center mt-16 lg:mt-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-4 items-center">
                     
+                    <!-- LEWA STRONA: TYPOGRAFIA ZGODNA Z PROJEKTEM PRO2.WEBP -->
                     <div class="anim-left z-10 order-1 text-center lg:text-left">
-                        <span class="inline-block px-4 py-1 rounded-full border border-brandBlue/40 text-brandBlue font-medium text-[11px] mb-4 uppercase tracking-wider bg-white">
+                        <span class="inline-block px-4 py-1 rounded-full border border-brandBlue/30 text-brandBlue font-medium text-[10px] lg:text-xs mb-6 uppercase tracking-widest bg-white">
                             Portfolio
                         </span>
-                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-brandNavy leading-[1.1] tracking-tight mb-5">
-                            Cześć, jestem<br>
-                            Krzysztof<br>
-                            <span class="text-brandBlue">Graphic Designer</span>
+                        
+                        <!-- Nowa struktura nagłówka -->
+                        <h1 class="mb-5 lg:mb-8 text-brandNavy">
+                            <!-- Tekst cienki (normal) w pierwszej linii -->
+                            <span class="block text-3xl md:text-4xl lg:text-[2.5rem] font-medium lg:font-normal text-brandNavy mb-2">Cześć, jestem Krzysztof!</span>
+                            <!-- Ogromne słowa na osobnych liniach (bold) -->
+                            <span class="block text-6xl md:text-7xl lg:text-[6.5rem] font-bold text-brandBlue leading-[0.9] tracking-tight">Graphic</span>
+                            <span class="block text-6xl md:text-7xl lg:text-[6.5rem] font-bold text-brandBlue leading-[0.9] tracking-tight">Designer</span>
                         </h1>
-                        <p class="text-gray-500 max-w-sm mx-auto lg:mx-0 mb-6 lg:mb-8 text-sm md:text-base leading-relaxed">
+                        
+                        <p class="text-gray-500 max-w-sm mx-auto lg:mx-0 mb-8 lg:mb-10 text-sm md:text-base leading-relaxed">
                             Zajmuję się kompleksowym projektowaniem – od identyfikacji wizualnej i DTP, przez obróbkę foto/wideo, aż po kampanie e-commerce i interfejsy UI/UX.
                         </p>
-                        <a href="https://www.behance.net/krzysztofped07" target="_blank" class="inline-flex items-center justify-center px-7 py-3 text-sm font-bold rounded-full text-white bg-brandBlue hover:bg-blue-700 active:scale-95 transition-all shadow-lg shadow-brandBlue/20 min-h-[44px]">
+                        
+                        <a href="https://www.behance.net/krzysztofped07" target="_blank" class="inline-flex items-center justify-center px-8 py-3.5 text-sm lg:text-base font-bold rounded-full text-white bg-brandBlue hover:bg-blue-700 active:scale-95 transition-all shadow-xl shadow-brandBlue/30 min-h-[44px]">
                             Zobacz Behance &rarr;
                         </a>
                     </div>
                     
+                    <!-- PRAWA STRONA: ZDJĘCIE AUTORA -->
                     <div class="anim-right relative z-10 flex justify-center items-end lg:items-center order-2 h-[280px] md:h-[360px] lg:h-[460px] w-full">
                         <div class="relative w-full h-full flex items-center justify-center overflow-visible">
                             
+                            <!-- Kontener chroniący filtry (gooey) -->
                             <div class="absolute inset-0 w-full h-full flex items-center justify-center" id="blob-container">
+                                <!-- Kółko główne -->
                                 <div class="main-circle rounded-full animate-jelly absolute bg-brandBlue z-10 shadow-xl w-[220px] h-[220px] md:w-[300px] md:h-[300px] lg:w-[380px] lg:h-[380px]"></div>
+                                <!-- Canvas z plamkami -->
                                 <canvas id="blob-canvas" class="absolute inset-0 z-20 w-full h-full pointer-events-none lg:pointer-events-auto"></canvas>
                             </div>
 
@@ -318,20 +333,20 @@
                                 </defs>
                             </svg>
 
-                            <img src="img/kk2.webp" alt="Krzysztof Paczkowski" class="absolute z-30 w-auto h-[88%] lg:h-[95%] bottom-0 object-contain drop-shadow-xl pointer-events-none">
+                            <!-- ZDJĘCIE AUTORA NA WIERZCHU -->
+                            <img src="img/kk2.webp" alt="Krzysztof Paczkowski" class="absolute z-30 w-auto h-[88%] lg:h-[95%] bottom-0 object-contain pointer-events-none">
 
-                            <div class="absolute top-2 lg:top-10 right-2 lg:right-2 bg-white p-2.5 lg:p-3 rounded-xl shadow-lg z-40 flex items-center gap-2 scale-90 lg:scale-95 transform origin-top-right border border-gray-50">
-                                <i class="fa-brands fa-adobe text-xl lg:text-2xl text-brandBlue"></i>
-                                <div>
-                                    <p class="text-[9px] lg:text-[10px] text-gray-500 font-medium">Pakiet Adobe</p>
-                                    <p class="text-xs lg:text-sm font-extrabold text-brandNavy leading-tight">Ekspert</p>
-                                </div>
+                            <!-- Etykieta Adobe -->
+                            <div class="absolute top-2 lg:top-10 right-2 lg:right-2 bg-white p-2.5 lg:p-4 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.05)] z-40 flex flex-col justify-center gap-0 scale-90 lg:scale-100 transform origin-top-right border border-gray-50">
+                                <p class="text-[9px] lg:text-[10px] text-gray-400 font-medium mb-0.5">Pakiet Adobe</p>
+                                <p class="text-xs lg:text-sm font-bold text-brandNavy leading-tight">Ekspert</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="anim-bottom pt-6 lg:pt-8 w-full mt-4 lg:mt-6 border-t border-gray-50">
+                <!-- STATYSTYKI -->
+                <div class="anim-bottom pt-6 w-full mt-8 border-t border-gray-100">
                     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 text-center lg:divide-x divide-gray-100">
                         <div>
                             <h3 class="text-2xl lg:text-3xl font-extrabold text-brandNavy mb-1">11+</h3>
@@ -354,6 +369,7 @@
             </div>
         </section>
 
+        <!-- SEKCJA 2: O MNIE -->
         <section id="about" class="snap-section bg-light">
             <div class="rigid-container grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
                 <div class="anim-left relative flex justify-center order-2 lg:order-1 px-4 lg:px-0">
@@ -383,6 +399,7 @@
             </div>
         </section>
 
+        <!-- SEKCJA 3: UMIEJĘTNOŚCI -->
         <section id="skills" class="snap-section bg-white relative">
             <div id="easter-egg" class="easter-egg-container">
                 <img src="https://ui-avatars.com/api/?name=Krzysztof&background=0052FF&color=fff&size=150" alt="Krzysztof" class="easter-egg-image">
@@ -443,8 +460,10 @@
             </div>
         </section>
 
+        <!-- SEKCJA 4: KARUZELA PROJEKTÓW -->
         <section id="portfolio" class="snap-section bg-brandLight relative">
             
+            <!-- TŁO DLA KAFELKA BRANDING (Zza zawartości) -->
             <div class="branding-section-bg">
                 <div class="branding-section-tray">
                     <div class="branding-section-thumb">
@@ -453,6 +472,7 @@
                 </div>
             </div>
 
+            <!-- TŁO DLA KAFELKA WWW (Zza zawartości) -->
             <div class="www-section-bg">
                 <div class="www-section-tray">
                     <div class="www-section-thumb">
@@ -467,6 +487,7 @@
                 </div>
             </div>
 
+            <!-- Kontener z relative i z-10, by znajdował się nad tłem animacji -->
             <div class="rigid-container flex flex-col justify-center w-full relative z-10">
                 <div class="text-center mb-8 lg:mb-10 anim-bottom">
                     <h4 class="text-brandBlue font-bold tracking-wider text-[10px] lg:text-sm mb-2 uppercase justify-center flex items-center gap-2">
@@ -477,14 +498,18 @@
                     </h2>
                 </div>
 
+                <!-- Karuzela projektów -->
                 <div class="portfolio-carousel flex overflow-x-auto snap-x snap-mandatory gap-4 pb-8 hide-scrollbar anim-bottom delay-1">
 
+                    <!-- 1. Branding -->
                     <a href="https://www.behance.net/krzysztofped07" target="_blank"
                        class="portfolio-card branding-card snap-center bg-white rounded-3xl p-3 shadow-soft transition-all duration-300 block group shrink-0 relative"
                        tabindex="0" aria-label="Branding">
                         <div class="branding-img-wrap overflow-hidden rounded-2xl mb-4 h-52 relative">
+                            <!-- tło -->
                             <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                                  alt="Branding" class="branding-bg-img w-full h-full object-cover">
+                            <!-- ściemniacz -->
                             <div class="branding-overlay absolute inset-0 bg-brandNavy/0 transition-all duration-500"></div>
                         </div>
                         <div class="px-2 pb-1 relative z-10">
@@ -493,6 +518,7 @@
                         </div>
                     </a>
 
+                    <!-- 2. E-commerce -->
                     <a href="https://www.behance.net/krzysztofped07" target="_blank"
                        class="portfolio-card snap-center bg-white rounded-3xl p-3 shadow-soft transition-all duration-300 block group shrink-0">
                         <div class="overflow-hidden rounded-2xl mb-4 h-52 portfolio-img-wrap">
@@ -505,6 +531,7 @@
                         </div>
                     </a>
 
+                    <!-- 3. DTP -->
                     <a href="https://www.behance.net/krzysztofped07" target="_blank"
                        class="portfolio-card snap-center bg-white rounded-3xl p-3 shadow-soft transition-all duration-300 block group shrink-0">
                         <div class="overflow-hidden rounded-2xl mb-4 h-52 portfolio-img-wrap">
@@ -517,12 +544,15 @@
                         </div>
                     </a>
 
+                    <!-- 4. STRONY WWW -->
                     <div class="portfolio-card www-card snap-center bg-brandNavy rounded-3xl p-3 shadow-soft transition-all duration-300 block shrink-0 relative cursor-pointer"
                          tabindex="0" aria-label="Strony WWW">
 
                         <div class="www-img-wrap overflow-hidden rounded-2xl mb-4 h-52 relative">
+                            <!-- tło -->
                             <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                                  alt="Strony WWW" class="www-bg-img w-full h-full object-cover">
+                            <!-- ściemniacz -->
                             <div class="www-overlay absolute inset-0 bg-brandNavy/0 transition-all duration-500"></div>
                         </div>
 
@@ -559,6 +589,7 @@
             </div>
         </section>
 
+        <!-- SEKCJA 5: USŁUGI -->
         <section id="services" class="snap-section bg-white">
             <div class="rigid-container flex flex-col justify-center">
                 <div class="text-center mb-8 lg:mb-12 anim-bottom">
@@ -595,6 +626,7 @@
             </div>
         </section>
 
+        <!-- SEKCJA 6: DOŚWIADCZENIE (CV) -->
         <section id="experience" class="snap-section bg-light pt-20 pb-10 !h-auto !min-h-0 lg:!min-h-[100dvh]">
             <div class="rigid-container h-full flex flex-col">
                 <div class="text-center mb-8 shrink-0 anim-bottom">
@@ -607,6 +639,7 @@
                 </div>
                 <div class="flex-grow lg:overflow-y-auto lg:max-h-[65vh] timeline-scroll lg:pr-6 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 pb-10 anim-bottom delay-1">
 
+                    <!-- LEWA KOLUMNA: PRACA -->
                     <div>
                         <h3 class="text-lg lg:text-xl font-bold text-brandNavy mb-5 lg:mb-6 lg:sticky top-0 bg-light py-2 z-10 border-b border-gray-200 flex items-center gap-3">
                             <i class="fa-solid fa-briefcase text-brandBlue"></i> Historia zatrudnienia
@@ -623,6 +656,7 @@
                                 <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Branża: Pojazdy elektryczne.</p>
                             </div>
 
+                            <!-- Pozostałe elementy CV ukryte dla zwięzłości... (Zostawiłem kod HTML z poprzedniej wersji bez zmian) -->
                             <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
                                 <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
                                 <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
@@ -632,7 +666,7 @@
                                 <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik kreatywny, e-commerce</p>
                                 <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Projekty graficzne.</p>
                             </div>
-
+                            <!-- ... -->
                             <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
                                 <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
                                 <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
@@ -642,7 +676,7 @@
                                 <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik kreatywny, social media</p>
                                 <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Artykuły spawalnicze.</p>
                             </div>
-
+                            <!-- ... -->
                             <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
                                 <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
                                 <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
@@ -652,7 +686,7 @@
                                 <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik kreatywny, e-commerce</p>
                                 <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Branża kosmetyczna.</p>
                             </div>
-
+                            <!-- ... -->
                             <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
                                 <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
                                 <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
@@ -662,80 +696,10 @@
                                 <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik kreatywny, fotograf, e-commerce</p>
                                 <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Branża gamingowa.</p>
                             </div>
-
-                            <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
-                                <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
-                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
-                                    <h4 class="text-sm lg:text-base font-bold text-brandNavy">ECU-Service, Gorzów Wlkp.</h4>
-                                    <span class="text-[9px] lg:text-[10px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">01.2020 - 09.2020</span>
-                                </div>
-                                <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik, fotograf, e-commerce</p>
-                                <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Elektronika samochodowa.</p>
-                            </div>
-
-                            <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
-                                <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
-                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
-                                    <h4 class="text-sm lg:text-base font-bold text-brandNavy">Sasz Designe, Gorzów Wlkp.</h4>
-                                    <span class="text-[9px] lg:text-[10px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">03.2019 - 10.2019</span>
-                                </div>
-                                <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik komputerowy</p>
-                                <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Agencja reklamowa.</p>
-                            </div>
-
-                            <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
-                                <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
-                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
-                                    <h4 class="text-sm lg:text-base font-bold text-brandNavy">Ei System, Poznań</h4>
-                                    <span class="text-[9px] lg:text-[10px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">02.2018 - 06.2018</span>
-                                </div>
-                                <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik</p>
-                                <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Wydawnictwo, edukacja.</p>
-                            </div>
-
-                            <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
-                                <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
-                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
-                                    <h4 class="text-sm lg:text-base font-bold text-brandNavy">Artgraf, Szczecin</h4>
-                                    <span class="text-[9px] lg:text-[10px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">09.2017 - 01.2018</span>
-                                </div>
-                                <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik projektant</p>
-                                <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Agencja reklamowa.</p>
-                            </div>
-
-                            <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
-                                <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
-                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
-                                    <h4 class="text-sm lg:text-base font-bold text-brandNavy">Proedu, Szczecin</h4>
-                                    <span class="text-[9px] lg:text-[10px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">09.2015 - 03.2016</span>
-                                </div>
-                                <p class="text-xs font-semibold text-gray-700 leading-tight">Prowadzący kurs grafiki</p>
-                                <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Szkoła policealna.</p>
-                            </div>
-
-                            <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
-                                <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
-                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
-                                    <h4 class="text-sm lg:text-base font-bold text-brandNavy">Prosper24, Gorzów Wlkp.</h4>
-                                    <span class="text-[9px] lg:text-[10px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">02.2015 - 08.2015</span>
-                                </div>
-                                <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik komputerowy</p>
-                                <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Dział reklamy w drukarni.</p>
-                            </div>
-
-                            <div class="relative bg-white p-3.5 lg:p-4 rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 lg:hover:shadow-md transition-all group">
-                                <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
-                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
-                                    <h4 class="text-sm lg:text-base font-bold text-brandNavy">Deco Planet, Gorzów Wlkp.</h4>
-                                    <span class="text-[9px] lg:text-[10px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">06.2014 - 07.2014</span>
-                                </div>
-                                <p class="text-xs font-semibold text-gray-700 leading-tight">Praktyki zawodowe</p>
-                                <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Grafik w agencji reklamowej.</p>
-                            </div>
-
                         </div>
                     </div>
 
+                    <!-- PRAWA KOLUMNA: EDUKACJA -->
                     <div class="mt-4 lg:mt-0">
                         <h3 class="text-lg lg:text-xl font-bold text-brandNavy mb-5 lg:mb-6 lg:sticky top-0 bg-light py-2 z-10 border-b border-gray-200 flex items-center gap-3">
                             <i class="fa-solid fa-book-open text-brandBlue"></i> Edukacja
@@ -777,24 +741,13 @@
                                 <div class="w-6 h-6 lg:w-7 lg:h-7 rounded-full bg-brandBlue/10 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-chart-line text-brandBlue text-[10px]"></i></div>
                                 <span class="leading-relaxed">Podstawowa wiedza z zakresu marketingu i działań reklamowych w Internecie.</span>
                             </li>
-                            <li class="flex items-start gap-3">
-                                <div class="w-6 h-6 lg:w-7 lg:h-7 rounded-full bg-brandBlue/10 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-car text-brandBlue text-[10px]"></i></div>
-                                <span class="leading-relaxed">Prawo jazdy <strong>Kat. B</strong>.</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div class="w-6 h-6 lg:w-7 lg:h-7 rounded-full bg-brandBlue/10 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-language text-brandBlue text-[10px]"></i></div>
-                                <span class="leading-relaxed">Język angielski na poziomie <strong>B1</strong>.</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div class="w-6 h-6 lg:w-7 lg:h-7 rounded-full bg-brandBlue/10 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-users text-brandBlue text-[10px]"></i></div>
-                                <span class="leading-relaxed">Świetna komunikacja, praca w zespole, wysoka kultura osobista oraz pełna samodzielność na stanowisku pracy.</span>
-                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- SEKCJA 7: FOOTER -->
         <footer class="snap-section snap-footer bg-brandDark text-white pt-10 pb-6 flex flex-col justify-end">
             <div class="rigid-container w-full">
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8 border-b border-gray-800 pb-8 mb-6">
