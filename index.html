@@ -244,7 +244,6 @@
 </head>
 <body class="font-sans text-gray-700 antialiased bg-white">
 
-    <!-- NAWIGACJA -->
     <header class="w-full bg-white/95 backdrop-blur-md fixed top-0 z-50 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
         <div class="rigid-container py-3 lg:py-4 flex justify-between items-center">
             <a href="#" class="flex items-center gap-2 text-xl lg:text-2xl font-bold text-brandNavy min-w-[44px] min-h-[44px]">
@@ -267,7 +266,6 @@
         </div>
     </header>
 
-    <!-- MENU MOBILNE OVERLAY -->
     <div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-40 opacity-0 invisible flex flex-col justify-center items-center">
         <nav class="flex flex-col gap-6 text-center w-full px-6">
             <a href="#home" class="mobile-link text-2xl font-bold text-brandNavy active:text-brandBlue py-3 border-b border-gray-100">Start</a>
@@ -281,17 +279,12 @@
 
     <div class="snap-container">
 
-        <!-- SEKCJA 1: HERO -->
-        <!-- Poprawione dopełnienia by uniknąć overflowu (rozjechania na mobile). -->
         <section id="home" class="snap-section bg-white !pt-20 lg:!pt-24 !pb-4">
             <div class="rigid-container h-full w-full flex flex-col justify-between">
                 
-                <!-- Główny układ Hero (Napis + Zdjęcie) -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-center flex-grow">
                     
-                    <!-- LEWA STRONA: TYPOGRAFIA -->
                     <div class="anim-left z-10 order-1 text-center lg:text-left mt-2 lg:mt-0">
-                        <!-- Pill Portfolio - Ukryty całkowicie na widoku mobilnym -->
                         <span class="hidden md:inline-block px-4 py-1 rounded-full border border-brandBlue/30 text-brandBlue font-medium text-[10px] lg:text-xs mb-6 uppercase tracking-widest bg-white">
                             Portfolio
                         </span>
@@ -302,7 +295,7 @@
                             <span class="block text-[3.5rem] md:text-7xl lg:text-[6.5rem] font-bold text-brandBlue leading-[0.9] tracking-tight">Designer</span>
                         </h1>
                         
-                        <p class="text-gray-500 max-w-sm mx-auto lg:mx-0 mb-6 lg:mb-10 text-[13px] md:text-base leading-relaxed">
+                        <p class="text-gray-500 max-w-sm mx-auto lg:mx-0 mb-6 lg:mb-10 text-sm md:text-base leading-relaxed">
                             Zajmuję się kompleksowym projektowaniem – od identyfikacji wizualnej i DTP, przez obróbkę foto/wideo, aż po kampanie e-commerce i interfejsy UI/UX.
                         </p>
                         
@@ -311,12 +304,10 @@
                         </a>
                     </div>
                     
-                    <!-- PRAWA STRONA: ZDJĘCIE -->
                     <div class="anim-right relative z-10 flex justify-center items-end lg:items-center order-2 h-[220px] md:h-[360px] lg:h-[460px] w-full">
                         <div class="relative w-full h-full flex items-center justify-center overflow-visible">
                             
                             <div class="absolute inset-0 w-full h-full flex items-center justify-center" id="blob-container">
-                                <!-- Zmniejszone kółko tła dla lepszego wpasowania -->
                                 <div class="main-circle rounded-full animate-jelly absolute bg-brandBlue z-10 shadow-xl w-[180px] h-[180px] md:w-[300px] md:h-[300px] lg:w-[380px] lg:h-[380px]"></div>
                                 <canvas id="blob-canvas" class="absolute inset-0 z-20 w-full h-full pointer-events-none lg:pointer-events-auto"></canvas>
                             </div>
@@ -341,8 +332,6 @@
                     </div>
                 </div>
 
-                <!-- STATYSTYKI -->
-                <!-- Rozbite na 4 kolumny WSZĘDZIE. Ekstremalnie małe czcionki na mobile. -->
                 <div class="anim-bottom pt-4 lg:pt-6 w-full mt-4 lg:mt-8 border-t border-gray-100 shrink-0">
                     <div class="grid grid-cols-4 gap-1 lg:gap-6 text-center divide-x divide-gray-100 w-full">
                         <div class="px-1 lg:px-4">
@@ -366,7 +355,6 @@
             </div>
         </section>
 
-        <!-- SEKCJA 2: O MNIE -->
         <section id="about" class="snap-section bg-light">
             <div class="rigid-container grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
                 <div class="anim-left relative flex justify-center order-2 lg:order-1 px-4 lg:px-0">
@@ -396,7 +384,6 @@
             </div>
         </section>
 
-        <!-- SEKCJA 3: UMIEJĘTNOŚCI -->
         <section id="skills" class="snap-section bg-white relative">
             <div id="easter-egg" class="easter-egg-container">
                 <img src="https://ui-avatars.com/api/?name=Krzysztof&background=0052FF&color=fff&size=150" alt="Krzysztof" class="easter-egg-image">
@@ -457,7 +444,6 @@
             </div>
         </section>
 
-        <!-- SEKCJA 4: KARUZELA PROJEKTÓW -->
         <section id="portfolio" class="snap-section bg-brandLight relative">
             
             <div class="branding-section-bg">
@@ -492,23 +478,18 @@
                     </h2>
                 </div>
 
-                <!-- NOWOŚĆ: Kontener ze strzałkami nawigacyjnymi i kropkami -->
                 <div class="relative w-full anim-bottom delay-1">
                     
-                    <!-- Strzałka w lewo -->
                     <button id="prev-btn" aria-label="Poprzedni projekt" class="absolute left-1 md:-left-4 lg:-left-6 top-1/2 -translate-y-1/2 z-20 w-8 h-8 lg:w-12 lg:h-12 bg-white shadow-lg rounded-full text-brandBlue flex items-center justify-center opacity-90 hover:opacity-100 hover:scale-105 transition-all">
                         <i class="fa-solid fa-chevron-left text-sm lg:text-lg"></i>
                     </button>
                     
-                    <!-- Strzałka w prawo -->
                     <button id="next-btn" aria-label="Następny projekt" class="absolute right-1 md:-right-4 lg:-right-6 top-1/2 -translate-y-1/2 z-20 w-8 h-8 lg:w-12 lg:h-12 bg-white shadow-lg rounded-full text-brandBlue flex items-center justify-center opacity-90 hover:opacity-100 hover:scale-105 transition-all">
                         <i class="fa-solid fa-chevron-right text-sm lg:text-lg"></i>
                     </button>
 
-                    <!-- Karuzela projektów -->
                     <div id="portfolio-scroll" class="portfolio-carousel flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 lg:pb-8 hide-scrollbar scroll-smooth relative z-10 px-10 md:px-0">
 
-                        <!-- 1. Branding -->
                         <a href="https://www.behance.net/krzysztofped07" target="_blank"
                            class="portfolio-card branding-card snap-center bg-white rounded-3xl p-3 shadow-soft transition-all duration-300 block group shrink-0 relative"
                            tabindex="0" aria-label="Branding">
@@ -523,7 +504,6 @@
                             </div>
                         </a>
 
-                        <!-- 2. E-commerce -->
                         <a href="https://www.behance.net/krzysztofped07" target="_blank"
                            class="portfolio-card snap-center bg-white rounded-3xl p-3 shadow-soft transition-all duration-300 block group shrink-0">
                             <div class="overflow-hidden rounded-2xl mb-4 h-52 portfolio-img-wrap">
@@ -536,7 +516,6 @@
                             </div>
                         </a>
 
-                        <!-- 3. DTP -->
                         <a href="https://www.behance.net/krzysztofped07" target="_blank"
                            class="portfolio-card snap-center bg-white rounded-3xl p-3 shadow-soft transition-all duration-300 block group shrink-0">
                             <div class="overflow-hidden rounded-2xl mb-4 h-52 portfolio-img-wrap">
@@ -549,7 +528,6 @@
                             </div>
                         </a>
 
-                        <!-- 4. STRONY WWW -->
                         <div class="portfolio-card www-card snap-center bg-brandNavy rounded-3xl p-3 shadow-soft transition-all duration-300 block shrink-0 relative cursor-pointer"
                              tabindex="0" aria-label="Strony WWW">
                             <div class="www-img-wrap overflow-hidden rounded-2xl mb-4 h-52 relative">
@@ -566,7 +544,6 @@
                     </div>
                 </div>
 
-                <!-- NOWOŚĆ: Kropki nawigacyjne połączone z JS -->
                 <div class="flex justify-center items-center gap-2 mt-2 lg:mt-0 anim-bottom delay-2" id="portfolio-dots">
                     <button class="portfolio-dot w-2.5 h-2.5 rounded-full bg-brandBlue transition-all" data-index="0" aria-label="Slide 1"></button>
                     <button class="portfolio-dot w-2 h-2 rounded-full bg-gray-300 hover:bg-brandBlue/50 transition-all" data-index="1" aria-label="Slide 2"></button>
@@ -599,7 +576,6 @@
             </div>
         </section>
 
-        <!-- SEKCJA 5: USŁUGI -->
         <section id="services" class="snap-section bg-white">
             <div class="rigid-container flex flex-col justify-center">
                 <div class="text-center mb-8 lg:mb-12 anim-bottom">
@@ -636,7 +612,6 @@
             </div>
         </section>
 
-        <!-- SEKCJA 6: DOŚWIADCZENIE (CV) -->
         <section id="experience" class="snap-section bg-light pt-20 pb-10 !h-auto !min-h-0 lg:!min-h-[100dvh]">
             <div class="rigid-container h-full flex flex-col">
                 <div class="text-center mb-8 shrink-0 anim-bottom">
@@ -729,10 +704,10 @@
             </div>
         </section>
 
-        <!-- SEKCJA 7: FOOTER -->
         <footer class="snap-section snap-footer bg-brandDark text-white pt-10 pb-6 flex flex-col justify-end">
             <div class="rigid-container w-full">
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8 border-b border-gray-800 pb-8 mb-6">
+                    
                     <div class="sm:col-span-2 lg:col-span-1">
                         <a href="#" class="flex items-center gap-2 text-xl font-bold text-white mb-4 min-h-[44px]">
                             <span class="text-brandBlue"><i class="fa-solid fa-pen-nib"></i></span>
@@ -741,7 +716,42 @@
                         <p class="text-gray-400 text-xs mb-4 leading-relaxed max-w-sm">
                             Profesjonalne projekty graficzne dla Twojego biznesu. Zapraszam do współpracy.
                         </p>
+                        <div class="flex gap-4">
+                            <a href="https://www.behance.net/krzysztofped07" target="_blank" class="w-10 h-10 lg:w-8 lg:h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brandBlue hover:text-white active:bg-brandBlue transition-all"><i class="fa-brands fa-behance"></i></a>
+                            <a href="#" aria-label="Dribbble" class="w-10 h-10 lg:w-8 lg:h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brandBlue hover:text-white active:bg-brandBlue transition-all"><i class="fa-brands fa-dribbble"></i></a>
+                            <a href="#" aria-label="LinkedIn" class="w-10 h-10 lg:w-8 lg:h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brandBlue hover:text-white active:bg-brandBlue transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
+                        </div>
                     </div>
+                    
+                    <div>
+                        <h4 class="text-brandBlue font-bold text-sm mb-4">Nawigacja</h4>
+                        <ul class="space-y-1 text-sm lg:text-xs text-gray-400">
+                            <li><a href="#about" class="block py-1.5 hover:text-white transition-colors">O mnie</a></li>
+                            <li><a href="#portfolio" class="block py-1.5 hover:text-white transition-colors">Projekty na Behance</a></li>
+                            <li><a href="#services" class="block py-1.5 hover:text-white transition-colors">Moje Usługi</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-brandBlue font-bold text-sm mb-4">Kontakt</h4>
+                        <ul class="space-y-3 text-sm lg:text-xs text-gray-400">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-phone text-brandBlue w-4"></i> <a href="tel:+48698330612" class="p-1 -m-1">698 330 612</a></li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-envelope text-brandBlue w-4"></i> <a href="mailto:KrzysztofPaczkowski89@gmail.com" class="p-1 -m-1 break-all">KrzysztofPaczkowski89@gmail.com</a></li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-brandBlue w-4"></i> Gorzów Wielkopolski / Zdalnie</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sm:col-span-2 lg:col-span-1">
+                        <h4 class="text-brandBlue font-bold text-sm mb-4">Zacznijmy projekt</h4>
+                        <p class="text-gray-400 text-xs mb-3">Zostaw maila, odezwę się z wyceną.</p>
+                        <form class="flex" aria-label="Zostaw email">
+                            <input type="email" required placeholder="Twój email..." class="w-full bg-gray-800 text-white px-4 py-3 lg:py-2 rounded-l-full focus:outline-none focus:ring-1 focus:ring-brandBlue text-sm lg:text-xs border-none placeholder-gray-500">
+                            <button type="submit" aria-label="Wyślij" class="bg-brandBlue text-white px-5 lg:px-4 py-3 lg:py-2 rounded-r-full hover:bg-blue-700 active:bg-blue-800 transition-colors">
+                                <i class="fa-solid fa-paper-plane text-sm lg:text-xs"></i>
+                            </button>
+                        </form>
+                    </div>
+                    
                 </div>
                 <div class="flex flex-col justify-center text-center text-[10px] text-gray-500">
                     <p>&copy; 2026 KRZYSZTOF PACZKOWSKI. WSZELKIE PRAWA ZASTRZEŻONE.</p>
@@ -820,7 +830,6 @@
                 const ctx = canvas.getContext('2d');
                 const mainCircle = document.querySelector('.main-circle');
                 let width, height, particles = [];
-                let mouse = { x: undefined, y: undefined };
 
                 class Particle {
                     constructor(baseAngle, orbitRadius, radius) {
@@ -895,7 +904,6 @@
             const dots = document.querySelectorAll('.portfolio-dot');
 
             if (scrollContainer && prevBtn && nextBtn) {
-                // Scroll po kliknięciu w strzałki
                 const scrollAmount = window.innerWidth * 0.7; 
 
                 prevBtn.addEventListener('click', () => {
@@ -906,12 +914,10 @@
                     scrollContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
                 });
 
-                // Aktualizacja kropek na podstawie przewijania
                 scrollContainer.addEventListener('scroll', () => {
                     const scrollLeft = scrollContainer.scrollLeft;
                     const cardWidth = scrollContainer.scrollWidth / scrollContainer.children.length;
                     
-                    // Obliczanie aktywnego indexu (zabezpieczenie by nie wyszło poza ramy)
                     let index = Math.round(scrollLeft / cardWidth);
                     if(index > dots.length - 1) index = dots.length - 1;
 
@@ -926,7 +932,6 @@
                     });
                 });
 
-                // Kliknięcie w kropki by przeskoczyć
                 dots.forEach((dot) => {
                     dot.addEventListener('click', (e) => {
                         const i = parseInt(e.target.getAttribute('data-index'));
