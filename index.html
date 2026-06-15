@@ -191,52 +191,66 @@
         }
         body.menu-open { overflow: hidden; }
 
-        /* ===== KAFELEK WWW - ANIMACJA PROJEKTÓW ===== */
+        /* ===== KAFELEK WWW - STYLE PODSTAWOWE ===== */
         .www-card {
             position: relative;
             overflow: hidden;
         }
-        .www-projects-tray {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: flex-end;
-            gap: 6px;
-            padding: 0 12px 12px;
-            pointer-events: none;
-            z-index: 10;
-        }
-        .www-project-thumb {
-            flex: 1;
-            height: 0%;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: height 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 -6px 24px rgba(0,0,0,0.28);
-            border: 2px solid rgba(255,255,255,0.18);
-        }
-        .www-project-thumb:nth-child(2) { transition-delay: 0.07s; }
-        .www-project-thumb:nth-child(3) { transition-delay: 0.14s; }
-        .www-project-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top;
-        }
-        .www-card:hover .www-project-thumb,
-        .www-card:focus-within .www-project-thumb {
-            height: 88%;
-        }
-        /* Overlay ściemniający tło kafelka przy hover */
         .www-card .card-img-wrap img {
             transition: transform 0.7s ease, filter 0.5s ease;
         }
         .www-card:hover .card-img-wrap img {
             transform: scale(1.08);
             filter: brightness(0.45);
+        }
+
+        /* ===== TŁO SEKCJI DLA PROJEKTÓW WWW ===== */
+        .www-section-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 0 1rem;
+            overflow: hidden;
+        }
+        @media (min-width: 1024px) {
+            .www-section-bg { padding: 0 3rem; }
+        }
+        .www-section-tray {
+            width: 100%;
+            max-width: 1280px;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            gap: 1rem;
+            padding-bottom: 2rem;
+        }
+        .www-section-thumb {
+            flex: 1;
+            height: 0%;
+            border-radius: 16px 16px 0 0;
+            overflow: hidden;
+            transition: height 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.15);
+            /* mask-image dla płynnego rozmycia od góry - super efekt w tle */
+            -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+            mask-image: linear-gradient(to top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+        }
+        .www-section-thumb:nth-child(2) { transition-delay: 0.07s; }
+        .www-section-thumb:nth-child(3) { transition-delay: 0.14s; }
+        .www-section-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            opacity: 0.6; /* Subtelniejsze tło, by nie przeszkadzało w czytaniu kafelków */
+        }
+        /* Aktywacja animacji tła dla sekcji z użyciem JS */
+        #portfolio.www-bg-active .www-section-thumb {
+            height: 85%; /* Wjeżdża od dołu na 85% wysokości sekcji */
         }
     </style>
 </head>
@@ -436,8 +450,26 @@
         </section>
 
         <!-- SEKCJA 4: KARUZELA PROJEKTÓW -->
-        <section id="portfolio" class="snap-section bg-brandLight">
-            <div class="rigid-container flex flex-col justify-center w-full">
+        <!-- Zmieniono na relative by tło mogło być pozycjonowane absolutnie -->
+        <section id="portfolio" class="snap-section bg-brandLight relative">
+            
+            <!-- TŁO DLA KAFELKA WWW (Zza zawartości) -->
+            <div class="www-section-bg">
+                <div class="www-section-tray">
+                    <div class="www-section-thumb">
+                        <img src="img/WWW.jpg" alt="Projekt 1">
+                    </div>
+                    <div class="www-section-thumb">
+                        <img src="img/grizzlies.jpg" alt="Projekt 2">
+                    </div>
+                    <div class="www-section-thumb">
+                        <img src="img/ms1.webp" alt="Projekt 3">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kontener z relative i z-10, by znajdował się nad tłem animacji -->
+            <div class="rigid-container flex flex-col justify-center w-full relative z-10">
                 <div class="text-center mb-8 lg:mb-10 anim-bottom">
                     <h4 class="text-brandBlue font-bold tracking-wider text-[10px] lg:text-sm mb-2 uppercase justify-center flex items-center gap-2">
                         <i class="fa-solid fa-palette"></i> Portfolio
@@ -447,7 +479,7 @@
                     </h2>
                 </div>
 
-                <!-- Karuzela projektów — 4 kafelki, inline style dla szerokości desktop -->
+                <!-- Karuzela projektów -->
                 <div class="portfolio-carousel flex overflow-x-auto snap-x snap-mandatory gap-4 pb-8 hide-scrollbar anim-bottom delay-1">
 
                     <!-- 1. Branding -->
@@ -489,29 +521,17 @@
                         </div>
                     </a>
 
-                    <!-- 4. STRONY WWW — kafelek z animacją miniatur -->
+                    <!-- 4. STRONY WWW — zmodyfikowany kafelek -->
                     <div class="portfolio-card www-card snap-center bg-brandNavy rounded-3xl p-3 shadow-soft transition-all duration-300 block shrink-0 relative cursor-pointer"
                          tabindex="0" aria-label="Strony WWW">
 
-                        <!-- Zdjęcie tła + overlay + wjeżdżające miniatury -->
+                        <!-- Zdjęcie tła + overlay (miniaturki zostały usunięte) -->
                         <div class="www-img-wrap overflow-hidden rounded-2xl mb-4 h-52 relative">
                             <!-- tło -->
                             <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                                  alt="Strony WWW" class="www-bg-img w-full h-full object-cover">
                             <!-- ściemniacz -->
                             <div class="www-overlay absolute inset-0 bg-brandNavy/0 transition-all duration-500"></div>
-                            <!-- 3 miniatury wjeżdżające od dołu -->
-                            <div class="www-tray absolute bottom-0 left-0 w-full flex items-end gap-1.5 px-2 pb-2 pointer-events-none">
-                                <div class="www-thumb rounded-lg overflow-hidden border border-white/20 shadow-lg" style="flex:1; height:0; transition: height 0.5s cubic-bezier(0.16,1,0.3,1) 0s;">
-                                    <img src="img/WWW.jpg" alt="Projekt 1" class="w-full h-full object-cover object-top">
-                                </div>
-                                <div class="www-thumb rounded-lg overflow-hidden border border-white/20 shadow-lg" style="flex:1; height:0; transition: height 0.5s cubic-bezier(0.16,1,0.3,1) 0.07s;">
-                                    <img src="img/grizzlies.jpg" alt="Projekt 2" class="w-full h-full object-cover object-top">
-                                </div>
-                                <div class="www-thumb rounded-lg overflow-hidden border border-white/20 shadow-lg" style="flex:1; height:0; transition: height 0.5s cubic-bezier(0.16,1,0.3,1) 0.14s;">
-                                    <img src="img/ms1.webp" alt="Projekt 3" class="w-full h-full object-cover object-top">
-                                </div>
-                            </div>
                         </div>
 
                         <div class="px-2 pb-1">
@@ -536,10 +556,9 @@
                     }
                     .portfolio-img { transition: transform 0.7s ease; }
 
-                    /* WWW hover — JS steruje przez klasę .www-active */
+                    /* WWW hover wewnątrz samego kafelka — dodano klasę .www-active */
                     .www-card.www-active .www-bg-img { filter: brightness(0.4); }
                     .www-card.www-active .www-overlay { background-color: rgba(10,25,47,0.55); }
-                    .www-card.www-active .www-thumb { height: 86% !important; }
                     .www-card.www-active .www-arrow { opacity: 1; }
                     .www-bg-img { transition: filter 0.5s ease; }
                 </style>
@@ -904,110 +923,129 @@
 
             // --- METABALLS CANVAS ---
             const canvas = document.getElementById('blob-canvas');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-            const mainCircle = document.querySelector('.main-circle');
-            let width, height, particles = [];
-            let mouse = { x: undefined, y: undefined };
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                const mainCircle = document.querySelector('.main-circle');
+                let width, height, particles = [];
+                let mouse = { x: undefined, y: undefined };
 
-            class Particle {
-                constructor(baseAngle, orbitRadius, radius) {
-                    this.baseAngle = baseAngle;
-                    this.currentAngle = baseAngle;
-                    this.baseOrbitRadius = orbitRadius;
-                    this.currentOrbitRadius = orbitRadius;
-                    this.radius = radius;
-                    this.color = '#0052FF';
-                    this.arcSpeed = (Math.random() * 0.008 + 0.004) * (Math.random() > 0.5 ? 1 : -1);
-                    this.arcTime = Math.random() * Math.PI * 2;
-                    this.arcAmplitude = Math.random() * 0.4 + 0.2;
-                    this.radialSpeed = Math.random() * 0.015 + 0.008;
-                    this.radialTime = Math.random() * Math.PI * 2;
-                    this.radialAmplitude = Math.random() * 20 + 10;
-                }
-                draw() {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = this.color;
-                    ctx.fill();
-                }
-                update(cx, cy) {
-                    this.arcTime += this.arcSpeed;
-                    this.radialTime += this.radialSpeed;
-                    let tA = this.baseAngle + Math.sin(this.arcTime) * this.arcAmplitude;
-                    let tR = this.baseOrbitRadius + Math.sin(this.radialTime) * this.radialAmplitude;
-                    if (mouse.x !== undefined) {
-                        let tx = cx + Math.cos(this.currentAngle) * this.currentOrbitRadius;
-                        let ty = cy + Math.sin(this.currentAngle) * this.currentOrbitRadius;
-                        let dx = mouse.x - tx, dy = mouse.y - ty;
-                        let dist = Math.sqrt(dx*dx + dy*dy);
-                        let ir = window.innerWidth < 1024 ? 80 : 130;
-                        if (dist < ir) {
-                            let f = (ir - dist) / ir;
-                            tR += f * (window.innerWidth < 1024 ? 30 : 60);
-                            let ma = Math.atan2(mouse.y - cy, mouse.x - cx);
-                            let ad = tA - ma;
-                            while (ad > Math.PI) ad -= Math.PI * 2;
-                            while (ad < -Math.PI) ad += Math.PI * 2;
-                            tA += Math.sign(ad) * f * 0.4;
-                        }
+                class Particle {
+                    constructor(baseAngle, orbitRadius, radius) {
+                        this.baseAngle = baseAngle;
+                        this.currentAngle = baseAngle;
+                        this.baseOrbitRadius = orbitRadius;
+                        this.currentOrbitRadius = orbitRadius;
+                        this.radius = radius;
+                        this.color = '#0052FF';
+                        this.arcSpeed = (Math.random() * 0.008 + 0.004) * (Math.random() > 0.5 ? 1 : -1);
+                        this.arcTime = Math.random() * Math.PI * 2;
+                        this.arcAmplitude = Math.random() * 0.4 + 0.2;
+                        this.radialSpeed = Math.random() * 0.015 + 0.008;
+                        this.radialTime = Math.random() * Math.PI * 2;
+                        this.radialAmplitude = Math.random() * 20 + 10;
                     }
-                    this.currentAngle += (tA - this.currentAngle) * 0.04;
-                    this.currentOrbitRadius += (tR - this.currentOrbitRadius) * 0.04;
-                    this.x = cx + Math.cos(this.currentAngle) * this.currentOrbitRadius;
-                    this.y = cy + Math.sin(this.currentAngle) * this.currentOrbitRadius;
-                    this.draw();
+                    draw() {
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                        ctx.fillStyle = this.color;
+                        ctx.fill();
+                    }
+                    update(cx, cy) {
+                        this.arcTime += this.arcSpeed;
+                        this.radialTime += this.radialSpeed;
+                        let tA = this.baseAngle + Math.sin(this.arcTime) * this.arcAmplitude;
+                        let tR = this.baseOrbitRadius + Math.sin(this.radialTime) * this.radialAmplitude;
+                        if (mouse.x !== undefined) {
+                            let tx = cx + Math.cos(this.currentAngle) * this.currentOrbitRadius;
+                            let ty = cy + Math.sin(this.currentAngle) * this.currentOrbitRadius;
+                            let dx = mouse.x - tx, dy = mouse.y - ty;
+                            let dist = Math.sqrt(dx*dx + dy*dy);
+                            let ir = window.innerWidth < 1024 ? 80 : 130;
+                            if (dist < ir) {
+                                let f = (ir - dist) / ir;
+                                tR += f * (window.innerWidth < 1024 ? 30 : 60);
+                                let ma = Math.atan2(mouse.y - cy, mouse.x - cx);
+                                let ad = tA - ma;
+                                while (ad > Math.PI) ad -= Math.PI * 2;
+                                while (ad < -Math.PI) ad += Math.PI * 2;
+                                tA += Math.sign(ad) * f * 0.4;
+                            }
+                        }
+                        this.currentAngle += (tA - this.currentAngle) * 0.04;
+                        this.currentOrbitRadius += (tR - this.currentOrbitRadius) * 0.04;
+                        this.x = cx + Math.cos(this.currentAngle) * this.currentOrbitRadius;
+                        this.y = cy + Math.sin(this.currentAngle) * this.currentOrbitRadius;
+                        this.draw();
+                    }
                 }
+
+                function init() {
+                    width = canvas.width = canvas.parentElement.offsetWidth;
+                    height = canvas.height = canvas.parentElement.offsetHeight;
+                    particles = [];
+                    const mr = mainCircle.getBoundingClientRect();
+                    const cr = canvas.getBoundingClientRect();
+                    const cx = mr.left - cr.left + mr.width / 2;
+                    const cy = mr.top - cr.top + mr.height / 2;
+                    const mainR = mr.width / 2;
+                    const sm = window.innerWidth < 1024 ? 0.6 : 1;
+                    [Math.PI, Math.PI - 0.4, Math.PI + 0.5].forEach((angle, i) => {
+                        let r = i === 0 ? (Math.random()*20+40)*sm : (Math.random()*15+20)*sm;
+                        particles.push(new Particle(angle, mainR + r + 20*sm, r));
+                    });
+                    let rr = (Math.random()*20+25)*sm;
+                    particles.push(new Particle(0.15, mainR + rr + 35*sm, rr));
+                    canvas.cx = cx; canvas.cy = cy;
+                }
+
+                function animate() {
+                    requestAnimationFrame(animate);
+                    ctx.clearRect(0, 0, width, height);
+                    particles.forEach(p => p.update(canvas.cx, canvas.cy));
+                }
+
+                let rt;
+                window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(init, 200); });
+                canvas.addEventListener('mousemove', e => { const r = canvas.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; });
+                canvas.addEventListener('mouseleave', () => { mouse.x = mouse.y = undefined; });
+                canvas.addEventListener('touchstart', e => { const r = canvas.getBoundingClientRect(); mouse.x = e.touches[0].clientX - r.left; mouse.y = e.touches[0].clientY - r.top; }, {passive:true});
+                canvas.addEventListener('touchend', () => { mouse.x = mouse.y = undefined; });
+
+                init();
+                animate();
+                canvas.parentElement.style.filter = "url('#gooey-filter')";
             }
 
-            function init() {
-                width = canvas.width = canvas.parentElement.offsetWidth;
-                height = canvas.height = canvas.parentElement.offsetHeight;
-                particles = [];
-                const mr = mainCircle.getBoundingClientRect();
-                const cr = canvas.getBoundingClientRect();
-                const cx = mr.left - cr.left + mr.width / 2;
-                const cy = mr.top - cr.top + mr.height / 2;
-                const mainR = mr.width / 2;
-                const sm = window.innerWidth < 1024 ? 0.6 : 1;
-                [Math.PI, Math.PI - 0.4, Math.PI + 0.5].forEach((angle, i) => {
-                    let r = i === 0 ? (Math.random()*20+40)*sm : (Math.random()*15+20)*sm;
-                    particles.push(new Particle(angle, mainR + r + 20*sm, r));
-                });
-                let rr = (Math.random()*20+25)*sm;
-                particles.push(new Particle(0.15, mainR + rr + 35*sm, rr));
-                canvas.cx = cx; canvas.cy = cy;
-            }
-
-            function animate() {
-                requestAnimationFrame(animate);
-                ctx.clearRect(0, 0, width, height);
-                particles.forEach(p => p.update(canvas.cx, canvas.cy));
-            }
-
-            let rt;
-            window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(init, 200); });
-            canvas.addEventListener('mousemove', e => { const r = canvas.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; });
-            canvas.addEventListener('mouseleave', () => { mouse.x = mouse.y = undefined; });
-            canvas.addEventListener('touchstart', e => { const r = canvas.getBoundingClientRect(); mouse.x = e.touches[0].clientX - r.left; mouse.y = e.touches[0].clientY - r.top; }, {passive:true});
-            canvas.addEventListener('touchend', () => { mouse.x = mouse.y = undefined; });
-
-            init();
-            animate();
-            canvas.parentElement.style.filter = "url('#gooey-filter')";
-
-            // --- KAFELEK STRONY WWW — hover/touch ---
+            // --- KAFELEK STRONY WWW — HOVER WYWOŁUJĄCY TŁO SEKCJI ---
             const wwwCard = document.querySelector('.www-card');
-            if (wwwCard) {
-                function wwwActivate() { wwwCard.classList.add('www-active'); }
-                function wwwDeactivate() { wwwCard.classList.remove('www-active'); }
+            const portfolioSection = document.getElementById('portfolio');
+            
+            if (wwwCard && portfolioSection) {
+                function wwwActivate() { 
+                    wwwCard.classList.add('www-active'); 
+                    portfolioSection.classList.add('www-bg-active'); 
+                }
+                function wwwDeactivate() { 
+                    wwwCard.classList.remove('www-active'); 
+                    portfolioSection.classList.remove('www-bg-active'); 
+                }
+                
+                // Myszka
                 wwwCard.addEventListener('mouseenter', wwwActivate);
                 wwwCard.addEventListener('mouseleave', wwwDeactivate);
+                
+                // Nawigacja klawiaturą
                 wwwCard.addEventListener('focus', wwwActivate);
                 wwwCard.addEventListener('blur', wwwDeactivate);
-                // Touch toggle
+                
+                // Dotyk (urządzenia mobilne)
                 wwwCard.addEventListener('touchstart', () => {
-                    wwwCard.classList.toggle('www-active');
+                    const isActive = wwwCard.classList.contains('www-active');
+                    if (isActive) {
+                        wwwDeactivate();
+                    } else {
+                        wwwActivate();
+                    }
                 }, { passive: true });
             }
         });
