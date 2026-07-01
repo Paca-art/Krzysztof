@@ -42,6 +42,8 @@
             background-color: #ffffff;
             -webkit-tap-highlight-color: transparent;
         }
+        
+        /* Kontener główny ze Scroll Snappingiem (aktywny globalnie) */
         .snap-container {
             height: 100dvh;
             overflow-y: auto;
@@ -51,6 +53,7 @@
         }
         .snap-container::-webkit-scrollbar { display: none; }
         
+        /* NOWOŚĆ: Efekt talii kart (Card Stacking) aplikowany tylko na mobile (< 1024px) */
         .snap-section {
             width: 100%;
             display: flex;
@@ -63,17 +66,50 @@
             min-height: 100dvh;
             scroll-snap-align: start;
             padding: 70px 0 20px 0;
+            
+            /* Style kart na mobile */
+            position: sticky;
+            top: 0;
+            border-top-left-radius: 32px;
+            border-top-right-radius: 32px;
+            box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.12);
         }
+        
+        /* PRZYWRÓCENIE KLASYCZNEGO UKŁADU DLA WERSJI DESKTOP */
         @media (min-width: 1024px) {
             .snap-section {
+                position: relative; /* Wyłączenie sticky z mobile */
+                top: auto;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                box-shadow: none;
                 padding: 0;
             }
         }
+        
+        /* Stopka jako karta na mobile */
         .snap-footer {
-            min-height: auto !important;
-            height: auto !important;
             scroll-snap-align: end;
+            position: sticky;
+            top: 0;
+            border-top-left-radius: 32px;
+            border-top-right-radius: 32px;
+            box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.2);
+            height: 100dvh !important;
+            min-height: 100dvh !important;
         }
+        @media (min-width: 1024px) {
+            .snap-footer {
+                position: relative;
+                top: auto;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                box-shadow: none;
+                min-height: auto !important;
+                height: auto !important;
+            }
+        }
+        
         .rigid-container {
             width: 100%;
             max-width: 1280px;
@@ -134,72 +170,9 @@
         @media (min-width: 768px) {
             .easter-egg-image { width: 150px; height: 150px; border: 4px solid #0052FF; }
         }
-        .pacman-dots {
-            background-image: radial-gradient(circle, #0052FF 3px, transparent 4px);
-            background-size: 24px 24px;
-            background-repeat: repeat-x;
-            background-position: left center;
-            height: 100%;
-            width: 100%;
-        }
-        .pacman-mask { width: 0%; }
-        .pacman-mover { left: 0%; opacity: 0; top: 50%; transform: translate(-50%, -50%); }
-        .is-visible .pacman-mask { animation: eat-dots-mask 5s linear forwards; animation-delay: 3s; }
-        .is-visible .pacman-mover { animation: eat-dots-mover 5s linear forwards; animation-delay: 3s; }
-        .is-visible .pacman-body { animation: chomp 0.4s infinite linear; animation-delay: 3s; }
-        @keyframes eat-dots-mask { 0% { width: 0%; } 100% { width: 100%; } }
-        @keyframes eat-dots-mover { 0% { left: 0%; opacity: 0; } 1% { opacity: 1; } 99% { left: 100%; opacity: 1; } 100% { left: 100%; opacity: 0; } }
-        @keyframes chomp { 0%, 100% { d: path('M 0,0 L 50,-0.1 A 50,50 0 1,0 50,0.1 Z'); } 50% { d: path('M 0,0 L 35.35,-35.35 A 50,50 0 1,0 35.35,35.35 Z'); } }
-        #mobile-menu { transition: opacity 0.3s ease, visibility 0.3s ease; }
-        #mobile-menu.menu-open { opacity: 1; visibility: visible; }
-        body.menu-open { overflow: hidden; }
-
-        .www-card { position: relative; overflow: hidden; }
-        .www-card .card-img-wrap img { transition: transform 0.7s ease, filter 0.5s ease; }
-        .www-card:hover .card-img-wrap img { transform: scale(1.08); filter: brightness(0.45); }
-
-        .www-section-bg {
-            position: absolute; inset: 0; z-index: 0; pointer-events: none;
-            display: flex; align-items: flex-end; justify-content: center;
-            padding: 0 1rem; overflow: hidden;
-        }
-        @media (min-width: 1024px) { .www-section-bg { padding: 0 3rem; } }
-        .www-section-tray { width: 100%; max-width: 1280px; height: 100%; display: flex; align-items: flex-end; gap: 1rem; padding-bottom: 2rem; }
-        .www-section-thumb {
-            flex: 1; height: 0%; border-radius: 16px 16px 0 0; overflow: hidden;
-            transition: height 0.65s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 -10px 40px rgba(0,0,0,0.15);
-            -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
-            mask-image: linear-gradient(to top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
-        }
-        .www-section-thumb:nth-child(2) { transition-delay: 0.07s; }
-        .www-section-thumb:nth-child(3) { transition-delay: 0.14s; }
-        .www-section-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0.6; }
-        #portfolio.www-bg-active .www-section-thumb { height: 85%; }
-
-        .branding-card { position: relative; overflow: hidden; }
-        .branding-card .branding-img-wrap img { transition: transform 0.7s ease, filter 0.5s ease; }
-        .branding-card:hover .branding-img-wrap img { transform: scale(1.08); filter: brightness(0.45); }
-
-        .branding-section-bg {
-            position: absolute; inset: 0; z-index: 0; pointer-events: none;
-            display: flex; align-items: flex-end; justify-content: center;
-            padding: 0 1rem; overflow: hidden;
-        }
-        @media (min-width: 1024px) { .branding-section-bg { padding: 0 3rem; } }
-        .branding-section-tray { width: 100%; max-width: 1280px; height: 100%; display: flex; align-items: flex-end; gap: 1rem; padding-bottom: 2rem; }
-        .branding-section-thumb {
-            flex: 1; height: 0%; border-radius: 16px 16px 0 0; overflow: hidden;
-            transition: height 0.65s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 -10px 40px rgba(0,0,0,0.15);
-            -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
-            mask-image: linear-gradient(to top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
-        }
-        .branding-section-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0.6; }
-        #portfolio.branding-bg-active .branding-section-thumb { height: 85%; }
     </style>
 </head>
-<body class="font-sans text-gray-700 antialiased bg-white">
-
-    <header class="w-full bg-white/95 backdrop-blur-md fixed top-0 z-50 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
+<body class="font-sans text-gray-700 antialiased bg-brandDark"> <header class="w-full bg-white/95 backdrop-blur-md fixed top-0 z-50 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
         <div class="rigid-container py-3 lg:py-4 flex justify-between items-center">
             <a href="#" class="flex items-center gap-2 text-xl lg:text-2xl font-bold text-brandNavy min-w-[44px] min-h-[44px]">
                 <span class="text-brandBlue"><i class="fa-solid fa-pen-nib"></i></span>
@@ -234,31 +207,23 @@
 
     <div class="snap-container">
 
-        <section id="home" class="snap-section bg-white !pt-20 lg:!pt-24 !pb-4">
+        <section id="home" class="snap-section bg-white !pt-20 lg:!pt-24 !pb-4 z-10">
             <div class="rigid-container h-full w-full flex flex-col justify-between">
-                
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-center flex-grow">
                     <div class="anim-left z-10 order-1 text-center lg:text-left mt-2 lg:mt-0">
                         <span class="hidden md:inline-block px-4 py-1 rounded-full border border-brandBlue/30 text-brandBlue font-medium text-[10px] lg:text-xs mb-6 uppercase tracking-widest bg-white">
                             Portfolio
                         </span>
-                        
                         <h1 class="mb-4 lg:mb-6 text-brandNavy">
                             <span class="block text-2xl md:text-4xl lg:text-[2.5rem] font-medium lg:font-normal text-brandNavy mb-1 lg:mb-2">Cześć, jestem Krzysztof!</span>
-                            
-                            <span class="block text-[3.3rem] md:text-7xl lg:text-[6.5rem] font-bold text-brandBlue leading-[0.9] tracking-tight">
-                                Graphic
-                            </span>
-                            
+                            <span class="block text-[3.3rem] md:text-7xl lg:text-[6.5rem] font-bold text-brandBlue leading-[0.9] tracking-tight">Graphic</span>
                             <span class="block text-[3.3rem] md:text-7xl lg:text-[6.5rem] font-bold text-brandBlue tracking-tight leading-[0.9] mt-1 lg:-mt-[0.12em] -ml-[0.18em] lg:-ml-[0.35em] relative">
                                 Des<span class="relative inline-block">ı<span class="absolute bottom-[0.66em] lg:bottom-[0.63em] left-1/2 -translate-x-1/2 w-[0.18em] h-[0.18em] bg-brandBlue rounded-full border-[3px] lg:border-[4px] border-white z-20 box-content shadow-[0_2px_8px_rgba(0,0,0,0.15)]"></span></span>gner
                             </span>
                         </h1>
-                        
                         <p class="text-gray-500 max-w-sm mx-auto lg:mx-0 mb-6 lg:mb-8 text-sm md:text-base leading-relaxed">
                             Zajmuję się kompleksowym projektowaniem – od identyfikacji wizualnej i DTP, przez obróbkę foto/wideo, aż po kampanie e-commerce i interfejsy UI/UX.
                         </p>
-                        
                         <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 lg:gap-4">
                             <a href="https://www.behance.net/krzysztofped07" target="_blank" class="inline-flex items-center justify-center px-6 lg:px-8 py-3 lg:py-3.5 text-xs lg:text-base font-bold rounded-full text-white bg-brandBlue hover:bg-blue-700 active:scale-95 transition-all shadow-xl shadow-brandBlue/30 min-h-[44px]">
                                 Zobacz Behance &rarr;
@@ -268,7 +233,6 @@
                             </a>
                         </div>
                     </div>
-                    
                     <div class="anim-right relative z-10 flex justify-center items-end lg:items-center order-2 h-[220px] md:h-[360px] lg:h-[460px] w-full">
                         <div class="relative w-full h-full flex items-center justify-center overflow-visible">
                             <div class="absolute inset-0 w-full h-full flex items-center justify-center" id="blob-container">
@@ -283,7 +247,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="anim-bottom pt-4 lg:pt-6 w-full mt-4 lg:mt-8 border-t border-gray-100 shrink-0">
                     <div class="grid grid-cols-4 gap-1 lg:gap-6 text-center divide-x divide-gray-100 w-full">
                         <div class="px-1 lg:px-4">
@@ -307,7 +270,7 @@
             </div>
         </section>
 
-        <section id="about" class="snap-section bg-light">
+        <section id="about" class="snap-section bg-light z-20">
             <div class="rigid-container grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
                 <div class="anim-left relative hidden lg:flex justify-center px-4 lg:px-0">
                     <div class="absolute inset-0 bg-brandBlue rounded-[32px] lg:rounded-[40px] transform -translate-x-3 translate-y-3 lg:-translate-x-4 lg:translate-y-4 -z-10 opacity-20"></div>
@@ -333,7 +296,7 @@
             </div>
         </section>
 
-        <section id="skills" class="snap-section bg-white relative">
+        <section id="skills" class="snap-section bg-white z-30">
             <div id="easter-egg" class="easter-egg-container">
                 <img src="https://ui-avatars.com/api/?name=Krzysztof&background=0052FF&color=fff&size=150" alt="Krzysztof" class="easter-egg-image">
             </div>
@@ -347,7 +310,7 @@
                         </svg>
                     </div>
                 </div>
-                <div class="anim-left text-center lg:text-left">
+                <div class="text-center lg:text-left">
                     <h4 class="text-brandBlue font-bold tracking-wider text-[10px] lg:text-sm mb-2 lg:mb-3 uppercase flex items-center justify-center lg:justify-start gap-2">
                         <i class="fa-solid fa-wand-magic-sparkles"></i> Narzędzia i Skille
                     </h4>
@@ -393,7 +356,7 @@
             </div>
         </section>
 
-        <section id="portfolio" class="snap-section bg-brandLight relative">
+        <section id="portfolio" class="snap-section bg-brandLight z-40">
             <div class="branding-section-bg"><div class="branding-section-tray"><div class="branding-section-thumb"><img src="img/KZ.jpg" alt="Projekt Branding"></div></div></div>
             <div class="www-section-bg"><div class="www-section-tray"><div class="www-section-thumb"><img src="img/MG.jpg" alt="Projekt 1"></div><div class="www-section-thumb"><img src="img/grizzlies.jpg" alt="Projekt 2"></div><div class="www-section-thumb"><img src="img/ms1.webp" alt="Projekt 3"></div></div></div>
 
@@ -444,7 +407,7 @@
             </div>
         </section>
 
-        <section id="services" class="snap-section bg-white">
+        <section id="services" class="snap-section bg-white z-50">
             <div class="rigid-container flex flex-col justify-center h-full w-full">
                 <div class="text-center mb-4 lg:mb-12 anim-bottom">
                     <h4 class="text-brandBlue font-bold tracking-wider text-[10px] lg:text-sm mb-1 lg:mb-3 uppercase justify-center flex items-center gap-2">
@@ -487,7 +450,7 @@
             </div>
         </section>
 
-        <section id="experience" class="snap-section bg-light">
+        <section id="experience" class="snap-section bg-light z-[60]">
             <div class="rigid-container h-full flex flex-col justify-center">
                 <div class="text-center mb-4 shrink-0 anim-bottom">
                     <h4 class="text-brandBlue font-bold tracking-wider text-[10px] lg:text-sm mb-1 uppercase justify-center flex items-center gap-2">
@@ -527,7 +490,6 @@
                                     <span class="text-[9px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">03.2021 - 11.2022</span>
                                 </div>
                                 <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik kreatywny, social media</p>
-                                <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Artykuły spawalnicze.</p>
                             </div>
                             <div class="relative bg-white p-3 rounded-xl shadow-sm border border-gray-100 group text-xs">
                                 <span class="absolute -left-[21px] top-4 w-3 h-3 rounded-full bg-light border-[2px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
@@ -535,7 +497,6 @@
                                     <h4 class="font-bold text-brandNavy">Silcare, Gorzów Wlkp.</h4>
                                     <span class="text-[9px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">11.2020 - 02.2021</span>
                                 </div>
-                                <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik kreatywny, e-commerce</p>
                                 <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Branża kosmetyczna.</p>
                             </div>
                             <div class="relative bg-white p-3 rounded-xl shadow-sm border border-gray-100 group text-xs">
@@ -560,8 +521,7 @@
                                     <h4 class="font-bold text-white">Akademia Sztuki w Szczecinie</h4>
                                     <span class="text-[9px] font-bold text-white bg-white/20 px-1.5 py-0.5 rounded">2011 - 2017</span>
                                 </div>
-                                <p class="text-xs lg:text-sm font-semibold text-brandBlue mb-1">Tytuł Magistra, Grafika Projektowa</p>
-                                <p class="text-[10px] lg:text-xs text-gray-400">Wydział Sztuk Wizualnych</p>
+                                <p class="text-brandBlue font-semibold">Tytuł Magistra, Grafika Projektowa</p>
                             </div>
                             <div class="relative bg-white p-4 lg:p-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
                                 <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
@@ -595,7 +555,7 @@
             </div>
         </section>
 
-        <footer class="snap-section snap-footer bg-brandDark text-white pt-10 pb-6 flex flex-col justify-end">
+        <footer class="snap-section snap-footer bg-brandDark text-white pt-10 pb-6 flex flex-col justify-end z-[70]">
             <div class="rigid-container w-full">
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8 border-b border-gray-800 pb-8 mb-6">
                     
