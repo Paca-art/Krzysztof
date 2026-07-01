@@ -52,7 +52,7 @@
         }
         .snap-container::-webkit-scrollbar { display: none; }
         
-        /* Optymalizacja snapowania dla mobile vs desktop */
+        /* Optymalizacja snapowania dla mobile vs desktop pod efekt sticky */
         @media (min-width: 1024px) {
             .snap-container { scroll-snap-type: y mandatory; }
         }
@@ -60,7 +60,7 @@
             .snap-container { scroll-snap-type: y proximity; }
         }
         
-        /* NATYWNY EFEKT TALII KART (CARD STACKING) */
+        /* CZYSTY EFEKT TALII KART (CARD STACKING) NA MOBILE */
         .snap-section {
             width: 100%;
             display: flex;
@@ -74,21 +74,21 @@
             scroll-snap-align: start;
             padding: 80px 0 20px 0;
             
-            /* Domyślnie na mobile: sekcje nakładają się jedna na drugą */
+            /* Karty domyślnie na mobile nakładają się na siebie */
             position: sticky;
             top: 0;
             box-shadow: 0 -15px 35px rgba(0, 0, 0, 0.15);
             will-change: transform;
         }
         
-        /* Pierwsza sekcja nie potrzebuje zaokrągleń u góry */
+        /* Pierwsza sekcja (Hero) nie ma zaokrągleń u góry */
         #home.snap-section {
             border-top-left-radius: 0px !important;
             border-top-right-radius: 0px !important;
             box-shadow: none;
         }
 
-        /* Nadanie zaokrągleń fizycznych kart dla kolejnych sekcji na mobile */
+        /* Zaokrąglenia fizycznych kart dla kolejnych sekcji na mobile */
         #about.snap-section,
         #skills.snap-section,
         #portfolio.snap-section,
@@ -99,7 +99,7 @@
             border-top-right-radius: 32px;
         }
         
-        /* PRZYWRÓCENIE KLASYCZNEGO WYPYCHANIA DLA DESKTOPU (Zgodnie z wytycznymi) */
+        /* PRZYWRÓCENIE KLASYCZNEGO UKŁADU DLA DESKTOPU (Sekcje się wypychają) */
         @media (min-width: 1024px) {
             .snap-section {
                 position: relative;
@@ -178,6 +178,8 @@
         @media (min-width: 768px) {
             .easter-egg-image { width: 150px; height: 150px; border: 4px solid #0052FF; }
         }
+        
+        /* Animacja Pacmana */
         .pacman-dots {
             background-image: radial-gradient(circle, #0052FF 3px, transparent 4px);
             background-size: 24px 24px;
@@ -188,9 +190,9 @@
         }
         .pacman-mask { width: 0%; }
         .pacman-mover { left: 0%; opacity: 0; top: 50%; transform: translate(-50%, -50%); }
-        .is-visible .pacman-mask { animation: eat-dots-mask 5s linear forwards; animation-delay: 3s; }
-        .is-visible .pacman-mover { animation: eat-dots-mover 5s linear forwards; animation-delay: 3s; }
-        .is-visible .pacman-body { animation: chomp 0.4s infinite linear; animation-delay: 3s; }
+        .is-visible .pacman-mask { animation: eat-dots-mask 5s linear forwards; animation-delay: 1s; }
+        .is-visible .pacman-mover { animation: eat-dots-mover 5s linear forwards; animation-delay: 1s; }
+        .is-visible .pacman-body { animation: chomp 0.4s infinite linear; animation-delay: 1s; }
         @keyframes eat-dots-mask { 0% { width: 0%; } 100% { width: 100%; } }
         @keyframes eat-dots-mover { 0% { left: 0%; opacity: 0; } 1% { opacity: 1; } 99% { left: 100%; opacity: 1; } 100% { left: 100%; opacity: 0; } }
         @keyframes chomp { 0%, 100% { d: path('M 0,0 L 50,-0.1 A 50,50 0 1,0 50,0.1 Z'); } 50% { d: path('M 0,0 L 35.35,-35.35 A 50,50 0 1,0 35.35,35.35 Z'); } }
@@ -200,40 +202,40 @@
 </head>
 <body class="font-sans text-gray-700 antialiased">
 
-    <div class="snap-container">
-
-        <header class="w-full bg-white/95 backdrop-blur-md fixed top-0 z-[100] border-b border-gray-100 shadow-sm">
-            <div class="rigid-container py-3 lg:py-4 flex justify-between items-center">
-                <a href="#" class="flex items-center gap-2 text-xl lg:text-2xl font-bold text-brandNavy min-w-[44px] min-h-[44px]">
-                    <span class="text-brandBlue"><i class="fa-solid fa-pen-nib"></i></span>
-                    Krzysztof.
-                </a>
-                <nav class="hidden lg:flex gap-8">
-                    <a href="#home" class="text-brandBlue font-medium transition-colors p-2 -m-2">Start</a>
-                    <a href="#about" class="text-brandNavy font-medium hover:text-brandBlue transition-colors p-2 -m-2">O mnie</a>
-                    <a href="#skills" class="text-brandNavy font-medium hover:text-brandBlue transition-colors p-2 -m-2">Umiejętności</a>
-                    <a href="#portfolio" class="text-brandNavy font-medium hover:text-brandBlue transition-colors p-2 -m-2">Projekty</a>
-                    <a href="#services" class="text-brandNavy font-medium hover:text-brandBlue transition-colors p-2 -m-2">Usługi</a>
-                </nav>
-                <a href="cv.pdf" target="_blank" class="hidden lg:inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-medium rounded-full text-white bg-brandBlue hover:bg-blue-700 transition-colors shadow-lg shadow-brandBlue/30 active:scale-95">
-                    Moje CV <i class="fa-solid fa-file-pdf ml-2"></i>
-                </a>
-                <button id="hamburger-btn" aria-label="Otwórz menu" aria-expanded="false" class="lg:hidden text-brandNavy p-2 -mr-2 focus:outline-none flex items-center justify-center min-w-[44px] min-h-[44px] active:text-brandBlue transition-colors">
-                    <i class="fa-solid fa-bars text-2xl"></i>
-                </button>
-            </div>
-        </header>
-
-        <div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-[110] opacity-0 invisible flex flex-col justify-center items-center transition-all duration-300">
-            <nav class="flex flex-col gap-6 text-center w-full px-6">
-                <a href="#home" class="mobile-link text-2xl font-bold text-brandNavy active:text-brandBlue py-3 border-b border-gray-100">Start</a>
-                <a href="#about" class="mobile-link text-2xl font-bold text-brandNavy active:text-brandBlue py-3 border-b border-gray-100">O mnie</a>
-                <a href="#skills" class="mobile-link text-2xl font-bold text-brandNavy active:text-brandBlue py-3 border-b border-gray-100">Umiejętności</a>
-                <a href="#portfolio" class="mobile-link text-2xl font-bold text-brandNavy active:text-brandBlue py-3 border-b border-gray-100">Projekty</a>
-                <a href="#services" class="mobile-link text-2xl font-bold text-brandNavy active:text-brandBlue py-3 border-b border-gray-100">Usługi</a>
-                <a href="cv.pdf" target="_blank" class="mobile-link text-2xl font-bold text-brandBlue py-3 mt-4">Zobacz moje CV <i class="fa-solid fa-file-pdf ml-1"></i></a>
+    <header class="w-full bg-white/95 backdrop-blur-md fixed top-0 z-[150] border-b border-gray-100 shadow-sm">
+        <div class="rigid-container py-3 lg:py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2 text-xl lg:text-2xl font-bold text-brandNavy min-w-[44px] min-h-[44px]">
+                <span class="text-brandBlue"><i class="fa-solid fa-pen-nib"></i></span>
+                Krzysztof.
+            </a>
+            <nav class="hidden lg:flex gap-8">
+                <a href="#home" class="text-brandBlue font-medium transition-colors p-2 -m-2">Start</a>
+                <a href="#about" class="text-brandNavy font-medium hover:text-brandBlue transition-colors p-2 -m-2">O mnie</a>
+                <a href="#skills" class="text-brandNavy font-medium hover:text-brandBlue transition-colors p-2 -m-2">Umiejętności</a>
+                <a href="#portfolio" class="text-brandNavy font-medium hover:text-brandBlue transition-colors p-2 -m-2">Projekty</a>
+                <a href="#services" class="text-brandNavy font-medium hover:text-brandBlue transition-colors p-2 -m-2">Usługi</a>
             </nav>
+            <a href="cv.pdf" target="_blank" class="hidden lg:inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-medium rounded-full text-white bg-brandBlue hover:bg-blue-700 transition-colors shadow-lg shadow-brandBlue/30 active:scale-95">
+                Moje CV <i class="fa-solid fa-file-pdf ml-2"></i>
+            </a>
+            <button id="hamburger-btn" aria-label="Otwórz menu" aria-expanded="false" class="lg:hidden text-brandNavy p-2 -mr-2 focus:outline-none flex items-center justify-center min-w-[44px] min-h-[44px] active:text-brandBlue transition-colors">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
         </div>
+    </header>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-[140] opacity-0 invisible flex flex-col justify-center items-center transition-all duration-300">
+        <nav class="flex flex-col gap-6 text-center w-full px-6">
+            <a href="#home" class="mobile-link text-2xl font-bold text-brandNavy active:text-brandBlue py-3 border-b border-gray-100">Start</a>
+            <a href="#about" class="mobile-link text-2xl font-bold text-brandNavy active:text-brandBlue py-3 border-b border-gray-100">O mnie</a>
+            <a href="#skills" class="mobile-link text-2xl font-bold text-brandNavy active:text-brandBlue py-3 border-b border-gray-100">Umiejętności</a>
+            <a href="#portfolio" class="mobile-link text-2xl font-bold text-brandNavy active:text-brandBlue py-3 border-b border-gray-100">Projekty</a>
+            <a href="#services" class="mobile-link text-2xl font-bold text-brandNavy active:text-brandBlue py-3 border-b border-gray-100">Usługi</a>
+            <a href="cv.pdf" target="_blank" class="mobile-link text-2xl font-bold text-brandBlue py-3 mt-4">Zobacz moje CV <i class="fa-solid fa-file-pdf ml-1"></i></a>
+        </nav>
+    </div>
+
+    <div class="snap-container">
 
         <section id="home" class="snap-section bg-white !pt-20 lg:!pt-24 !pb-4 z-10">
             <div class="rigid-container h-full w-full flex flex-col justify-between">
@@ -246,14 +248,17 @@
                         <h1 class="mb-4 lg:mb-6 text-brandNavy flex flex-col items-center lg:items-start w-full">
                             <span class="block text-xl md:text-3xl lg:text-[2.5rem] font-medium lg:font-normal text-brandNavy mb-1 lg:mb-2 w-full">Cześć, jestem Krzysztof!</span>
                             
-                            <div class="grid grid-cols-[auto_auto_auto] justify-center lg:justify-start tracking-tight">
-                                <span class="text-brandBlue text-[3.2rem] md:text-7xl lg:text-[6.5rem] font-bold text-right leading-[0.9]">Graphic</span>
-                                <span class="text-brandBlue text-[3.2rem] md:text-7xl lg:text-[6.5rem] font-bold text-center leading-[0.9] relative"></span>
-                                <span class="text-brandBlue text-[3.2rem] md:text-7xl lg:text-[6.5rem] font-bold text-left leading-[0.9]"></span>
+                            <div class="grid grid-cols-[auto_auto_auto] justify-center lg:justify-start tracking-tight font-bold text-brandBlue text-[3.2rem] md:text-7xl lg:text-[6.5rem]">
+                                <span class="text-right leading-[0.95]">Gra</span>
+                                <span class="text-center leading-[0.95] relative">p</span>
+                                <span class="text-left leading-[0.95]">hic</span>
                                 
-                                <span class="text-brandBlue text-[3.2rem] md:text-7xl lg:text-[6.5rem] font-bold text-right leading-[0.9] mt-3 lg:mt-4">Des</span>
-                                <span class="text-brandBlue text-[3.2rem] md:text-7xl lg:text-[6.5rem] font-bold text-center leading-[0.9] relative z-20 mt-3 lg:mt-4">ı<span class="absolute bottom-[0.66em] lg:bottom-[0.63em] left-1/2 -translate-x-1/2 w-[0.16em] h-[0.16em] bg-brandBlue rounded-full border-[3px] lg:border-[4px] border-white z-30 box-content shadow-[0_2px_6px_rgba(0,0,0,0.15)]"></span></span>
-                                <span class="text-brandBlue text-[3.2rem] md:text-7xl lg:text-[6.5rem] font-bold text-left leading-[0.9] mt-3 lg:mt-4">gner</span>
+                                <span class="text-right leading-[0.95] mt-3 lg:mt-4">Des</span>
+                                <span class="text-center leading-[0.95] relative z-20 mt-3 lg:mt-4">
+                                    ı
+                                    <span class="absolute bottom-[0.68em] lg:bottom-[0.65em] left-1/2 -translate-x-1/2 w-[0.16em] h-[0.16em] bg-brandBlue rounded-full border-[3px] lg:border-[4px] border-white z-30 box-content shadow-[0_0_0_4px_#fff,0_4px_10px_rgba(0,82,255,0.2)]"></span>
+                                </span>
+                                <span class="text-left leading-[0.95] mt-3 lg:mt-4">gner</span>
                             </div>
                         </h1>
                         
@@ -425,8 +430,8 @@
                     <button class="portfolio-dot w-2 h-2 rounded-full bg-gray-300 hover:bg-brandBlue/50 transition-all" data-index="2"></button>
                     <button class="portfolio-dot w-2 h-2 rounded-full bg-gray-300 hover:bg-brandBlue/50 transition-all" data-index="3"></button>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
 
         <section id="services" class="snap-section bg-white z-50">
             <div class="rigid-container flex flex-col justify-center h-full w-full">
@@ -651,14 +656,14 @@
                 } else {
                     mobileMenu.classList.add('menu-open');
                     mobileMenu.classList.remove('invisible', 'opacity-0');
-                    if (scrollContainerMain) scrollContainerMain.style.overflowY = "hidden"; // Blokada tła przy menu
+                    if (scrollContainerMain) scrollContainerMain.style.overflowY = "hidden";
                     hamburgerBtn.innerHTML = '<i class="fa-solid fa-xmark text-2xl"></i>';
                 }
             }
             hamburgerBtn.addEventListener('click', toggleMenu);
             mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
 
-            // --- INTERSECTION OBSERVER (Naprawione bezpośrednie śledzenie sekcji) ---
+            // --- INTERSECTION OBSERVER (Natywny, stabilny nasłuch sekcji) ---
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
