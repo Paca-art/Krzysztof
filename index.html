@@ -199,7 +199,6 @@
 </head>
 <body class="font-sans text-gray-700 antialiased bg-white">
 
-    <!-- NAWIGACJA -->
     <header class="w-full bg-white/95 backdrop-blur-md fixed top-0 z-50 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
         <div class="rigid-container py-3 lg:py-4 flex justify-between items-center">
             <a href="#" class="flex items-center gap-2 text-xl lg:text-2xl font-bold text-brandNavy min-w-[44px] min-h-[44px]">
@@ -213,7 +212,6 @@
                 <a href="#portfolio" class="text-brandNavy font-medium hover:text-brandBlue transition-colors p-2 -m-2">Projekty</a>
                 <a href="#services" class="text-brandNavy font-medium hover:text-brandBlue transition-colors p-2 -m-2">Usługi</a>
             </nav>
-            <!-- Zmiana linku w przycisku menu -->
             <a href="cv.pdf" target="_blank" class="hidden lg:inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-medium rounded-full text-white bg-brandBlue hover:bg-blue-700 transition-colors shadow-lg shadow-brandBlue/30 active:scale-95">
                 Moje CV <i class="fa-solid fa-file-pdf ml-2"></i>
             </a>
@@ -223,7 +221,6 @@
         </div>
     </header>
 
-    <!-- MENU MOBILNE OVERLAY -->
     <div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-40 opacity-0 invisible flex flex-col justify-center items-center">
         <nav class="flex flex-col gap-6 text-center w-full px-6">
             <a href="#home" class="mobile-link text-2xl font-bold text-brandNavy active:text-brandBlue py-3 border-b border-gray-100">Start</a>
@@ -231,14 +228,12 @@
             <a href="#skills" class="mobile-link text-2xl font-bold text-brandNavy active:text-brandBlue py-3 border-b border-gray-100">Umiejętności</a>
             <a href="#portfolio" class="mobile-link text-2xl font-bold text-brandNavy active:text-brandBlue py-3 border-b border-gray-100">Projekty</a>
             <a href="#services" class="mobile-link text-2xl font-bold text-brandNavy active:text-brandBlue py-3 border-b border-gray-100">Usługi</a>
-            <!-- Zmiana linku w menu mobilnym -->
             <a href="cv.pdf" target="_blank" class="mobile-link text-2xl font-bold text-brandBlue py-3 mt-4">Zobacz moje CV <i class="fa-solid fa-file-pdf ml-1"></i></a>
         </nav>
     </div>
 
     <div class="snap-container">
 
-        <!-- SEKCJA 1: HERO -->
         <section id="home" class="snap-section bg-white !pt-20 lg:!pt-24 !pb-4">
             <div class="rigid-container h-full w-full flex flex-col justify-between">
                 
@@ -247,16 +242,23 @@
                         <span class="hidden md:inline-block px-4 py-1 rounded-full border border-brandBlue/30 text-brandBlue font-medium text-[10px] lg:text-xs mb-6 uppercase tracking-widest bg-white">
                             Portfolio
                         </span>
-                        <h1 class="mb-4 lg:mb-8 text-brandNavy">
+                        
+                        <h1 class="mb-4 lg:mb-6 text-brandNavy">
                             <span class="block text-2xl md:text-4xl lg:text-[2.5rem] font-medium lg:font-normal text-brandNavy mb-1 lg:mb-2">Cześć, jestem Krzysztof!</span>
-                            <span class="block text-[3.5rem] md:text-7xl lg:text-[6.5rem] font-bold text-brandBlue leading-[0.9] tracking-tight">Graphic</span>
-                            <span class="block text-[3.5rem] md:text-7xl lg:text-[6.5rem] font-bold text-brandBlue leading-[0.9] tracking-tight">Designer</span>
+                            
+                            <span class="block text-[3.3rem] md:text-7xl lg:text-[6.5rem] font-bold text-brandBlue leading-[0.9] tracking-tight">
+                                Gra<span class="relative inline-block left-[-0.012em]">p</span>hic
+                            </span>
+                            
+                            <span class="block text-[3.3rem] md:text-7xl lg:text-[6.5rem] font-bold text-brandBlue leading-[0.9] tracking-tight -mt-[0.04em] lg:-mt-[0.09em]">
+                                Des<span class="relative inline-block left-[0.015em]">ı<span class="absolute bottom-[0.66em] lg:bottom-[0.63em] left-1/2 -translate-x-1/2 w-[0.2em] h-[0.2em] bg-brandBlue rounded-full border-[3px] lg:border-[4px] border-white z-20 box-content"></span></span>gner
+                            </span>
                         </h1>
-                        <p class="text-gray-500 max-w-sm mx-auto lg:mx-0 mb-6 lg:mb-10 text-sm md:text-base leading-relaxed">
+                        
+                        <p class="text-gray-500 max-w-sm mx-auto lg:mx-0 mb-6 lg:mb-8 text-sm md:text-base leading-relaxed">
                             Zajmuję się kompleksowym projektowaniem – od identyfikacji wizualnej i DTP, przez obróbkę foto/wideo, aż po kampanie e-commerce i interfejsy UI/UX.
                         </p>
                         
-                        <!-- DODANO PRZYCISK "MOJE CV" -->
                         <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 lg:gap-4">
                             <a href="https://www.behance.net/krzysztofped07" target="_blank" class="inline-flex items-center justify-center px-6 lg:px-8 py-3 lg:py-3.5 text-xs lg:text-base font-bold rounded-full text-white bg-brandBlue hover:bg-blue-700 active:scale-95 transition-all shadow-xl shadow-brandBlue/30 min-h-[44px]">
                                 Zobacz Behance &rarr;
@@ -265,7 +267,6 @@
                                 Moje CV <i class="fa-solid fa-file-pdf ml-2"></i>
                             </a>
                         </div>
-
                     </div>
                     
                     <div class="anim-right relative z-10 flex justify-center items-end lg:items-center order-2 h-[220px] md:h-[360px] lg:h-[460px] w-full">
@@ -274,15 +275,6 @@
                                 <div class="main-circle rounded-full animate-jelly absolute bg-brandBlue z-10 shadow-xl w-[180px] h-[180px] md:w-[300px] md:h-[300px] lg:w-[380px] lg:h-[380px]"></div>
                                 <canvas id="blob-canvas" class="absolute inset-0 z-20 w-full h-full pointer-events-none lg:pointer-events-auto"></canvas>
                             </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="hidden">
-                                <defs>
-                                    <filter id="gooey-filter">
-                                        <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur" />
-                                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9" result="gooey" />
-                                        <feComposite in="SourceGraphic" in2="gooey" operator="atop"/>
-                                    </filter>
-                                </defs>
-                            </svg>
                             <img src="img/kk2.webp" alt="Krzysztof Paczkowski" class="absolute z-30 w-auto h-[90%] lg:h-[95%] bottom-0 object-contain pointer-events-none">
                             <div class="absolute top-0 lg:top-10 right-0 lg:right-2 bg-white p-2 lg:p-4 rounded-xl shadow-md z-40 flex flex-col justify-center gap-0 scale-75 lg:scale-100 transform origin-top-right border border-gray-50">
                                 <p class="text-[8px] lg:text-[10px] text-gray-400 font-medium mb-0.5">Pakiet Adobe</p>
@@ -315,7 +307,6 @@
             </div>
         </section>
 
-        <!-- SEKCJA 2: O MNIE -->
         <section id="about" class="snap-section bg-light">
             <div class="rigid-container grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
                 <div class="anim-left relative hidden lg:flex justify-center px-4 lg:px-0">
@@ -342,7 +333,6 @@
             </div>
         </section>
 
-        <!-- SEKCJA 3: UMIEJĘTNOŚCI -->
         <section id="skills" class="snap-section bg-white relative">
             <div id="easter-egg" class="easter-egg-container">
                 <img src="https://ui-avatars.com/api/?name=Krzysztof&background=0052FF&color=fff&size=150" alt="Krzysztof" class="easter-egg-image">
@@ -403,9 +393,7 @@
             </div>
         </section>
 
-        <!-- SEKCJA 4: KARUZELA PROJEKTÓW -->
         <section id="portfolio" class="snap-section bg-brandLight relative">
-            
             <div class="branding-section-bg"><div class="branding-section-tray"><div class="branding-section-thumb"><img src="img/KZ.jpg" alt="Projekt Branding"></div></div></div>
             <div class="www-section-bg"><div class="www-section-tray"><div class="www-section-thumb"><img src="img/MG.jpg" alt="Projekt 1"></div><div class="www-section-thumb"><img src="img/grizzlies.jpg" alt="Projekt 2"></div><div class="www-section-thumb"><img src="img/ms1.webp" alt="Projekt 3"></div></div></div>
 
@@ -453,17 +441,9 @@
                     <button class="portfolio-dot w-2 h-2 rounded-full bg-gray-300 hover:bg-brandBlue/50 transition-all" data-index="2"></button>
                     <button class="portfolio-dot w-2 h-2 rounded-full bg-gray-300 hover:bg-brandBlue/50 transition-all" data-index="3"></button>
                 </div>
-
-                <style>
-                    .portfolio-card { width: 78vw; }
-                    @media (min-width: 768px)  { .portfolio-card { width: 45vw; } }
-                    @media (min-width: 1024px) { .portfolio-card { width: calc(25% - 12px); } }
-                    @media (min-width: 1024px) { .portfolio-carousel { gap: 16px; } }
-                </style>
             </div>
         </section>
 
-        <!-- SEKCJA 5: USŁUGI -->
         <section id="services" class="snap-section bg-white">
             <div class="rigid-container flex flex-col justify-center h-full w-full">
                 <div class="text-center mb-4 lg:mb-12 anim-bottom">
@@ -507,7 +487,6 @@
             </div>
         </section>
 
-        <!-- SEKCJA 6: DOŚWIADCZENIE -->
         <section id="experience" class="snap-section bg-light">
             <div class="rigid-container h-full flex flex-col justify-center">
                 <div class="text-center mb-4 shrink-0 anim-bottom">
@@ -545,25 +524,27 @@
                                 <span class="absolute -left-[21px] top-4 w-3 h-3 rounded-full bg-light border-[2px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
                                 <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-0.5">
                                     <h4 class="font-bold text-brandNavy">Allweld, Poznań</h4>
-                                    <span class="text-[9px] font-bold text-brandBlue bg-brandBlue/10 px-1.5 py-0.5 rounded">03.2021 - 11.2022</span>
+                                    <span class="text-[9px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">03.2021 - 11.2022</span>
                                 </div>
-                                <p class="font-semibold text-gray-700">Grafik kreatywny, social media</p>
+                                <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik kreatywny, social media</p>
+                                <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Artykuły spawalnicze.</p>
                             </div>
                             <div class="relative bg-white p-3 rounded-xl shadow-sm border border-gray-100 group text-xs">
                                 <span class="absolute -left-[21px] top-4 w-3 h-3 rounded-full bg-light border-[2px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
                                 <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-0.5">
                                     <h4 class="font-bold text-brandNavy">Silcare, Gorzów Wlkp.</h4>
-                                    <span class="text-[9px] font-bold text-brandBlue bg-brandBlue/10 px-1.5 py-0.5 rounded">11.2020 - 02.2021</span>
+                                    <span class="text-[9px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">11.2020 - 02.2021</span>
                                 </div>
-                                <p class="font-semibold text-gray-700">Grafik kreatywny, e-commerce</p>
+                                <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik kreatywny, e-commerce</p>
+                                <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Branża kosmetyczna.</p>
                             </div>
                             <div class="relative bg-white p-3 rounded-xl shadow-sm border border-gray-100 group text-xs">
                                 <span class="absolute -left-[21px] top-4 w-3 h-3 rounded-full bg-light border-[2px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
                                 <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-0.5">
                                     <h4 class="font-bold text-brandNavy">Meester Group, Poznań</h4>
-                                    <span class="text-[9px] font-bold text-brandBlue bg-brandBlue/10 px-1.5 py-0.5 rounded">08.2020 - 11.2020</span>
+                                    <span class="text-[9px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">08.2020 - 11.2020</span>
                                 </div>
-                                <p class="font-semibold text-gray-700">Grafik kreatywny, fotograf, e-commerce</p>
+                                <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik kreatywny, fotograf, e-commerce</p>
                             </div>
                         </div>
                     </div>
@@ -575,24 +556,25 @@
                         <div class="space-y-3 border-l-2 border-brandBlue/20 ml-2 pl-4 relative">
                             <div class="relative bg-brandNavy p-3.5 rounded-xl shadow-md text-xs">
                                 <span class="absolute -left-[21px] top-4 w-3 h-3 rounded-full bg-brandBlue border-[2px] border-light z-10"></span>
-                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-0.5">
-                                    <h4 class="font-bold text-white">Akademia Sztuki w Szczecinie</h4>
-                                    <span class="text-[9px] font-bold text-white bg-white/20 px-1.5 py-0.5 rounded">2011 - 2017</span>
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2 gap-1">
+                                    <h4 class="text-base lg:text-lg font-bold text-white leading-tight">Akademia Sztuki<br>w Szczecinie</h4>
+                                    <span class="text-[9px] lg:text-[10px] font-bold text-white bg-white/20 px-2 py-0.5 rounded w-fit">2011 - 2017</span>
                                 </div>
-                                <p class="text-brandBlue font-semibold">Tytuł Magistra, Grafika Projektowa</p>
+                                <p class="text-xs lg:text-sm font-semibold text-brandBlue mb-1">Tytuł Magistra, Grafika Projektowa</p>
+                                <p class="text-[10px] lg:text-xs text-gray-400">Wydział Sztuk Wizualnych</p>
                             </div>
-                            <div class="relative bg-white p-3.5 rounded-xl shadow-sm border border-gray-100 text-xs">
-                                <span class="absolute -left-[21px] top-4 w-3 h-3 rounded-full bg-light border-[2px] border-brandBlue z-10"></span>
-                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-0.5">
-                                    <h4 class="font-bold text-brandNavy">Liceum Sztuk Plastycznych</h4>
-                                    <span class="text-[9px] font-bold text-brandBlue bg-brandBlue/10 px-1.5 py-0.5 rounded">2006 - 2010</span>
+                            <div class="relative bg-white p-4 lg:p-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+                                <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2 gap-1">
+                                    <h4 class="text-sm lg:text-base font-bold text-brandNavy leading-tight">Liceum Sztuk<br>Plastycznych</h4>
+                                    <span class="text-[9px] lg:text-[10px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">2006 - 2010</span>
                                 </div>
                                 <p class="text-gray-700 font-semibold">Specjalista od reklamy wizualnej</p>
                             </div>
                         </div>
 
                         <h3 class="text-sm lg:text-xl font-bold text-brandNavy mt-6 mb-4 lg:sticky top-0 bg-light py-1 z-10 border-b border-gray-200 flex items-center gap-2">
-                            <i class="fa-solid fa-list-check text-brandBlue"></i> Kursy i Skille
+                            <i class="fa-solid fa-list-check text-brandBlue"></i> Kursy i Dodatkowe Skille
                         </h3>
                         <ul class="space-y-3 text-xs text-gray-600 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm">
                             <li class="flex items-start gap-2">
@@ -601,7 +583,7 @@
                             </li>
                             <li class="flex items-start gap-2">
                                 <div class="w-5 h-5 rounded-full bg-brandBlue/10 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-pen-nib text-brandBlue text-[9px]"></i></div>
-                                <span>Obsługa tabletu graficznego i <strong>rysunek odręczny</strong>.</span>
+                                <span>Obsługa tabletu graficznego oraz biegły <strong>rysunek odręczny</strong>.</span>
                             </li>
                             <li class="flex items-start gap-2">
                                 <div class="w-5 h-5 rounded-full bg-brandBlue/10 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-users text-brandBlue text-[9px]"></i></div>
@@ -613,7 +595,6 @@
             </div>
         </section>
 
-        <!-- SEKCJA 7: FOOTER -->
         <footer class="snap-section snap-footer bg-brandDark text-white pt-10 pb-6 flex flex-col justify-end">
             <div class="rigid-container w-full">
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8 border-b border-gray-800 pb-8 mb-6">
