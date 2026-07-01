@@ -39,21 +39,18 @@
             height: 100%;
             margin: 0;
             overflow-x: hidden;
-            background-color: #020C1B;
+            background-color: #ffffff;
             -webkit-tap-highlight-color: transparent;
         }
-        
-        /* GŁÓWNY KONTENER: Wymuszone rygorystyczne dociąganie do krawędzi kart */
         .snap-container {
             height: 100dvh;
             overflow-y: auto;
             scroll-behavior: smooth;
-            scrollbar-width: none;
             scroll-snap-type: y mandatory;
+            scrollbar-width: none;
         }
         .snap-container::-webkit-scrollbar { display: none; }
         
-        /* CZYSTY, NATYWNY EFEKT STACKOWANIA KART NA MOBILE */
         .snap-section {
             width: 100%;
             display: flex;
@@ -65,53 +62,18 @@
             height: 100dvh;
             min-height: 100dvh;
             scroll-snap-align: start;
-            scroll-snap-stop: always; /* Zakaz przeskakiwania kilku kart na raz */
-            padding: 80px 0 20px 0;
-            
-            /* Konfiguracja talii kart (sticky) */
-            position: sticky;
-            top: 0;
-            box-shadow: 0 -15px 35px rgba(0, 0, 0, 0.15);
-            will-change: transform;
+            padding: 70px 0 20px 0;
         }
-        
-        /* Pierwsza sekcja nie potrzebuje zaokrągleń na samej górze strony */
-        #home.snap-section {
-            border-top-left-radius: 0px !important;
-            border-top-right-radius: 0px !important;
-            box-shadow: none;
-        }
-
-        /* Fizyczne krawędzie kart widoczne podczas nasuwania sekcji */
-        #about.snap-section,
-        #skills.snap-section,
-        #portfolio.snap-section,
-        #services.snap-section,
-        #experience.snap-section,
-        .snap-footer {
-            border-top-left-radius: 32px;
-            border-top-right-radius: 32px;
-        }
-        
-        /* KLASYCZNY UKŁAD DLA DESKTOPU: Karty się wypychają naturalnie */
         @media (min-width: 1024px) {
             .snap-section {
-                position: relative;
-                top: auto;
-                box-shadow: none;
                 padding: 0;
-                border-top-left-radius: 0px !important;
-                border-top-right-radius: 0px !important;
-            }
-            .snap-footer {
-                position: relative;
-                top: auto;
-                box-shadow: none;
-                border-top-left-radius: 0px !important;
-                border-top-right-radius: 0px !important;
             }
         }
-        
+        .snap-footer {
+            min-height: auto !important;
+            height: auto !important;
+            scroll-snap-align: end;
+        }
         .rigid-container {
             width: 100%;
             max-width: 1280px;
@@ -172,8 +134,6 @@
         @media (min-width: 768px) {
             .easter-egg-image { width: 150px; height: 150px; border: 4px solid #0052FF; }
         }
-        
-        /* Animacja Pacmana */
         .pacman-dots {
             background-image: radial-gradient(circle, #0052FF 3px, transparent 4px);
             background-size: 24px 24px;
@@ -184,17 +144,62 @@
         }
         .pacman-mask { width: 0%; }
         .pacman-mover { left: 0%; opacity: 0; top: 50%; transform: translate(-50%, -50%); }
-        .is-visible .pacman-mask { animation: eat-dots-mask 5s linear forwards; animation-delay: 1s; }
-        .is-visible .pacman-mover { animation: eat-dots-mover 5s linear forwards; animation-delay: 1s; }
-        .is-visible .pacman-body { animation: chomp 0.4s infinite linear; animation-delay: 1s; }
+        .is-visible .pacman-mask { animation: eat-dots-mask 5s linear forwards; animation-delay: 3s; }
+        .is-visible .pacman-mover { animation: eat-dots-mover 5s linear forwards; animation-delay: 3s; }
+        .is-visible .pacman-body { animation: chomp 0.4s infinite linear; animation-delay: 3s; }
         @keyframes eat-dots-mask { 0% { width: 0%; } 100% { width: 100%; } }
         @keyframes eat-dots-mover { 0% { left: 0%; opacity: 0; } 1% { opacity: 1; } 99% { left: 100%; opacity: 1; } 100% { left: 100%; opacity: 0; } }
         @keyframes chomp { 0%, 100% { d: path('M 0,0 L 50,-0.1 A 50,50 0 1,0 50,0.1 Z'); } 50% { d: path('M 0,0 L 35.35,-35.35 A 50,50 0 1,0 35.35,35.35 Z'); } }
+        #mobile-menu { transition: opacity 0.3s ease, visibility 0.3s ease; }
+        #mobile-menu.menu-open { opacity: 1; visibility: visible; }
+        body.menu-open { overflow: hidden; }
+
+        .www-card { position: relative; overflow: hidden; }
+        .www-card .card-img-wrap img { transition: transform 0.7s ease, filter 0.5s ease; }
+        .www-card:hover .card-img-wrap img { transform: scale(1.08); filter: brightness(0.45); }
+
+        .www-section-bg {
+            position: absolute; inset: 0; z-index: 0; pointer-events: none;
+            display: flex; align-items: flex-end; justify-content: center;
+            padding: 0 1rem; overflow: hidden;
+        }
+        @media (min-width: 1024px) { .www-section-bg { padding: 0 3rem; } }
+        .www-section-tray { width: 100%; max-width: 1280px; height: 100%; display: flex; align-items: flex-end; gap: 1rem; padding-bottom: 2rem; }
+        .www-section-thumb {
+            flex: 1; height: 0%; border-radius: 16px 16px 0 0; overflow: hidden;
+            transition: height 0.65s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 -10px 40px rgba(0,0,0,0.15);
+            -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+            mask-image: linear-gradient(to top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+        }
+        .www-section-thumb:nth-child(2) { transition-delay: 0.07s; }
+        .www-section-thumb:nth-child(3) { transition-delay: 0.14s; }
+        .www-section-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0.6; }
+        #portfolio.www-bg-active .www-section-thumb { height: 85%; }
+
+        .branding-card { position: relative; overflow: hidden; }
+        .branding-card .branding-img-wrap img { transition: transform 0.7s ease, filter 0.5s ease; }
+        .branding-card:hover .branding-img-wrap img { transform: scale(1.08); filter: brightness(0.45); }
+
+        .branding-section-bg {
+            position: absolute; inset: 0; z-index: 0; pointer-events: none;
+            display: flex; align-items: flex-end; justify-content: center;
+            padding: 0 1rem; overflow: hidden;
+        }
+        @media (min-width: 1024px) { .branding-section-bg { padding: 0 3rem; } }
+        .branding-section-tray { width: 100%; max-width: 1280px; height: 100%; display: flex; align-items: flex-end; gap: 1rem; padding-bottom: 2rem; }
+        .branding-section-thumb {
+            flex: 1; height: 0%; border-radius: 16px 16px 0 0; overflow: hidden;
+            transition: height 0.65s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 -10px 40px rgba(0,0,0,0.15);
+            -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+            mask-image: linear-gradient(to top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+        }
+        .branding-section-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0.6; }
+        #portfolio.branding-bg-active .branding-section-thumb { height: 85%; }
     </style>
 </head>
-<body class="font-sans text-gray-700 antialiased">
+<body class="font-sans text-gray-700 antialiased bg-white">
 
-    <header class="w-full bg-white/95 backdrop-blur-md fixed top-0 z-[150] border-b border-gray-100 shadow-sm">
+    <header class="w-full bg-white/95 backdrop-blur-md fixed top-0 z-50 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
         <div class="rigid-container py-3 lg:py-4 flex justify-between items-center">
             <a href="#" class="flex items-center gap-2 text-xl lg:text-2xl font-bold text-brandNavy min-w-[44px] min-h-[44px]">
                 <span class="text-brandBlue"><i class="fa-solid fa-pen-nib"></i></span>
@@ -216,7 +221,7 @@
         </div>
     </header>
 
-    <div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-[140] opacity-0 invisible flex flex-col justify-center items-center transition-all duration-300">
+    <div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-40 opacity-0 invisible flex flex-col justify-center items-center">
         <nav class="flex flex-col gap-6 text-center w-full px-6">
             <a href="#home" class="mobile-link text-2xl font-bold text-brandNavy active:text-brandBlue py-3 border-b border-gray-100">Start</a>
             <a href="#about" class="mobile-link text-2xl font-bold text-brandNavy active:text-brandBlue py-3 border-b border-gray-100">O mnie</a>
@@ -229,34 +234,31 @@
 
     <div class="snap-container">
 
-        <section id="home" class="snap-section bg-white !pt-20 lg:!pt-24 !pb-4 z-10 snap-always">
+        <section id="home" class="snap-section bg-white !pt-20 lg:!pt-24 !pb-4">
             <div class="rigid-container h-full w-full flex flex-col justify-between">
+                
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-center flex-grow">
                     <div class="anim-left z-10 order-1 text-center lg:text-left mt-2 lg:mt-0">
                         <span class="hidden md:inline-block px-4 py-1 rounded-full border border-brandBlue/30 text-brandBlue font-medium text-[10px] lg:text-xs mb-6 uppercase tracking-widest bg-white">
                             Portfolio
                         </span>
                         
-                        <h1 class="mb-4 lg:mb-6 text-brandNavy flex flex-col items-center lg:items-start w-full">
-                            <span class="block text-xl md:text-3xl lg:text-[2.5rem] font-medium lg:font-normal text-brandNavy mb-1 lg:mb-2 w-full">Cześć, jestem Krzysztof!</span>
+                        <h1 class="mb-4 lg:mb-6 text-brandNavy">
+                            <span class="block text-2xl md:text-4xl lg:text-[2.5rem] font-medium lg:font-normal text-brandNavy mb-1 lg:mb-2">Cześć, jestem Krzysztof!</span>
                             
-                            <div class="grid grid-cols-[1fr_auto_1fr] items-center tracking-tight font-bold text-brandBlue text-[3.2rem] md:text-7xl lg:text-[6.5rem] w-full max-w-max mx-auto lg:mx-0">
-                                <span class="text-right leading-[0.95]">Gra</span>
-                                <span class="text-center leading-[0.95] relative px-0.5">p</span>
-                                <span class="text-left leading-[0.95]">hic</span>
-                                
-                                <span class="text-right leading-[0.95] mt-3 lg:mt-4">Des</span>
-                                <span class="text-center leading-[0.95] relative z-20 mt-3 lg:mt-4 px-0.5">
-                                    ı
-                                    <span class="absolute bottom-[0.68em] lg:bottom-[0.65em] left-1/2 -translate-x-1/2 w-[0.16em] h-[0.16em] bg-brandBlue rounded-full border-[3px] lg:border-[4px] border-white z-30 box-content shadow-[0_0_0_4px_#fff,0_4px_10px_rgba(0,82,255,0.2)]"></span>
-                                </span>
-                                <span class="text-left leading-[0.95] mt-3 lg:mt-4">gner</span>
-                            </div>
+                            <span class="block text-[3.3rem] md:text-7xl lg:text-[6.5rem] font-bold text-brandBlue leading-[0.9] tracking-tight">
+                                Graphic
+                            </span>
+                            
+                            <span class="block text-[3.3rem] md:text-7xl lg:text-[6.5rem] font-bold text-brandBlue tracking-tight leading-[0.9] mt-1 lg:-mt-[0.12em] -ml-[0.18em] lg:-ml-[0.35em] relative">
+                                Des<span class="relative inline-block">ı<span class="absolute bottom-[0.66em] lg:bottom-[0.63em] left-1/2 -translate-x-1/2 w-[0.18em] h-[0.18em] bg-brandBlue rounded-full border-[3px] lg:border-[4px] border-white z-20 box-content shadow-[0_2px_8px_rgba(0,0,0,0.15)]"></span></span>gner
+                            </span>
                         </h1>
                         
                         <p class="text-gray-500 max-w-sm mx-auto lg:mx-0 mb-6 lg:mb-8 text-sm md:text-base leading-relaxed">
                             Zajmuję się kompleksowym projektowaniem – od identyfikacji wizualnej i DTP, przez obróbkę foto/wideo, aż po kampanie e-commerce i interfejsy UI/UX.
                         </p>
+                        
                         <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 lg:gap-4">
                             <a href="https://www.behance.net/krzysztofped07" target="_blank" class="inline-flex items-center justify-center px-6 lg:px-8 py-3 lg:py-3.5 text-xs lg:text-base font-bold rounded-full text-white bg-brandBlue hover:bg-blue-700 active:scale-95 transition-all shadow-xl shadow-brandBlue/30 min-h-[44px]">
                                 Zobacz Behance &rarr;
@@ -266,6 +268,7 @@
                             </a>
                         </div>
                     </div>
+                    
                     <div class="anim-right relative z-10 flex justify-center items-end lg:items-center order-2 h-[220px] md:h-[360px] lg:h-[460px] w-full">
                         <div class="relative w-full h-full flex items-center justify-center overflow-visible">
                             <div class="absolute inset-0 w-full h-full flex items-center justify-center" id="blob-container">
@@ -273,22 +276,38 @@
                                 <canvas id="blob-canvas" class="absolute inset-0 z-20 w-full h-full pointer-events-none lg:pointer-events-auto"></canvas>
                             </div>
                             <img src="img/kk2.webp" alt="Krzysztof Paczkowski" class="absolute z-30 w-auto h-[90%] lg:h-[95%] bottom-0 object-contain pointer-events-none">
+                            <div class="absolute top-0 lg:top-10 right-0 lg:right-2 bg-white p-2 lg:p-4 rounded-xl shadow-md z-40 flex flex-col justify-center gap-0 scale-75 lg:scale-100 transform origin-top-right border border-gray-50">
+                                <p class="text-[8px] lg:text-[10px] text-gray-400 font-medium mb-0.5">Pakiet Adobe</p>
+                                <p class="text-[10px] lg:text-sm font-bold text-brandNavy leading-tight">Ekspert</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="anim-bottom pt-4 lg:pt-6 w-full mt-4 lg:mt-8 border-t border-gray-100 shrink-0">
                     <div class="grid grid-cols-4 gap-1 lg:gap-6 text-center divide-x divide-gray-100 w-full">
-                        <div class="px-1 lg:px-4"><h3 class="text-[1.1rem] md:text-2xl lg:text-3xl font-extrabold text-brandNavy mb-0.5">11+</h3><p class="text-[6.5px] md:text-[9px] lg:text-[11px] text-gray-500 uppercase tracking-wider font-semibold leading-tight">Lat<br>Dośw.</p></div>
-                        <div class="px-1 lg:px-4 flex flex-col justify-center items-center"><h3 class="text-[12px] md:text-xl lg:text-3xl font-extrabold text-brandNavy mb-0.5 w-full flex items-center justify-center">DTP/WWW</h3><p class="text-[6.5px] md:text-[9px] lg:text-[11px] text-gray-500 uppercase tracking-wider font-semibold leading-tight">Szerokie<br>Komp.</p></div>
-                        <div class="px-1 lg:px-4"><h3 class="text-[1.1rem] md:text-2xl lg:text-3xl font-extrabold text-brandNavy mb-0.5">UX/UI</h3><p class="text-[6.5px] md:text-[9px] lg:text-[11px] text-gray-500 uppercase tracking-wider font-semibold leading-tight">Ukończone<br>Szkolenia</p></div>
-                        <div class="px-1 lg:px-4"><h3 class="text-[1.1rem] md:text-2xl lg:text-3xl font-extrabold text-brandNavy mb-0.5">MGR</h3><p class="text-[6.5px] md:text-[9px] lg:text-[11px] text-gray-500 uppercase tracking-wider font-semibold leading-tight">Sztuk<br>Wizualnych</p></div>
+                        <div class="px-1 lg:px-4">
+                            <h3 class="text-[1.1rem] md:text-2xl lg:text-3xl font-extrabold text-brandNavy mb-0.5">11+</h3>
+                            <p class="text-[6.5px] md:text-[9px] lg:text-[11px] text-gray-500 uppercase tracking-wider font-semibold leading-tight">Lat<br>Dośw.</p>
+                        </div>
+                        <div class="px-1 lg:px-4 flex flex-col justify-center items-center">
+                            <h3 class="text-[12px] md:text-xl lg:text-3xl font-extrabold text-brandNavy mb-0.5 w-full flex items-center justify-center">DTP/WWW</h3>
+                            <p class="text-[6.5px] md:text-[9px] lg:text-[11px] text-gray-500 uppercase tracking-wider font-semibold leading-tight">Szerokie<br>Komp.</p>
+                        </div>
+                        <div class="px-1 lg:px-4">
+                            <h3 class="text-[1.1rem] md:text-2xl lg:text-3xl font-extrabold text-brandNavy mb-0.5">UX/UI</h3>
+                            <p class="text-[6.5px] md:text-[9px] lg:text-[11px] text-gray-500 uppercase tracking-wider font-semibold leading-tight">Ukończone<br>Szkolenia</p>
+                        </div>
+                        <div class="px-1 lg:px-4">
+                            <h3 class="text-[1.1rem] md:text-2xl lg:text-3xl font-extrabold text-brandNavy mb-0.5">MGR</h3>
+                            <p class="text-[6.5px] md:text-[9px] lg:text-[11px] text-gray-500 uppercase tracking-wider font-semibold leading-tight">Sztuk<br>Wizualnych</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="snap-section bg-light z-20 snap-always">
+        <section id="about" class="snap-section bg-light">
             <div class="rigid-container grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
                 <div class="anim-left relative hidden lg:flex justify-center px-4 lg:px-0">
                     <div class="absolute inset-0 bg-brandBlue rounded-[32px] lg:rounded-[40px] transform -translate-x-3 translate-y-3 lg:-translate-x-4 lg:translate-y-4 -z-10 opacity-20"></div>
@@ -314,7 +333,7 @@
             </div>
         </section>
 
-        <section id="skills" class="snap-section bg-white z-30 snap-always">
+        <section id="skills" class="snap-section bg-white relative">
             <div id="easter-egg" class="easter-egg-container">
                 <img src="https://ui-avatars.com/api/?name=Krzysztof&background=0052FF&color=fff&size=150" alt="Krzysztof" class="easter-egg-image">
             </div>
@@ -328,7 +347,7 @@
                         </svg>
                     </div>
                 </div>
-                <div class="text-center lg:text-left">
+                <div class="anim-left text-center lg:text-left">
                     <h4 class="text-brandBlue font-bold tracking-wider text-[10px] lg:text-sm mb-2 lg:mb-3 uppercase flex items-center justify-center lg:justify-start gap-2">
                         <i class="fa-solid fa-wand-magic-sparkles"></i> Narzędzia i Skille
                     </h4>
@@ -374,7 +393,10 @@
             </div>
         </section>
 
-        <section id="portfolio" class="snap-section bg-light z-40 snap-always">
+        <section id="portfolio" class="snap-section bg-brandLight relative">
+            <div class="branding-section-bg"><div class="branding-section-tray"><div class="branding-section-thumb"><img src="img/KZ.jpg" alt="Projekt Branding"></div></div></div>
+            <div class="www-section-bg"><div class="www-section-tray"><div class="www-section-thumb"><img src="img/MG.jpg" alt="Projekt 1"></div><div class="www-section-thumb"><img src="img/grizzlies.jpg" alt="Projekt 2"></div><div class="www-section-thumb"><img src="img/ms1.webp" alt="Projekt 3"></div></div></div>
+
             <div class="rigid-container flex flex-col justify-center w-full relative z-10 px-2 lg:px-6">
                 <div class="text-center mb-6 lg:mb-10 anim-bottom">
                     <h4 class="text-brandBlue font-bold tracking-wider text-[10px] lg:text-sm mb-2 uppercase justify-center flex items-center gap-2">
@@ -422,7 +444,7 @@
             </div>
         </section>
 
-        <section id="services" class="snap-section bg-white z-50 snap-always">
+        <section id="services" class="snap-section bg-white">
             <div class="rigid-container flex flex-col justify-center h-full w-full">
                 <div class="text-center mb-4 lg:mb-12 anim-bottom">
                     <h4 class="text-brandBlue font-bold tracking-wider text-[10px] lg:text-sm mb-1 lg:mb-3 uppercase justify-center flex items-center gap-2">
@@ -465,7 +487,7 @@
             </div>
         </section>
 
-        <section id="experience" class="snap-section bg-light z-[60] snap-always">
+        <section id="experience" class="snap-section bg-light">
             <div class="rigid-container h-full flex flex-col justify-center">
                 <div class="text-center mb-4 shrink-0 anim-bottom">
                     <h4 class="text-brandBlue font-bold tracking-wider text-[10px] lg:text-sm mb-1 uppercase justify-center flex items-center gap-2">
@@ -505,6 +527,7 @@
                                     <span class="text-[9px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">03.2021 - 11.2022</span>
                                 </div>
                                 <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik kreatywny, social media</p>
+                                <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Artykuły spawalnicze.</p>
                             </div>
                             <div class="relative bg-white p-3 rounded-xl shadow-sm border border-gray-100 group text-xs">
                                 <span class="absolute -left-[21px] top-4 w-3 h-3 rounded-full bg-light border-[2px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
@@ -512,7 +535,16 @@
                                     <h4 class="font-bold text-brandNavy">Silcare, Gorzów Wlkp.</h4>
                                     <span class="text-[9px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">11.2020 - 02.2021</span>
                                 </div>
+                                <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik kreatywny, e-commerce</p>
                                 <p class="text-[10px] lg:text-xs text-gray-500 mt-1">Branża kosmetyczna.</p>
+                            </div>
+                            <div class="relative bg-white p-3 rounded-xl shadow-sm border border-gray-100 group text-xs">
+                                <span class="absolute -left-[21px] top-4 w-3 h-3 rounded-full bg-light border-[2px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-0.5">
+                                    <h4 class="font-bold text-brandNavy">Meester Group, Poznań</h4>
+                                    <span class="text-[9px] font-bold text-brandBlue bg-brandBlue/10 px-2 py-0.5 rounded w-fit">08.2020 - 11.2020</span>
+                                </div>
+                                <p class="text-xs font-semibold text-gray-700 leading-tight">Grafik kreatywny, fotograf, e-commerce</p>
                             </div>
                         </div>
                     </div>
@@ -528,7 +560,8 @@
                                     <h4 class="font-bold text-white">Akademia Sztuki w Szczecinie</h4>
                                     <span class="text-[9px] font-bold text-white bg-white/20 px-1.5 py-0.5 rounded">2011 - 2017</span>
                                 </div>
-                                <p class="text-brandBlue font-semibold">Tytuł Magistra, Grafika Projektowa</p>
+                                <p class="text-xs lg:text-sm font-semibold text-brandBlue mb-1">Tytuł Magistra, Grafika Projektowa</p>
+                                <p class="text-[10px] lg:text-xs text-gray-400">Wydział Sztuk Wizualnych</p>
                             </div>
                             <div class="relative bg-white p-4 lg:p-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
                                 <span class="absolute -left-[23px] lg:-left-[31px] top-5 w-3.5 h-3.5 lg:w-4 lg:h-4 rounded-full bg-light border-[3px] border-brandBlue group-hover:bg-brandBlue transition-colors z-10"></span>
@@ -539,12 +572,30 @@
                                 <p class="text-gray-700 font-semibold">Specjalista od reklamy wizualnej</p>
                             </div>
                         </div>
+
+                        <h3 class="text-sm lg:text-xl font-bold text-brandNavy mt-6 mb-4 lg:sticky top-0 bg-light py-1 z-10 border-b border-gray-200 flex items-center gap-2">
+                            <i class="fa-solid fa-list-check text-brandBlue"></i> Kursy i Dodatkowe Skille
+                        </h3>
+                        <ul class="space-y-3 text-xs text-gray-600 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm">
+                            <li class="flex items-start gap-2">
+                                <div class="w-5 h-5 rounded-full bg-brandBlue/10 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-laptop-code text-brandBlue text-[9px]"></i></div>
+                                <span><strong>Kurs UX & UI</strong> - projektowanie użyteczności.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <div class="w-5 h-5 rounded-full bg-brandBlue/10 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-pen-nib text-brandBlue text-[9px]"></i></div>
+                                <span>Obsługa tabletu graficznego oraz biegły <strong>rysunek odręczny</strong>.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <div class="w-5 h-5 rounded-full bg-brandBlue/10 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-users text-brandBlue text-[9px]"></i></div>
+                                <span>Kreatywność, praca zespołowa i pełna samodzielność.</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <footer class="snap-section snap-footer bg-brandDark text-white pt-10 pb-6 flex flex-col justify-end z-[70] snap-always">
+        <footer class="snap-section snap-footer bg-brandDark text-white pt-10 pb-6 flex flex-col justify-end">
             <div class="rigid-container w-full">
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8 border-b border-gray-800 pb-8 mb-6">
                     
@@ -607,19 +658,19 @@
             const hamburgerBtn = document.getElementById('hamburger-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileLinks = document.querySelectorAll('.mobile-link');
-            const scrollContainerMain = document.querySelector('.snap-container');
+            const body = document.body;
 
             function toggleMenu() {
                 const isOpen = mobileMenu.classList.contains('menu-open');
                 if (isOpen) {
                     mobileMenu.classList.remove('menu-open');
-                    mobileMenu.classList.add('invisible', 'opacity-0');
-                    if (scrollContainerMain) scrollContainerMain.style.overflowY = "auto";
+                    body.classList.remove('menu-open');
+                    hamburgerBtn.setAttribute('aria-expanded', 'false');
                     hamburgerBtn.innerHTML = '<i class="fa-solid fa-bars text-2xl"></i>';
                 } else {
                     mobileMenu.classList.add('menu-open');
-                    mobileMenu.classList.remove('invisible', 'opacity-0');
-                    if (scrollContainerMain) scrollContainerMain.style.overflowY = "hidden";
+                    body.classList.add('menu-open');
+                    hamburgerBtn.setAttribute('aria-expanded', 'true');
                     hamburgerBtn.innerHTML = '<i class="fa-solid fa-xmark text-2xl"></i>';
                 }
             }
@@ -650,9 +701,17 @@
                     } else {
                         entry.target.classList.remove('is-visible');
                         entry.target.querySelectorAll('.skill-bar').forEach(bar => { bar.style.width = '0'; });
+                        if (entry.target.id === 'skills') {
+                            const ee = document.getElementById('easter-egg');
+                            if (ee) {
+                                ee.classList.remove('peeked');
+                                ee.style.transition = 'none';
+                                ee.style.transform = 'translate(-100%, -50%)';
+                            }
+                        }
                     }
                 });
-            }, { root: null, rootMargin: '0px', threshold: 0.1 });
+            }, { root: null, rootMargin: '0px', threshold: 0.15 });
 
             document.querySelectorAll('.snap-section').forEach(s => observer.observe(s));
 
@@ -773,18 +832,18 @@
                 });
             }
 
-            // --- HOVERY KAFELKÓW WWW I BRANDING (Tylko na desktopie) ---
+            // --- HOVERY KAFELKÓW WWW I BRANDING ---
             const wwwCard = document.querySelector('.www-card');
             const brandingCard = document.querySelector('.branding-card');
             const portfolioSection = document.getElementById('portfolio');
             
-            if (wwwCard && portfolioSection && window.innerWidth >= 1024) {
+            if (wwwCard && portfolioSection) {
                 function wwwActivate() { wwwCard.classList.add('www-active'); portfolioSection.classList.add('www-bg-active'); }
                 function wwwDeactivate() { wwwCard.classList.remove('www-active'); portfolioSection.classList.remove('www-bg-active'); }
                 wwwCard.addEventListener('mouseenter', wwwActivate);
                 wwwCard.addEventListener('mouseleave', wwwDeactivate);
             }
-            if (brandingCard && portfolioSection && window.innerWidth >= 1024) {
+            if (brandingCard && portfolioSection) {
                 function brandingActivate() { brandingCard.classList.add('branding-active'); portfolioSection.classList.add('branding-bg-active'); }
                 function brandingDeactivate() { brandingCard.classList.remove('branding-active'); portfolioSection.classList.remove('branding-bg-active'); }
                 brandingCard.addEventListener('mouseenter', brandingActivate);
